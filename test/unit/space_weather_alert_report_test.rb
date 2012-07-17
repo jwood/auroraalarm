@@ -36,4 +36,21 @@ class SpaceWeatherAlertReportTest < ActiveSupport::TestCase
     assert_equal 0, event.expected_kp_index
   end
 
+  should "be able to find all events for a given date" do
+    events = @report.events_for_date(Date.new(2012, 6, 17))
+    assert_equal 11, events.size
+
+    event = events[0]
+    assert_equal "WARK04", event.message_code
+    assert_equal "1950", event.serial_number
+    assert_equal Time.utc(2012, 6, 17, 23, 54), event.issue_time
+    assert_equal 4, event.expected_kp_index
+
+    event = events[10]
+    assert_equal "WARK04", event.message_code
+    assert_equal "1947", event.serial_number
+    assert_equal Time.utc(2012, 6, 17, 2, 32), event.issue_time
+    assert_equal 4, event.expected_kp_index
+  end
+
 end

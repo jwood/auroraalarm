@@ -17,6 +17,10 @@ class SpaceWeatherAlertReport
     parse_report(html_report)
   end
 
+  def events_for_date(date)
+    @events.select { |e| e.issue_time.to_date == date }
+  end
+
   private
 
   def parse_report(html_report)
