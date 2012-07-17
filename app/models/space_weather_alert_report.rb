@@ -1,14 +1,30 @@
 class SpaceWeatherAlertReport
+
   class SpaceWeatherEvent
-    attr_reader :message_code, :serial_number, :issue_time, :kp_index
+    attr_reader :event_type, :message_code, :serial_number, :issue_time, :kp_index
 
     def initialize(message_code, serial_number, issue_time, kp_index)
       @message_code = message_code
+      @event_type = determine_event_type(message_code)
       @serial_number = serial_number
       @issue_time = Time.parse(issue_time)
       @kp_index = kp_index.to_i
     end
+
+    private
+
+    def determine_event_type(message_code)
+      event_type_code = message_code[0..2]
+      case event_type_code
+      when "WAT" then :watch
+      when "SUM" then :summary
+      when "WAR" then :warning
+      when "ALT" then :alert
+      else :unknown
+      end
+    end
   end
+
 
   attr_reader :events
 
@@ -17,11 +33,22 @@ class SpaceWeatherAlertReport
     parse_report(html_report)
   end
 
-  def events_for_date(date)
-    @events.select { |e| e.issue_time.to_date == date }
+  def find_events(options={})
+    events = @events
+    events = find_events_by_date(events, options[:date]) if options[:date]
+    events = find_events_by_event_type(events, options[:event_type]) if options[:event_type]
+    events
   end
 
   private
+
+  def find_events_by_date(events, date)
+    events.select { |e| e.issue_time.to_date == date }
+  end
+
+  def find_events_by_event_type(events, event_type)
+    events.select { |e| e.event_type == event_type }
+  end
 
   def parse_report(html_report)
     section = []
