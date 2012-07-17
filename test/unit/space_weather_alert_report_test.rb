@@ -100,4 +100,8 @@ class SpaceWeatherAlertReportTest < ActiveSupport::TestCase
     assert_equal "G1", event.geomagnetic_storm_level
   end
 
+  should "not freak out if the report data is blank" do
+    report = SpaceWeatherAlertReport.new("")
+  end
+
 end
