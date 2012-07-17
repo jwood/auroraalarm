@@ -76,6 +76,7 @@ class SpaceWeatherAlertReportTest < ActiveSupport::TestCase
     assert_equal Time.utc(2012, 6, 14, 21, 05), event.issue_time
     assert_equal 0, event.kp_index
     assert_equal :watch, event.event_type
+    assert_equal "G1", event.geomagnetic_storm_level
 
     event = events[3]
     assert_equal "WATA20", event.message_code
@@ -83,6 +84,7 @@ class SpaceWeatherAlertReportTest < ActiveSupport::TestCase
     assert_equal Time.utc(2012, 6, 3, 19, 47), event.issue_time
     assert_equal 0, event.kp_index
     assert_equal :watch, event.event_type
+    assert_equal "G1", event.geomagnetic_storm_level
   end
 
   should "be able to find all events of a given type on a given day" do
@@ -95,6 +97,7 @@ class SpaceWeatherAlertReportTest < ActiveSupport::TestCase
     assert_equal Time.utc(2012, 6, 14, 21, 05), event.issue_time
     assert_equal 0, event.kp_index
     assert_equal :watch, event.event_type
+    assert_equal "G1", event.geomagnetic_storm_level
   end
 
 end
