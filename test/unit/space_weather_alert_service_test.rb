@@ -15,11 +15,11 @@ class SpaceWeatherAlertServiceTest < ActiveSupport::TestCase
     FakeWeb.allow_net_connect = true
   end
 
-  should "return a kp of 0 if no activity was found on that day" do
+  should "return nil if no geomagnetic storm occurred on that day" do
     assert_nil @service.strongest_geomagnetic_storm(Date.new(2012, 6, 25))
   end
 
-  should "be able to find the strongest expected kp for a given date" do
+  should "be able to find the strongest geomagnetic storm that occurred on a given date" do
     assert_equal "G2", @service.strongest_geomagnetic_storm(Date.new(2012, 6, 3))
   end
 
