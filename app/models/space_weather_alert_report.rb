@@ -9,7 +9,7 @@ class SpaceWeatherAlertReport
       @serial_number = serial_number
       @issue_time = Time.parse(issue_time)
       @kp_index = kp_index.to_i
-      @geomagnetic_storm_level = geomagnetic_storm_level
+      @geomagnetic_storm_level = geomagnetic_storm_level || ""
     end
 
     private
