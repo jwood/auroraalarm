@@ -1,11 +1,24 @@
 class GeolocationService
 
+  def latitude_and_longitude(zipcode)
+    geo = geocode(zipcode)
+    [geo.lat, geo.lng]
+  end
+
   def magnetic_latitude(zipcode)
-    geo = Geokit::Geocoders::MultiGeocoder.geocode(zipcode)
+    geo = geocode(zipcode)
     calculate_magnetic_latitude(geo)
   end
 
   private
+
+  def geocode(zipcode)
+    data = Rails.cache.fetch("geocode_" + zipcode, :raw => true) do
+      geo = Geokit::Geocoders::MultiGeocoder.geocode(zipcode)
+      geo.hash if geo
+    end
+    GeoKit::GeoLoc.new(data)
+  end
 
   # Algorithim and data to calculate adjusted magnetic latitude taken from
   # http://www.swpc.noaa.gov/Aurora/aurora.js
