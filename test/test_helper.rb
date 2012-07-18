@@ -9,5 +9,10 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
+  set_callback :setup, :before, :clear_cache
+
   # Add more helper methods to be used by all tests here...
+  def clear_cache
+    Rails.cache.clear
+  end
 end
