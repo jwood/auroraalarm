@@ -21,4 +21,18 @@ class ZipcodeTest < ActiveSupport::TestCase
     assert Zipcode.new(:code => "55419", :latitude => 44.9061358, :longitude => -93.2885455).invalid?
   end
 
+  should "be able to create a zip code with geolocation data" do
+    Geokit::Geocoders::MultiGeocoder.expects(:geocode).with("60477").returns(GeoKit::GeoLoc.new(:lat => 41.5699614, :lng => -87.7861711))
+    zipcode = Zipcode.find_or_create_with_geolocation_data("60477")
+    assert_equal "60477", zipcode.code
+    assert_equal 41.5699614, zipcode.latitude
+    assert_equal -87.7861711, zipcode.longitude
+    assert_equal 52, zipcode.magnetic_latitude
+  end
+
+  should "be able to find an existing zip code" do
+    Geokit::Geocoders::MultiGeocoder.expects(:geocode).never
+    assert_equal zipcodes(:minneapolis), Zipcode.find_or_create_with_geolocation_data("55419")
+  end
+
 end
