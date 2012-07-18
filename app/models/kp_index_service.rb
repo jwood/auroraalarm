@@ -3,7 +3,7 @@ require 'net/http'
 class KpIndexService
   include HttpGetter
 
-  def get_current_forecast
+  def current_forecast
     data = forecast_data
     unless data.blank?
       data = data.split("\n").last.split(/\s+/)
