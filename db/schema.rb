@@ -11,6 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20120718174026) do
+
+  create_table "zipcodes", :force => true do |t|
+    t.string   "code",              :limit => 25, :null => false
+    t.float    "latitude",                        :null => false
+    t.float    "longitude",                       :null => false
+    t.integer  "magnetic_latitude",               :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "zipcodes", ["code"], :name => "index_zipcodes_on_code"
+  add_index "zipcodes", ["magnetic_latitude"], :name => "index_zipcodes_on_magnetic_latitude"
 
 end

@@ -1,0 +1,24 @@
+require 'test_helper'
+
+class ZipcodeTest < ActiveSupport::TestCase
+
+  should "be able to store zip code information in the database" do
+    zipcode = Zipcode.create!(:code => "60606", :latitude => 41.5699614, :longitude => -87.7861711, :magnetic_latitude => 52)
+    assert_equal "60606", zipcode.code
+    assert_equal 41.5699614, zipcode.latitude
+    assert_equal -87.7861711, zipcode.longitude
+    assert_equal 52, zipcode.magnetic_latitude
+  end
+
+  should "not be able to create a duplciate zip code entry" do
+    assert Zipcode.new(:code => "55419", :latitude => 44.9061358, :longitude => -93.2885455, :magnetic_latitude => 56).invalid?
+  end
+
+  should "not be able to create a zip code with missing information" do
+    assert Zipcode.new(:latitude => 44.9061358, :longitude => -93.2885455, :magnetic_latitude => 56).invalid?
+    assert Zipcode.new(:code => "55419", :longitude => -93.2885455, :magnetic_latitude => 56).invalid?
+    assert Zipcode.new(:code => "55419", :latitude => 44.9061358, :magnetic_latitude => 56).invalid?
+    assert Zipcode.new(:code => "55419", :latitude => 44.9061358, :longitude => -93.2885455).invalid?
+  end
+
+end
