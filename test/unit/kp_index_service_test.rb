@@ -3,13 +3,7 @@ require 'test_helper'
 class KpIndexServiceTest < ActiveSupport::TestCase
 
   def setup
-    FakeWeb.allow_net_connect = false
-    FakeWeb.clean_registry
     @service = KpIndexService.new
-  end
-
-  def teardown
-    FakeWeb.allow_net_connect = true
   end
 
   should "be able to fetch the most recent Kp forecast" do
