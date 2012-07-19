@@ -15,9 +15,9 @@ class GeolocationService
   def geocode(zipcode)
     data = Rails.cache.fetch("geocode_" + zipcode, :raw => true) do
       geo = Geokit::Geocoders::MultiGeocoder.geocode(zipcode)
-      geo.hash if geo
+      {:lat => geo.lat, :lng => geo.lng, :zip => geo.zip} if geo
     end
-    GeoKit::GeoLoc.new(data)
+    GeoKit::GeoLoc.new(:lat => data[:lat], :lng => data[:lng], :zip => data[:zip])
   end
 
   # Algorithim and data to calculate adjusted magnetic latitude taken from
