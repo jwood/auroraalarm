@@ -3,6 +3,22 @@ class User < ActiveRecord::Base
 
   belongs_to :zipcode
 
+  before_validation :sanitize_mobile_phone
+
   validates :mobile_phone, :presence => true, :uniqueness => true, :length => { :maximum => 15 }
   validates :zipcode_id, :presence => true
+  validate :validate_mobile_phone_format
+
+  private
+
+  def sanitize_mobile_phone
+    self.mobile_phone = SignalApi::Phone.sanitize(self.mobile_phone)
+  end
+
+  def validate_mobile_phone_format
+    unless SignalApi::Phone.valid?(self.mobile_phone)
+      errors.add(:mobile_phone, "is not valid")
+    end
+  end
+
 end

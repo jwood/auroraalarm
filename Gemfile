@@ -7,6 +7,7 @@ gem 'pg', '0.14.0'
 gem 'foreigner', '1.2.0'
 gem 'geokit', '1.6.5'
 gem 'dalli', '2.1.0'
+gem 'signal_api', :git => 'git@github.com:signal/signal-ruby.git'
 
 # Gems used only for assets and not required
 # in production environments by default.
