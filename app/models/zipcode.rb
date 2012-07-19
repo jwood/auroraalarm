@@ -3,12 +3,14 @@ class Zipcode < ActiveRecord::Base
 
   has_many :users
 
-  validates :code, :presence => true, :uniqueness => true, :length => { :maximum => 25 }
+  validates :code, :presence => true, :uniqueness => true, :length => { :maximum => 5 }, :format => /\d\d\d\d\d/
   validates :latitude, :presence => true, :numericality => true
   validates :longitude, :presence => true, :numericality => true
   validates :magnetic_latitude, :presence => true, :numericality => true
 
   def self.find_or_create_with_geolocation_data(code)
+    return nil if code.blank?
+
     Zipcode.uncached do
       zipcode = Zipcode.find_by_code(code)
       if zipcode.nil?
