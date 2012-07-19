@@ -10,4 +10,5 @@ test:
   adapter: postgresql
   database: aurora_test
   username: aurora
+  min_messages: WARNING
 
