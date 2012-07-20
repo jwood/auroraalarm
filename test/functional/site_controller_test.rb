@@ -11,6 +11,7 @@ class SiteControllerTest < ActionController::TestCase
 
   test "should be able to create a new user" do
     Geokit::Geocoders::MultiGeocoder.expects(:geocode).with("60477").returns(GeoKit::GeoLoc.new(:lat => 41.5699614, :lng => -87.7861711))
+    SmsMessagingService.any_instance.expects(:send_message).with("3125551212", OutgoingSmsMessages.signup_prompt)
 
     assert_difference 'User.count', 1 do
       assert_difference 'Zipcode.count', 1 do
