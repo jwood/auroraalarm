@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
   validate :validate_mobile_phone_format
   validate :validate_zipcode
 
+  def confirmed?
+    !self.confirmed_at.nil?
+  end
+
   private
 
   def sanitize_mobile_phone
