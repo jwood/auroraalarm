@@ -1,0 +1,17 @@
+<%= error_messages_for :user %>
+
+<%= form_for @user, :url => new_user_path do |f| %>
+  <div>
+    <%= f.label :mobile_phone %>
+    <%= f.phone_field :mobile_phone %>
+  </div>
+
+  <div>
+    <%= f.label :zipcode_value, 'Zipcode' %>
+    <%= f.text_field :zipcode_value %>
+  </div>
+
+  <div>
+    <%= f.button "Signup" %>
+  </div>
+<% end %>
