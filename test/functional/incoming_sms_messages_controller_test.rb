@@ -16,4 +16,10 @@ class IncomingSmsMessagesControllerTest < ActionController::TestCase
     assert user.reload.confirmed?
   end
 
+  test "should be able to signup by texting AURORA" do
+    SmsMessagingService.any_instance.expects(:send_message).with('3125551213', OutgoingSmsMessages.zipcode_prompt)
+    post :index, :mobile_phone => '3125551213', :message => ' aurora  ', :keyword => 'AURORA'
+    assert_response :success
+  end
+
 end

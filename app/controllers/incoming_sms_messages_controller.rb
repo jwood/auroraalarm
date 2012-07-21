@@ -7,12 +7,16 @@ class IncomingSmsMessagesController < ApplicationController
     @sms_messaging_service = SmsMessagingService.new
 
     @user = User.find_by_mobile_phone(@mobile_phone)
-    if @user
+    if @user.nil?
+      if opt_in_via_sms?
+        handle_opt_in_via_sms
+      else
+        Rails.logger.error "No user could be found with a mobile phone of #{@mobile_phone}"
+      end
+    else
       if signup_confirmation?
         handle_signup_confirmation
       end
-    else
-      Rails.logger.error "No user could be found with a mobile phone of #{@mobile_phone}"
     end
 
     render :nothing => true
@@ -21,16 +25,24 @@ class IncomingSmsMessagesController < ApplicationController
   private
 
   def signup_confirmation?
-    positive_response?(@message) && !@user.confirmed?
+    positive_response? && !@user.confirmed?
   end
 
   def handle_signup_confirmation
     @user.update_attribute(:confirmed_at, Time.now)
-    @sms_messaging_service.send_message(@user.mobile_phone, OutgoingSmsMessages.signup_confirmation)
+    @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.signup_confirmation)
   end
 
-  def positive_response?(message)
-    ["Y", "YES", "SURE", "OK", "YEP", "CONFIRM"].include?(message.upcase)
+  def positive_response?
+    ["Y", "YES", "SURE", "OK", "YEP", "CONFIRM"].include?(@message.upcase)
+  end
+
+  def opt_in_via_sms?
+    @message.upcase == "AURORA" && @keyword.upcase == "AURORA"
+  end
+
+  def handle_opt_in_via_sms
+    @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.zipcode_prompt)
   end
 
 end
