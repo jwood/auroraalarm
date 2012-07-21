@@ -8,7 +8,9 @@ class IncomingSmsMessagesController < ApplicationController
 
     @user = User.find_by_mobile_phone(@mobile_phone)
     if @user.nil?
-      if opt_in_via_sms?
+      if opt_in_via_sms_missing_location?
+        handle_opt_in_via_sms_missing_location
+      elsif opt_in_via_sms?
         handle_opt_in_via_sms
       else
         Rails.logger.error "No user could be found with a mobile phone of #{@mobile_phone}"
@@ -37,12 +39,33 @@ class IncomingSmsMessagesController < ApplicationController
     ["Y", "YES", "SURE", "OK", "YEP", "CONFIRM"].include?(@message.upcase)
   end
 
+  def opt_in_via_sms_missing_location?
+    @message.upcase == "AURORA"
+  end
+
+  def handle_opt_in_via_sms_missing_location
+    @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.location_prompt)
+  end
+
   def opt_in_via_sms?
-    @message.upcase == "AURORA" && @keyword.upcase == "AURORA"
+    @message.upcase =~ opt_in_message_regexp
   end
 
   def handle_opt_in_via_sms
-    @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.zipcode_prompt)
+    @message.upcase =~ opt_in_message_regexp
+    zipcode = Zipcode.find_or_create_with_geolocation_data(($1 || "").strip)
+    @user = User.new(:mobile_phone => @mobile_phone, :zipcode => zipcode)
+
+    if @user.save
+      response_message = OutgoingSmsMessages.signup_confirmation
+    else
+      response_message = OutgoingSmsMessages.bad_location_at_signup
+    end
+    @sms_messaging_service.send_message(@mobile_phone, response_message)
+  end
+
+  def opt_in_message_regexp
+    @opt_in_message_regexp ||= Regexp.new("^AURORA\s+([^\s]+)$", Regexp::IGNORECASE)
   end
 
 end

@@ -16,9 +16,22 @@ class IncomingSmsMessagesControllerTest < ActionController::TestCase
     assert user.reload.confirmed?
   end
 
-  test "should be able to signup by texting AURORA" do
-    SmsMessagingService.any_instance.expects(:send_message).with('3125551213', OutgoingSmsMessages.zipcode_prompt)
-    post :index, :mobile_phone => '3125551213', :message => ' aurora  ', :keyword => 'AURORA'
+  test "should ask the user for their location if only the keyword is sent" do
+    SmsMessagingService.any_instance.expects(:send_message).with('3125551213', OutgoingSmsMessages.location_prompt)
+    post :index, :mobile_phone => '3125551213', :message => ' aurora', :keyword => 'AURORA'
+    assert_response :success
+  end
+
+  test "should be able to signup by texting AURORA with the zip code" do
+    Geokit::Geocoders::MultiGeocoder.expects(:geocode).with("90210").returns(GeoKit::GeoLoc.new(:lat => 41.5699614, :lng => -87.7861711))
+    SmsMessagingService.any_instance.expects(:send_message).with('3125551213', OutgoingSmsMessages.signup_confirmation)
+    post :index, :mobile_phone => '3125551213', :message => ' aurora 90210 ', :keyword => 'AURORA'
+    assert_response :success
+  end
+
+  test "should send an error if we cannot recognize the location" do
+    SmsMessagingService.any_instance.expects(:send_message).with('3125551213', OutgoingSmsMessages.bad_location_at_signup)
+    post :index, :mobile_phone => '3125551213', :message => ' aurora foobaz ', :keyword => 'AURORA'
     assert_response :success
   end
 
