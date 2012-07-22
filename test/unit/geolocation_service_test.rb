@@ -7,9 +7,9 @@ class GeolocationServiceTest < ActiveSupport::TestCase
   end
 
   should "be able to fetch the data for a location" do
-    Geokit::Geocoders::MultiGeocoder.expects(:geocode).with("04735").returns(
+    Geokit::Geocoders::MultiGeocoder.expects(:geocode).with("60477").returns(
       GeoKit::GeoLoc.new(:city => "Tinley Park", :state => "IL", :zip => "60477", :country_code => "US", :lat => 46.9092987, :lng => -68.0069732))
-    location = @service.geocode("04735")
+    location = @service.geocode("60477")
     assert_equal "Tinley Park", location.city
     assert_equal "IL", location.state
     assert_equal "60477", location.zip
