@@ -1,32 +1,38 @@
 class GeolocationService
+  class Location
+    attr_accessor :city, :state, :zip, :country_code, :latitude, :longitude, :magnetic_latitude
 
-  def latitude_and_longitude(zipcode)
-    geo = geocode(zipcode)
-    [geo.lat, geo.lng]
+    def initialize(data)
+      @city = data['city']
+      @state = data['state']
+      @zip = data['zip']
+      @country_code = data['country_code']
+      @latitude = data['latitude']
+      @longitude = data['longitude']
+      @magnetic_latitude = data['magnetic_latitude']
+    end
   end
 
-  def magnetic_latitude(zipcode)
-    geo = geocode(zipcode)
-    calculate_magnetic_latitude(geo)
+  def geocode(location)
+    data = Rails.cache.fetch("geocode_" + location.downcase.tr("^[a-z0-9-_]", ""), :raw => true) do
+      geo = Geokit::Geocoders::MultiGeocoder.geocode(location)
+      {:city => geo.city, :state => geo.state, :zip => geo.zip, :country_code => geo.country_code, :latitude => geo.lat, :longitude => geo.lng}.to_json if geo
+    end
+    data = ActiveSupport::JSON.decode(data)
+    data['magnetic_latitude'] = calculate_magnetic_latitude(data['latitude'], data['longitude'])
+    Location.new(data)
   end
 
   private
 
-  def geocode(zipcode)
-    data = Rails.cache.fetch("geocode_" + zipcode, :raw => true) do
-      geo = Geokit::Geocoders::MultiGeocoder.geocode(zipcode)
-      {:lat => geo.lat, :lng => geo.lng, :zip => geo.zip}.to_json if geo
-    end
-    data = ActiveSupport::JSON.decode(data)
-    GeoKit::GeoLoc.new(:lat => data['lat'], :lng => data['lng'], :zip => data['zip'])
-  end
-
   # Algorithim and data to calculate adjusted magnetic latitude taken from
   # http://www.swpc.noaa.gov/Aurora/aurora.js
-  def calculate_magnetic_latitude(geo)
-    ilat1 = ((90.0 - geo.lat) / 2.0 - 1).floor
+  def calculate_magnetic_latitude(latitude, longitude)
+    return nil if latitude.blank? || longitude.blank?
+
+    ilat1 = ((90.0 - latitude) / 2.0 - 1).floor
     ilat2 = ilat1 + 1
-    ilon1 = (geo.lng / 5.0).floor
+    ilon1 = (longitude / 5.0).floor
     ilon2 = ilon1 + 1
 
     # Wrap if lon = 360 degrees
@@ -40,12 +46,12 @@ class GeolocationService
     ind22 = ilat2 * 72 + ilon2
 
     # Set up interpolation
-    del1 = (geo.lng - ilon1 * 5.0) / 5.0
+    del1 = (longitude - ilon1 * 5.0) / 5.0
     
     c = conversion_array
     a1 = c[ind11] + del1 * (c[ind12] - c[ind11])
     a2 = c[ind21] + del1 * (c[ind22] - c[ind21])
-    del2 = (geo.lat - (90.0 - ((ilat2 + 1) * 2.0))) / 2.0
+    del2 = (latitude - (90.0 - ((ilat2 + 1) * 2.0))) / 2.0
 
     (a2 + del2 * (a1-a2)).floor
   end
