@@ -1,31 +1,43 @@
 class GeolocationService
   class Location
-    attr_accessor :city, :state, :zip, :country_code, :latitude, :longitude, :magnetic_latitude
+    attr_reader :city, :state, :zip, :country_code, :latitude, :longitude, :magnetic_latitude
 
     def initialize(data)
-      @city = data['city']
-      @state = data['state']
-      @zip = data['zip']
-      @country_code = data['country_code']
-      @latitude = data['latitude']
-      @longitude = data['longitude']
-      @magnetic_latitude = data['magnetic_latitude']
+      @city = data[:city]
+      @state = data[:state]
+      @zip = data[:zip]
+      @country_code = data[:country_code]
+      @latitude = data[:latitude]
+      @longitude = data[:longitude]
+      @magnetic_latitude = data[:magnetic_latitude]
     end
+  end
+
+  def initialize
+    @local_cache = {}
   end
 
   def geocode(location)
     return Location.new({}) if location.nil? || location.strip.blank?
-
-    data = Rails.cache.fetch("geocode_" + location.downcase.tr("^[a-z0-9-_]", ""), :raw => true) do
-      geo = Geokit::Geocoders::MultiGeocoder.geocode(location)
-      {:city => geo.city, :state => geo.state, :zip => geo.zip, :country_code => geo.country_code, :latitude => geo.lat, :longitude => geo.lng}.to_json if geo
-    end
-    data = ActiveSupport::JSON.decode(data)
-    data['magnetic_latitude'] = calculate_magnetic_latitude(data['latitude'], data['longitude'])
-    Location.new(data)
+    @local_cache[location] ||= lookup_location(location)
   end
 
   private
+
+  def lookup_location(location)
+    geo = Geokit::Geocoders::MultiGeocoder.geocode(location)
+    if geo.success
+      Location.new(:city => geo.city,
+                   :state => geo.state,
+                   :zip => geo.zip,
+                   :country_code => geo.country_code,
+                   :latitude => geo.lat,
+                   :longitude => geo.lng,
+                   :magnetic_latitude => calculate_magnetic_latitude(geo.lat, geo.lng))
+    else
+      nil
+    end
+  end
 
   # Algorithim and data to calculate adjusted magnetic latitude taken from
   # http://www.swpc.noaa.gov/Aurora/aurora.js
