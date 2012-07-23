@@ -1,6 +1,6 @@
 GIT
-  remote: git@github.com:signal/signal-ruby.git
-  revision: 6d962461ead380e6ae371c024f2da2b2c63b1f7c
+  remote: git://github.com/signal/signal-ruby.git
+  revision: 249d69e5534a3136213e957315706259ddbb05f8
   specs:
     signal_api (0.0.1)
       builder (~> 3.0.0)
