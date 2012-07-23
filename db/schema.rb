@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120721215243) do
+ActiveRecord::Schema.define(:version => 20120723114458) do
 
   create_table "user_locations", :force => true do |t|
     t.integer  "user_id",                         :null => false
@@ -36,18 +36,6 @@ ActiveRecord::Schema.define(:version => 20120721215243) do
   end
 
   add_index "users", ["mobile_phone"], :name => "index_users_on_mobile_phone"
-
-  create_table "zipcodes", :force => true do |t|
-    t.string   "code",              :limit => 25, :null => false
-    t.float    "latitude",                        :null => false
-    t.float    "longitude",                       :null => false
-    t.integer  "magnetic_latitude",               :null => false
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-  end
-
-  add_index "zipcodes", ["code"], :name => "index_zipcodes_on_code"
-  add_index "zipcodes", ["magnetic_latitude"], :name => "index_zipcodes_on_magnetic_latitude"
 
   add_foreign_key "user_locations", "users", :name => "user_locations_user_id_fk"
 
