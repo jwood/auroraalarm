@@ -52,11 +52,12 @@ class IncomingSmsMessagesController < ApplicationController
   end
 
   def handle_opt_in_via_sms
+    factory = UserFactory.new
     @message.upcase =~ opt_in_message_regexp
-    zipcode = Zipcode.find_or_create_with_geolocation_data(($1 || "").strip)
-    @user = User.new(:mobile_phone => @mobile_phone, :zipcode => zipcode)
+    @user = factory.create_user(@mobile_phone, ($1 || "").strip)
+    @errors = factory.errors
 
-    if @user.save
+    if @errors.blank?
       response_message = OutgoingSmsMessages.signup_confirmation
     else
       response_message = OutgoingSmsMessages.bad_location_at_signup

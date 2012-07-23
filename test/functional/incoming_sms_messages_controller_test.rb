@@ -23,13 +23,14 @@ class IncomingSmsMessagesControllerTest < ActionController::TestCase
   end
 
   test "should be able to signup by texting AURORA with the zip code" do
-    Geokit::Geocoders::MultiGeocoder.expects(:geocode).with("90210").returns(GeoKit::GeoLoc.new(:lat => 41.5699614, :lng => -87.7861711))
+    expects_valid_location("90210")
     SmsMessagingService.any_instance.expects(:send_message).with('3125551213', OutgoingSmsMessages.signup_confirmation)
     post :index, :mobile_phone => '3125551213', :message => ' aurora 90210 ', :keyword => 'AURORA'
     assert_response :success
   end
 
   test "should send an error if we cannot recognize the location" do
+    expects_invalid_location("FOOBAZ")
     SmsMessagingService.any_instance.expects(:send_message).with('3125551213', OutgoingSmsMessages.bad_location_at_signup)
     post :index, :mobile_phone => '3125551213', :message => ' aurora foobaz ', :keyword => 'AURORA'
     assert_response :success
