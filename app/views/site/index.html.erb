@@ -1,4 +1,4 @@
-<% if @errors && @errors.any? %>
+<% if !@errors.blank? %>
   <div id="errorExplanation">
     <h2>Please correct the following errors:</h2>
     <ul>
