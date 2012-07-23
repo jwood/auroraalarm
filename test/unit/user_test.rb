@@ -7,7 +7,11 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should not be able to create a user with a duplicate phone number" do
-    User.new(:mobile_phone => "3125551200")
+    User.new(:mobile_phone => "3125551200").invalid?
+  end
+
+  test "should not be able to create a user with an invalid phone number" do
+    User.new(:mobile_phone => "3125551200123123").invalid?
   end
 
   test "should sanitize the mobile phone" do
@@ -16,7 +20,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should not be able to create a user with an invalid mobile phone" do
-    assert User.new(:mobile_phone => "foobar123123")
+    assert User.new(:mobile_phone => "foobar123123").invalid?
   end
 
   test "should be able to easly tell if a user has been confirmed" do
