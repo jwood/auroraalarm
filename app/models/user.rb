@@ -1,14 +1,13 @@
 class User < ActiveRecord::Base
-  attr_accessible :mobile_phone, :zipcode, :zipcode_value
-  attr_accessor :zipcode_value
+  attr_accessible :mobile_phone, :user_location, :user_location_value
+  attr_accessor :user_location_value
 
-  belongs_to :zipcode
+  has_one :user_location
 
   before_validation :sanitize_mobile_phone
 
   validates :mobile_phone, :presence => true, :uniqueness => true, :length => { :maximum => 15 }
   validate :validate_mobile_phone_format
-  validate :validate_zipcode
 
   def confirmed?
     !self.confirmed_at.nil?
@@ -23,12 +22,6 @@ class User < ActiveRecord::Base
   def validate_mobile_phone_format
     unless SignalApi::Phone.valid?(self.mobile_phone)
       errors.add(:mobile_phone, "is not valid")
-    end
-  end
-
-  def validate_zipcode
-    if zipcode.blank?
-      errors.add(:zipcode_value, "^Zipcode is not valid")
     end
   end
 
