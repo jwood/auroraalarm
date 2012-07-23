@@ -8,11 +8,11 @@ class UserFactory
     ensure_user_does_not_exist(mobile_phone)
     location = lookup_location_data(location_value)
 
-    user = nil
+    user = User.new(:mobile_phone => mobile_phone, :user_location_value => location_value)
     if @errors.blank?
       begin
         User.transaction do
-          user = User.create!(:mobile_phone => mobile_phone)
+          user.save!
           user_location = UserLocation.create!(:user_id => user.id,
                                                :city => location.city,
                                                :state => location.state,

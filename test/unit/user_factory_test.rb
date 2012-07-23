@@ -17,6 +17,7 @@ class UserFactoryTest < ActiveSupport::TestCase
     end
 
     assert @factory.errors.empty?
+    assert user.persisted?
 
     assert_equal '3125551212', user.mobile_phone
     assert_equal 'Tinley Park', user.user_location.city
@@ -33,7 +34,8 @@ class UserFactoryTest < ActiveSupport::TestCase
 
     assert_no_difference 'User.count' do
       assert_no_difference 'UserLocation.count' do
-        assert_nil @factory.create_user('foobar', '60477')
+        user = @factory.create_user('foobar', '60477')
+        assert !user.persisted?
       end
     end
 
@@ -45,7 +47,8 @@ class UserFactoryTest < ActiveSupport::TestCase
 
     assert_no_difference 'User.count' do
       assert_no_difference 'UserLocation.count' do
-        assert_nil @factory.create_user(users(:john).mobile_phone, '60477')
+        user = @factory.create_user(users(:john).mobile_phone, '60477')
+        assert !user.persisted?
       end
     end
 
@@ -57,7 +60,8 @@ class UserFactoryTest < ActiveSupport::TestCase
 
     assert_no_difference 'User.count' do
       assert_no_difference 'UserLocation.count' do
-        assert_nil @factory.create_user('3125551212', 'zzz')
+        user = @factory.create_user('3125551212', 'zzz')
+        assert !user.persisted?
       end
     end
 
