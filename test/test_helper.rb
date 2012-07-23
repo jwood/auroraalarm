@@ -24,4 +24,14 @@ class ActiveSupport::TestCase
     FakeWeb.allow_net_connect = false
     FakeWeb.clean_registry
   end
+
+  def expects_valid_location(location_value)
+    Geokit::Geocoders::MultiGeocoder.expects(:geocode).with(location_value).returns(
+      GeoKit::GeoLoc.new(:lat => 41.5699614, :lng => -87.7861711, :city => "Tinley Park", :state => "IL", :country_code => "US", :zip => "60477"))
+  end
+
+  def expects_invalid_location(location_value)
+    Geokit::Geocoders::MultiGeocoder.expects(:geocode).with(location_value).returns(GeoKit::GeoLoc.new())
+  end
+
 end
