@@ -6,7 +6,7 @@ class GeolocationServiceTest < ActiveSupport::TestCase
     @service = GeolocationService.new
   end
 
-  should "be able to fetch the data for a location" do
+  test "should be able to fetch the data for a location" do
     Geokit::Geocoders::MultiGeocoder.expects(:geocode).with("60477").returns(
       GeoKit::GeoLoc.new(:city => "Tinley Park", :state => "IL", :zip => "60477", :country_code => "US", :lat => 46.9092987, :lng => -68.0069732))
     location = @service.geocode("60477")
@@ -18,7 +18,7 @@ class GeolocationServiceTest < ActiveSupport::TestCase
     assert_equal -68.0069732, location.longitude
   end
 
-  should "properly calculate the magnetic latitude for a zip code" do
+  test "should properly calculate the magnetic latitude for a zip code" do
     # Caribou, ME
     Geokit::Geocoders::MultiGeocoder.expects(:geocode).with("04736").returns(GeoKit::GeoLoc.new(:lat => 46.9092987, :lng => -68.0069732))
     assert_equal 55, @service.geocode("04736").magnetic_latitude
@@ -44,7 +44,7 @@ class GeolocationServiceTest < ActiveSupport::TestCase
     assert_equal 37, @service.geocode("33111").magnetic_latitude
   end
 
-  should "return an empty Location object if no location criteria was specified" do
+  test "should return an empty Location object if no location criteria was specified" do
     assert_nil @service.geocode(nil).latitude
     assert_nil @service.geocode("   ").latitude
   end

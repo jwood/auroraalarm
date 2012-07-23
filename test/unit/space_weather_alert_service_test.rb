@@ -8,11 +8,11 @@ class SpaceWeatherAlertServiceTest < ActiveSupport::TestCase
     @service = SpaceWeatherAlertService.new(2012, 6)
   end
 
-  should "return nil if no geomagnetic storm occurred on that day" do
+  test "should return nil if no geomagnetic storm occurred on that day" do
     assert_nil @service.strongest_geomagnetic_storm(Date.new(2012, 6, 25))
   end
 
-  should "be able to find the strongest geomagnetic storm that occurred on a given date" do
+  test "should be able to find the strongest geomagnetic storm that occurred on a given date" do
     assert_equal "G2", @service.strongest_geomagnetic_storm(Date.new(2012, 6, 3))
   end
 

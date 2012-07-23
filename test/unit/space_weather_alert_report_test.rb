@@ -7,7 +7,7 @@ class SpaceWeatherAlertReportTest < ActiveSupport::TestCase
     @report = SpaceWeatherAlertReport.new(report_text)
   end
 
-  should "be able to parse the report into an array of events" do
+  test "should be able to parse the report into an array of events" do
     events = @report.events
     assert_equal 83, events.size
 
@@ -40,7 +40,7 @@ class SpaceWeatherAlertReportTest < ActiveSupport::TestCase
     assert_equal :alert, event.event_type
   end
 
-  should "be able to find all events for a given date" do
+  test "should be able to find all events for a given date" do
     events = @report.find_events(:date => Date.new(2012, 6, 17))
     assert_equal 11, events.size
 
@@ -66,7 +66,7 @@ class SpaceWeatherAlertReportTest < ActiveSupport::TestCase
     assert_equal :warning, event.event_type
   end
 
-  should "be able to find all events for a given date" do
+  test "should be able to find all events for a given date" do
     events = @report.find_events(:event_type => :watch)
     assert_equal 4, events.size
 
@@ -87,7 +87,7 @@ class SpaceWeatherAlertReportTest < ActiveSupport::TestCase
     assert_equal "G1", event.geomagnetic_storm_level
   end
 
-  should "be able to find all events of a given type on a given day" do
+  test "should be able to find all events of a given type on a given day" do
     events = @report.find_events(:date => Date.new(2012, 6, 14), :event_type => :watch)
     assert_equal 1, events.size
 
@@ -100,7 +100,7 @@ class SpaceWeatherAlertReportTest < ActiveSupport::TestCase
     assert_equal "G1", event.geomagnetic_storm_level
   end
 
-  should "not freak out if the report data is blank" do
+  test "should not freak out if the report data is blank" do
     report = SpaceWeatherAlertReport.new("")
   end
 
