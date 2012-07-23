@@ -5,10 +5,11 @@ class SiteController < ApplicationController
   end
 
   def new_user
-    zipcode = Zipcode.find_or_create_with_geolocation_data(params[:user][:zipcode_value])
-    @user = User.new(params[:user].merge(:zipcode => zipcode))
+    factory = UserFactory.new
+    @user = factory.create_user(params[:user][:mobile_phone], params[:user][:user_location_value])
+    @errors = factory.errors
 
-    if @user.save
+    if @errors.blank?
       service = SmsMessagingService.new
       service.send_message(@user.mobile_phone, OutgoingSmsMessages.signup_prompt)
     else
