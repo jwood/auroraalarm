@@ -14,6 +14,8 @@ class GeolocationService
   end
 
   def geocode(location)
+    return Location.new({}) if location.nil? || location.strip.blank?
+
     data = Rails.cache.fetch("geocode_" + location.downcase.tr("^[a-z0-9-_]", ""), :raw => true) do
       geo = Geokit::Geocoders::MultiGeocoder.geocode(location)
       {:city => geo.city, :state => geo.state, :zip => geo.zip, :country_code => geo.country_code, :latitude => geo.lat, :longitude => geo.lng}.to_json if geo

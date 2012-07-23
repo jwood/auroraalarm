@@ -44,4 +44,9 @@ class GeolocationServiceTest < ActiveSupport::TestCase
     assert_equal 37, @service.geocode("33111").magnetic_latitude
   end
 
+  should "return an empty Location object if no location criteria was specified" do
+    assert_nil @service.geocode(nil).latitude
+    assert_nil @service.geocode("   ").latitude
+  end
+
 end
