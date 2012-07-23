@@ -1,4 +1,13 @@
-<%= error_messages_for :user %>
+<% if @errors && @errors.any? %>
+  <div id="errorExplanation">
+    <h2>Please correct the following errors:</h2>
+    <ul>
+      <% @errors.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <%= form_for @user, :url => new_user_path do |f| %>
   <div>
