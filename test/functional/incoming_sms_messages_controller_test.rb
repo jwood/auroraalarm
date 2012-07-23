@@ -46,4 +46,12 @@ class IncomingSmsMessagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "shoud let the user know if they are already signed up" do
+    user = users(:john)
+    user.update_attribute(:confirmed_at, Time.now)
+    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.already_signed_up)
+    post :index, :mobile_phone => user.mobile_phone, :message => ' aurora', :keyword => 'AURORA'
+    assert_response :success
+  end
+
 end

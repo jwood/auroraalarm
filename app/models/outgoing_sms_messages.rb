@@ -17,5 +17,9 @@ class OutgoingSmsMessages
       "Sorry, we didn't see a zip code in that message. Please text AURORA followed by your zip code."
     end
 
+    def already_signed_up
+      "You are already signed up to be notified when the northern lights are active in your area. Text STOP to cancel. Text HELP for info. Msg&data rates may apply."
+    end
+
   end
 end

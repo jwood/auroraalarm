@@ -19,6 +19,8 @@ class IncomingSmsMessagesController < ApplicationController
     else
       if signup_confirmation?
         handle_signup_confirmation
+      else
+        handle_already_signed_up
       end
     end
 
@@ -68,6 +70,10 @@ class IncomingSmsMessagesController < ApplicationController
 
   def opt_in_message_regexp
     @opt_in_message_regexp ||= Regexp.new("^AURORA\s+([^\s]+)$", Regexp::IGNORECASE)
+  end
+
+  def handle_already_signed_up
+    @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.already_signed_up)
   end
 
 end
