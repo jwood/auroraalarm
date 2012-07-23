@@ -66,7 +66,7 @@ class SpaceWeatherAlertReportTest < ActiveSupport::TestCase
     assert_equal :warning, event.event_type
   end
 
-  test "should be able to find all events for a given date" do
+  test "should be able to find all events for a given event type" do
     events = @report.find_events(:event_type => :watch)
     assert_equal 4, events.size
 
