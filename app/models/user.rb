@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :mobile_phone, :user_location, :user_location_value
   attr_accessor :user_location_value
 
-  has_one :user_location
+  has_one :user_location, :dependent => :destroy
 
   before_validation :sanitize_mobile_phone
 

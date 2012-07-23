@@ -21,5 +21,9 @@ class OutgoingSmsMessages
       "You are already signed up to be notified when the northern lights are active in your area. Text STOP to cancel. Text HELP for info. Msg&data rates may apply."
     end
 
+    def stop
+      "You will no longer be notified when the northern lights are active in your area. Sorry to see you go. Text HELP for info. Msg&data rates may apply."
+    end
+
   end
 end

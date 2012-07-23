@@ -8,19 +8,24 @@ class IncomingSmsMessagesController < ApplicationController
     @sms_messaging_service = SmsMessagingService.new
 
     @user = User.find_by_mobile_phone(@mobile_phone)
-    if @user.nil?
-      if opt_in_via_sms_missing_location?
-        handle_opt_in_via_sms_missing_location
-      elsif opt_in_via_sms?
-        handle_opt_in_via_sms
-      else
-        Rails.logger.error "No user could be found with a mobile phone of #{@mobile_phone}"
-      end
+
+    if stop_message?
+      handle_stop_message
     else
-      if signup_confirmation?
-        handle_signup_confirmation
+      if @user.nil?
+        if opt_in_via_sms_missing_location?
+          handle_opt_in_via_sms_missing_location
+        elsif opt_in_via_sms?
+          handle_opt_in_via_sms
+        else
+          Rails.logger.error "No user could be found with a mobile phone of #{@mobile_phone}"
+        end
       else
-        handle_already_signed_up
+        if signup_confirmation?
+          handle_signup_confirmation
+        else
+          handle_already_signed_up
+        end
       end
     end
 
@@ -28,6 +33,15 @@ class IncomingSmsMessagesController < ApplicationController
   end
 
   private
+
+  def stop_message?
+    @message.upcase =~ /STOP/
+  end
+
+  def handle_stop_message
+    @user.destroy if @user
+    @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.stop)
+  end
 
   def signup_confirmation?
     positive_response? && !@user.confirmed?

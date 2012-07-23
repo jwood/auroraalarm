@@ -3,3 +3,8 @@ john:
 
 joe:
   mobile_phone: 3125551201
+
+dan:
+  mobile_phone: 3125551202
+  confirmed_at: <%= 1.day.ago %>
+

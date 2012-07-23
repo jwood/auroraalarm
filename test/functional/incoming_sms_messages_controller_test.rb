@@ -47,10 +47,47 @@ class IncomingSmsMessagesControllerTest < ActionController::TestCase
   end
 
   test "shoud let the user know if they are already signed up" do
-    user = users(:john)
-    user.update_attribute(:confirmed_at, Time.now)
+    user = users(:dan)
     SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.already_signed_up)
     post :index, :mobile_phone => user.mobile_phone, :message => ' aurora', :keyword => 'AURORA'
+    assert_response :success
+  end
+
+  test "should unsubscribe confirmed user when they text STOP" do
+    user = users(:dan)
+    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.stop)
+
+    assert_difference 'User.count', -1 do
+      assert_difference 'UserLocation.count', -1 do
+        post :index, :mobile_phone => user.mobile_phone, :message => ' stop', :keyword => ''
+      end
+    end
+
+    assert_response :success
+  end
+
+  test "should unsubscribe unconfirmed user when they text STOP" do
+    user = users(:john)
+    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.stop)
+
+    assert_difference 'User.count', -1 do
+      assert_difference 'UserLocation.count', -1 do
+        post :index, :mobile_phone => user.mobile_phone, :message => ' stop', :keyword => ''
+      end
+    end
+
+    assert_response :success
+  end
+
+  test "should send unknown user the stop message when they text STOP" do
+    SmsMessagingService.any_instance.expects(:send_message).with('3125551213', OutgoingSmsMessages.stop)
+
+    assert_no_difference 'User.count' do
+      assert_no_difference 'UserLocation.count' do
+        post :index, :mobile_phone => '3125551213', :message => ' stop all', :keyword => ''
+      end
+    end
+
     assert_response :success
   end
 
