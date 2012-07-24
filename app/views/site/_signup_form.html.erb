@@ -1,0 +1,30 @@
+<% if !@errors.blank? %>
+  <div id="errorExplanation">
+    <h3>Please correct the following errors:</h3>
+    <ul>
+      <% @errors.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @user, :url => new_user_path, :remote => true do |f| %>
+  <table>
+    <tr>
+      <td><%= f.label :mobile_phone %></td>
+      <td><%= f.phone_field :mobile_phone %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :user_location_value, 'Zipcode' %></td>
+      <td><%= f.text_field :user_location_value %></td>
+    </tr>
+    <tr>
+      <td><%= f.button "Signup", :id => 'signup_button' %></td>
+    </tr>
+  </table>
+<% end %>
+
+<div id="loading" style="display:none;">
+  <%= image_tag "spinner.gif" %>
+</div>

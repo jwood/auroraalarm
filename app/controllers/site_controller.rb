@@ -5,16 +5,43 @@ class SiteController < ApplicationController
   end
 
   def new_user
-    factory = UserFactory.new
-    @user = factory.create_user(params[:user][:mobile_phone], params[:user][:user_location_value])
-    @errors = factory.errors
+    respond_to do |format|
+      if user_exists?(params[:user][:mobile_phone])
+        @message = "You have already signed up. To confirm your signup, or change your zipcode, text AURORA followed by your zipcode (AURORA 90210) to 839863."
+        format.html
+        format.js
+      else
+        @user, @errors = create_new_user
+        if @errors.blank?
+          send_sms_signup_prompt
+          @message = "Thank you for signing up! You will soon receive a text message asking you to confirm your subscription by replying 'Y'."
 
-    if @errors.blank?
-      service = SmsMessagingService.new
-      service.send_message(@user.mobile_phone, OutgoingSmsMessages.signup_prompt)
-    else
-      render :action => :index
+          format.html
+          format.js
+        else
+          format.html { render :index }
+          format.js { render :signup_error }
+        end
+      end
     end
+  end
+
+  private
+
+  def user_exists?(mobile_phone)
+    User.find_by_mobile_phone(SignalApi::Phone.sanitize(mobile_phone))
+  end
+
+  def create_new_user
+    factory = UserFactory.new
+    user = factory.create_user(params[:user][:mobile_phone], params[:user][:user_location_value])
+    errors = factory.errors
+    [user, errors]
+  end
+
+  def send_sms_signup_prompt
+    service = SmsMessagingService.new
+    service.send_message(@user.mobile_phone, OutgoingSmsMessages.signup_prompt)
   end
 
 end

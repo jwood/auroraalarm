@@ -1,26 +1,43 @@
-<% if !@errors.blank? %>
-  <div id="errorExplanation">
-    <h2>Please correct the following errors:</h2>
-    <ul>
-      <% @errors.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<h1>Project Aurora</h1>
+<section>
+  <p>
+  Project Aurora is a service that will notify you via SMS when conditions are optimal for
+  viewing the <%= link_to 'Northern Lights', 'http://en.wikipedia.org/wiki/Aurora_(astronomy)' %>
+  in your area.
+  </p>
+</section>
 
-<%= form_for @user, :url => new_user_path do |f| %>
+<h2>Sign Up</h2>
+<section id="signup_form">
+  <%= render :partial => 'signup_form' %>
+</section>
+
+<h2>About</h2>
+<section>
+  <p>Created by <%= link_to 'John Wood', 'http://johnpwood.net' %></p>
+</section>
+
+<h2>How does it work?</h2>
+<section>
+  <p>Describe how the service works.</p>
+</section>
+
+<h2>FAQ</h2>
+<section>
   <div>
-    <%= f.label :mobile_phone %>
-    <%= f.phone_field :mobile_phone %>
+    <p>What are the costs associated with this service?</p>
+    <p>
+       This service is free to use.  However, it uses SMS (text messaging) to notify you of
+       certain events.  Your cell phone provider may charge you for incoming SMS messages.
+    </p>
   </div>
 
   <div>
-    <%= f.label :user_location_value, 'Zipcode' %>
-    <%= f.text_field :user_location_value %>
+    <p>Will this service wake me up in the middle of the night?</p>
+    <p>
+    Yes, and that's the point!  The best time for viewing Auroras are in the hours past
+    midnight.
+    </p>
   </div>
+</section>
 
-  <div>
-    <%= f.button "Signup" %>
-  </div>
-<% end %>
