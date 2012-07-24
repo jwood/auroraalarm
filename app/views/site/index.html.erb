@@ -9,7 +9,11 @@
 
 <h2>Sign Up</h2>
 <section id="signup_form">
-  <%= render :partial => 'signup_form' %>
+  <% if @message.present? %>
+    <p><%= @message %></p>
+  <% else %>
+    <%= render :partial => 'signup_form' %>
+  <% end %>
 </section>
 
 <h2>About</h2>

@@ -45,7 +45,7 @@ class SiteControllerTest < ActionController::TestCase
     end
 
     assert_response :success
-    assert_template :new_user
+    assert_template :index
     assert_equal "Thank you for signing up! You will soon receive a text message asking you to confirm your subscription by replying 'Y'.", assigns(:message)
 
     user = User.last
@@ -147,7 +147,7 @@ class SiteControllerTest < ActionController::TestCase
     end
 
     assert_response :success
-    assert_template :new_user
+    assert_template :index
     assert_equal "You have already signed up. To confirm your signup, or change your zipcode, text AURORA followed by your zipcode (AURORA 90210) to 839863.", assigns(:message)
   end
 
