@@ -81,9 +81,8 @@ footer {
   font-size: 10px;
   color: white;
 
-  a {
-    color: white;
-  }
+  a:link { color: white; }
+  a:visited { color: white; }
 }
 
 #errorExplanation {
