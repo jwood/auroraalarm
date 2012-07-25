@@ -2,11 +2,11 @@ class OutgoingSmsMessages
   class << self
 
     def signup_prompt
-      "We have received a request to sign you up for SMS alerts when the northern lights are active in your area. Reply Y to confirm. Msg&data rates may apply."
+      "We have received a request to sign you up for SMS alerts when the northern lights are active in your area. Reply Y to confirm. #{msg_and_data_rates}"
     end
 
     def signup_confirmation
-      "You are all set to be notified when the northern lights are active in your area! Text STOP to cancel. Text HELP for info. Msg&data rates may apply."
+      "You are all set to be notified when the northern lights are active in your area! Text STOP to cancel. #{help} #{msg_and_data_rates}"
     end
 
     def location_prompt
@@ -18,15 +18,25 @@ class OutgoingSmsMessages
     end
 
     def already_signed_up
-      "You are already signed up to be notified when the northern lights are active in your area. Text STOP to cancel. Text HELP for info. Msg&data rates may apply."
+      "You are already signed up to be notified when the northern lights are active in your area. Text STOP to cancel. #{help} #{msg_and_data_rates}"
     end
 
     def stop
-      "You will no longer be notified when the northern lights are active in your area. Sorry to see you go. Text HELP for info. Msg&data rates may apply."
+      "You will no longer be notified when the northern lights are active in your area. Sorry to see you go. #{help} #{msg_and_data_rates}"
     end
 
     def location_update(location)
-      "You have successfully updated your location to #{location}. Text HELP for info. Msg&data rates may apply."
+      "You have successfully updated your location to #{location}. #{help} #{msg_and_data_rates}"
+    end
+
+    private
+
+    def msg_and_data_rates
+      "Msg&data rates may apply."
+    end
+
+    def help
+      "Text HELP for info."
     end
 
   end
