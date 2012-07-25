@@ -35,4 +35,10 @@ class ActiveSupport::TestCase
     Geokit::Geocoders::MultiGeocoder.expects(:geocode).with(location_value).returns(GeoKit::GeoLoc.new())
   end
 
+  def expects_international_location(location_value)
+    loc = GeoKit::GeoLoc.new(:success => true, :lat => 51.5073346, :lng => -0.1276831, :city => "London", :state => "", :country_code => "GB", :zip => "")
+    loc.success = true
+    Geokit::Geocoders::MultiGeocoder.expects(:geocode).with(location_value).returns(loc)
+  end
+
 end

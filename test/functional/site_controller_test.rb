@@ -113,6 +113,20 @@ class SiteControllerTest < ActionController::TestCase
     assert !assigns(:errors).blank?
   end
 
+  test "should not be able to create a user with a location outside of the US" do
+    expects_international_location("London, England")
+
+    assert_no_difference 'User.count' do
+      assert_no_difference 'UserLocation.count' do
+        xhr :post, :new_user, :user => { :mobile_phone => "3125551212", :user_location_value => "London, England" }
+      end
+    end
+
+    assert_response :success
+    assert_template :signup_error
+    assert !assigns(:errors).blank?
+  end
+
   test "should display the errors successfully with javascript disabled" do
     expects_valid_location("60477")
 

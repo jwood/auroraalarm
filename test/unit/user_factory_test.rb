@@ -68,4 +68,17 @@ class UserFactoryTest < ActiveSupport::TestCase
     assert_equal ["Location is invalid"], @factory.errors
   end
 
+  test "should not create a new user of the location provided is outside of the US" do
+    expects_international_location("London, England")
+
+    assert_no_difference 'User.count' do
+      assert_no_difference 'UserLocation.count' do
+        user = @factory.create_user('3125551212', 'London, England')
+        assert !user.persisted?
+      end
+    end
+
+    assert_equal ["Location must be within the US"], @factory.errors
+  end
+
 end

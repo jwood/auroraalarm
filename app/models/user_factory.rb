@@ -51,6 +51,9 @@ class UserFactory
     if location.nil? || location.invalid?
       @errors << "Location is invalid"
       nil
+    elsif location.country_code != "US"
+      @errors << "Location must be within the US"
+      nil
     else
       location
     end
