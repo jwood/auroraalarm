@@ -14,10 +14,17 @@
 
 $content-width: 800px;
 
+$white: #FFFFFF;
+$black: #000000;
+
 @mixin round ($radius: 10px) {
   -moz-border-radius: $radius;
   -webkit-border-radius: $radius;
   border-radius: $radius;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 body {
@@ -34,19 +41,19 @@ body {
 header {
   width: $content-width;
   margin: auto;
-  color: white;
+  color: $white;
 }
 
 #title {
   float: left;
   font-size: 38px;
-  color: white;
+  color: $white;
 }
 
 nav {
   margin-top: 35px;
   float: right;
-  color: white;
+  color: $white;
 
   a {
     padding-left: 20px;
@@ -54,35 +61,63 @@ nav {
     font-weight: bold;
   }
 
-  a:link { color: white; text-decoration: none; }
-  a:visited { color: white; }
+  a:link { color: $white; text-decoration: none; }
+  a:visited { color: $white; }
   a:hover { text-decoration: underline; }
-}
-
-a:link, a:visited {
-  color: #036656;
-}
-
-a:hover {
-  text-decoration: none;
 }
 
 #main_content {
   width: $content-width;
-  background: white;
-  margin: 50px auto;
+  margin: auto;
   padding: 15px;
+  clear: both;
+}
+
+section#description_and_signup {
+  color: $white;
+  height: 200px;
+  font-size: 17px;
+
+  a:link, a:visited {
+    color: $white;
+  }
+}
+
+#description {
+  width: 45%;
+  float: left;
+}
+
+#signup {
+  width: 45%;
+  margin-top: 25px;
+  float: right;
+}
+
+section#details {
+  margin: 0px auto;
+  padding: 15px;
+  background: $white;
+  color: $black;
   @include round;
-  clear: both
+  clear: both;
+
+  a:link, a:visited {
+    color: #036656;
+  }
+
+  h2 {
+    margin-top: 30px;
+  }
 }
 
 footer {
   text-align: center;
   font-size: 10px;
-  color: white;
+  color: $white;
 
-  a:link { color: white; }
-  a:visited { color: white; }
+  a:link { color: $white; }
+  a:visited { color: $white; }
 }
 
 #errorExplanation {
@@ -94,10 +129,23 @@ footer {
   @include round;
 }
 
-h1, h2, h3, h4, h5 {
-  color: #002E2E;
+#signup_message {
+  display: none;
 }
 
-h2 {
-  margin-top: 40px;
+label {
+  font-weight: bold;
+}
+
+td {
+  padding: 0px 15px 10px 0px;
+}
+
+p, li {
+  line-height: 1.4em;
+}
+
+.question {
+  font-weight: bold;
+  font-size: 16px;
 }
