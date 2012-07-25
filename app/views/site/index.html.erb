@@ -1,20 +1,15 @@
 <section id="description_and_signup">
   <div id="description">
-    <p>
-      Project Aurora is a <strong>FREE</strong> service that will notify you via SMS when conditions are optimal for
-      viewing the <%= link_to 'Aurora Borealis', 'http://en.wikipedia.org/wiki/Aurora_(astronomy)' %>
-      in your area.
-    </p>
-    <p>
-      Sorry, but this service is currently available to US residents only.
-    </p>
+    Project Aurora is a <strong>FREE</strong> service that will notify you via SMS when conditions are optimal for
+    viewing the <%= link_to 'Aurora Borealis', 'http://en.wikipedia.org/wiki/Aurora_(astronomy)' %>
+    in your area.
   </div>
 
   <div id="signup">
     <a name="signup"></a>
     <div id="signup_form">
       <% if @message.present? %>
-        <p><%= @message %></p>
+        <span id="signup_message"><%= @message %></span>
       <% else %>
         <%= render :partial => 'signup_form' %>
       <% end %>
@@ -101,7 +96,7 @@
     <p>
       I'm a software engineer at <a href="http://www.signalhq.com">Signal</a>, a digital marketing company
       that specializes in SMS, email, and social marketing tools.  Signal sends a whole lot of SMS messages
-      for our customers, and we get a great per/message rate from our aggregator as a result (meaning, I can
+      for our customers, and we get a great per-message rate from our aggregator as a result (meaning, I can
       use the service for free since it barely costs the company anything at this small volume).  Unfortunately,
       our aggregator only delivers messages in the US.
     </p>
@@ -119,6 +114,18 @@
   <div>
     <p class="question">How do I update my zipcode?</p>
     <p>You can update your zipcode at any time by texting <strong>AURORA <zipcode></strong> to 839863. (ex. AURORA 90210)</p>
+  </div>
+
+  <div>
+    <p class="question">What do you do with my mobile phone number and location information?</p>
+    <p>
+      We determine if conditions are right for viewing the Aurora in your area, and send you a text message when they are.  That's it.
+      We won't sell, trade, exchange, hock, auction, vend, expose, or barter any of the information we collect.  We respect your
+      privacy, becuase we love it when people respect ours.
+    </p>
+    <p>
+      If you decide to cancel the service, all information we have about you is immediately and permanently deleted from our database.
+    </p>
   </div>
 </section>
 
