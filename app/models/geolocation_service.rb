@@ -11,6 +11,10 @@ class GeolocationService
       @longitude = data[:longitude]
       @magnetic_latitude = data[:magnetic_latitude]
     end
+
+    def invalid?
+      @latitude.blank? || @longitude.blank?
+    end
   end
 
   def initialize

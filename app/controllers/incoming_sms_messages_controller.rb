@@ -23,6 +23,8 @@ class IncomingSmsMessagesController < ApplicationController
       else
         if signup_confirmation?
           handle_signup_confirmation
+        elsif opt_in_via_sms?
+          update_location_for_confirmed_user
         else
           handle_already_signed_up
         end
@@ -88,6 +90,25 @@ class IncomingSmsMessagesController < ApplicationController
 
   def handle_already_signed_up
     @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.already_signed_up)
+  end
+
+  def update_location_for_confirmed_user
+    @message.upcase =~ opt_in_message_regexp
+    service = GeolocationService.new
+    location = service.geocode($1)
+
+    if location.nil? || location.invalid?
+      @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.bad_location_at_signup)
+    else
+      @user.user_location.update_attributes(:city => location.city,
+                                            :state => location.state,
+                                            :postal_code => location.zip,
+                                            :country => location.country_code,
+                                            :latitude => location.latitude,
+                                            :longitude => location.longitude,
+                                            :magnetic_latitude => location.magnetic_latitude)
+      @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.location_update(location.zip))
+    end
   end
 
 end

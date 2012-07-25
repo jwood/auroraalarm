@@ -91,4 +91,38 @@ class IncomingSmsMessagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should update a users zip code if they are already subscribed and text AURORA followed by their zipcode" do
+    user = users(:dan)
+    assert_equal "55419", user.user_location.postal_code
+
+    expects_valid_location("60477")
+    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.location_update("60477"))
+
+    assert_no_difference 'User.count' do
+      assert_no_difference 'UserLocation.count' do
+        post :index, :mobile_phone => user.mobile_phone, :message => ' aurora 60477 ', :keyword => 'AURORA'
+      end
+    end
+
+    assert_response :success
+    assert_equal "60477", user.user_location.reload.postal_code
+  end
+
+  test "should return an error message if trying to update location with an invalid location value" do
+    user = users(:dan)
+    assert_equal "55419", user.user_location.postal_code
+
+    expects_invalid_location("FOOBAR")
+    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.bad_location_at_signup)
+
+    assert_no_difference 'User.count' do
+      assert_no_difference 'UserLocation.count' do
+        post :index, :mobile_phone => user.mobile_phone, :message => ' aurora foobar ', :keyword => 'AURORA'
+      end
+    end
+
+    assert_response :success
+    assert_equal "55419", user.user_location.reload.postal_code
+  end
+
 end

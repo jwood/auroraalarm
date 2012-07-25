@@ -48,7 +48,7 @@ class UserFactory
     service = GeolocationService.new
     location = service.geocode(location_value)
 
-    if location.nil? || location.latitude.blank? || location.longitude.blank?
+    if location.nil? || location.invalid?
       @errors << "Location is invalid"
       nil
     else

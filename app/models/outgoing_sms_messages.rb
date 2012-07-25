@@ -25,5 +25,9 @@ class OutgoingSmsMessages
       "You will no longer be notified when the northern lights are active in your area. Sorry to see you go. Text HELP for info. Msg&data rates may apply."
     end
 
+    def location_update(location)
+      "You have successfully updated your location to #{location}. Text HELP for info. Msg&data rates may apply."
+    end
+
   end
 end
