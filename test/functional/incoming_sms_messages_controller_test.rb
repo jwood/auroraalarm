@@ -28,6 +28,15 @@ class IncomingSmsMessagesControllerTest < ActionController::TestCase
     assert user.reload.confirmed?
   end
 
+  test "should ask the user for their location if only the keyword is sent" do
+    SmsMessagingService.any_instance.expects(:send_message).with('3125551213', OutgoingSmsMessages.location_prompt)
+
+    assert_no_new_user do
+      post :index, :mobile_phone => '3125551213', :message => ' aurora', :keyword => 'AURORA'
+    end
+    assert_response :success
+  end
+
   test "should be able to signup by texting AURORA with the zip code" do
     expects_valid_location("90210")
     SmsMessagingService.any_instance.expects(:send_message).with('3125551213', OutgoingSmsMessages.signup_confirmation)
