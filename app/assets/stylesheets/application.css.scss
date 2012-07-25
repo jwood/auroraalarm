@@ -84,13 +84,13 @@ section#description_and_signup {
 }
 
 #description {
-  width: 45%;
+  width: 47%;
   float: left;
 }
 
 #signup {
-  width: 45%;
-  margin-top: 25px;
+  width: 47%;
+  margin-top: 15px;
   float: right;
 }
 
@@ -107,6 +107,7 @@ section#details {
   }
 
   h2 {
+    color: #134B4C;
     margin-top: 30px;
   }
 }
@@ -121,12 +122,17 @@ footer {
 }
 
 #errorExplanation {
-  margin: 15px 0px;
+  margin-bottom: 15px;
   padding: 0px 15px;
   border: 1px solid #EED3E7;
   background: #F2DEDE;
   color: #B94B45;
+  font-size: 13px;
   @include round;
+
+  h3 {
+    font-size: 15px;
+  }
 }
 
 #signup_message {
@@ -148,4 +154,9 @@ p, li {
 .question {
   font-weight: bold;
   font-size: 16px;
+}
+
+#loading {
+  background: $white;
+  padding: 3px;
 }
