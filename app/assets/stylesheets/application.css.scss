@@ -12,6 +12,8 @@
  *= require_tree .
  */
 
+$content-width: 800px;
+
 @mixin round ($radius: 10px) {
   -moz-border-radius: $radius;
   -webkit-border-radius: $radius;
@@ -29,12 +31,49 @@ body {
   font-size: 15px;
 }
 
+header {
+  width: $content-width;
+  margin: auto;
+  color: white;
+}
+
+#title {
+  float: left;
+  font-size: 38px;
+  color: white;
+}
+
+nav {
+  margin-top: 35px;
+  float: right;
+  color: white;
+
+  a {
+    padding-left: 20px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  a:link { color: white; text-decoration: none; }
+  a:visited { color: white; }
+  a:hover { text-decoration: underline; }
+}
+
+a:link, a:visited {
+  color: #036656;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 #main_content {
-  width: 800px;
+  width: $content-width;
   background: white;
   margin: 50px auto;
   padding: 15px;
   @include round;
+  clear: both
 }
 
 footer {
@@ -54,6 +93,10 @@ footer {
   background: #F2DEDE;
   color: #B94B45;
   @include round;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #002E2E;
 }
 
 h2 {
