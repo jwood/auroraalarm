@@ -124,30 +124,4 @@ class IncomingSmsMessagesControllerTest < ActionController::TestCase
     assert_equal "55419", user.user_location.reload.postal_code
   end
 
-  private
-
-  def assert_new_user
-    assert_difference 'User.count', 1 do
-      assert_difference 'UserLocation.count', 1 do
-        yield
-      end
-    end
-  end
-
-  def assert_no_new_user
-    assert_no_difference 'User.count' do
-      assert_no_difference 'UserLocation.count' do
-        yield
-      end
-    end
-  end
-
-  def assert_user_deleted
-    assert_difference 'User.count', -1 do
-      assert_difference 'UserLocation.count', -1 do
-        yield
-      end
-    end
-  end
-
 end

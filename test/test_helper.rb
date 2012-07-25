@@ -41,4 +41,28 @@ class ActiveSupport::TestCase
     Geokit::Geocoders::MultiGeocoder.expects(:geocode).with(location_value).returns(loc)
   end
 
+  def assert_new_user
+    assert_difference 'User.count', 1 do
+      assert_difference 'UserLocation.count', 1 do
+        yield
+      end
+    end
+  end
+
+  def assert_no_new_user
+    assert_no_difference 'User.count' do
+      assert_no_difference 'UserLocation.count' do
+        yield
+      end
+    end
+  end
+
+  def assert_user_deleted
+    assert_difference 'User.count', -1 do
+      assert_difference 'UserLocation.count', -1 do
+        yield
+      end
+    end
+  end
+
 end

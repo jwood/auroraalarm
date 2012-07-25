@@ -10,10 +10,8 @@ class UserFactoryTest < ActiveSupport::TestCase
     expects_valid_location("60477")
 
     user = nil
-    assert_difference 'User.count', 1 do
-      assert_difference 'UserLocation.count', 1 do
-        user = @factory.create_user('3125551212', '60477')
-      end
+    assert_new_user do
+      user = @factory.create_user('3125551212', '60477')
     end
 
     assert @factory.errors.empty?
@@ -32,11 +30,9 @@ class UserFactoryTest < ActiveSupport::TestCase
   test "should not create the user if the mobile phone is invalid" do
     expects_valid_location("60477")
 
-    assert_no_difference 'User.count' do
-      assert_no_difference 'UserLocation.count' do
-        user = @factory.create_user('foobar', '60477')
-        assert !user.persisted?
-      end
+    assert_no_new_user do
+      user = @factory.create_user('foobar', '60477')
+      assert !user.persisted?
     end
 
     assert_equal ["Mobile phone is invalid"], @factory.errors
@@ -45,11 +41,9 @@ class UserFactoryTest < ActiveSupport::TestCase
   test "should not create the user if the mobile phone is in use" do
     expects_valid_location("60477")
 
-    assert_no_difference 'User.count' do
-      assert_no_difference 'UserLocation.count' do
-        user = @factory.create_user(users(:john).mobile_phone, '60477')
-        assert !user.persisted?
-      end
+    assert_no_new_user do
+      user = @factory.create_user(users(:john).mobile_phone, '60477')
+      assert !user.persisted?
     end
 
     assert_equal ["A user with the specified mobile phone already exists"], @factory.errors
@@ -58,11 +52,9 @@ class UserFactoryTest < ActiveSupport::TestCase
   test "should not create a new user of the location provided is invalid" do
     expects_invalid_location("zzz")
 
-    assert_no_difference 'User.count' do
-      assert_no_difference 'UserLocation.count' do
-        user = @factory.create_user('3125551212', 'zzz')
-        assert !user.persisted?
-      end
+    assert_no_new_user do
+      user = @factory.create_user('3125551212', 'zzz')
+      assert !user.persisted?
     end
 
     assert_equal ["Location is invalid"], @factory.errors
@@ -71,11 +63,9 @@ class UserFactoryTest < ActiveSupport::TestCase
   test "should not create a new user of the location provided is outside of the US" do
     expects_international_location("London, England")
 
-    assert_no_difference 'User.count' do
-      assert_no_difference 'UserLocation.count' do
-        user = @factory.create_user('3125551212', 'London, England')
-        assert !user.persisted?
-      end
+    assert_no_new_user do
+      user = @factory.create_user('3125551212', 'London, England')
+      assert !user.persisted?
     end
 
     assert_equal ["Location must be within the US"], @factory.errors
