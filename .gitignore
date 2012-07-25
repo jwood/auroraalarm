@@ -15,6 +15,7 @@
 /tmp
 
 # Ignore other files
+.DS_Store
 .rvmrc
 *.swp
 coverage

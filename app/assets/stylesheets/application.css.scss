@@ -1,0 +1,61 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+@mixin round ($radius: 10px) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
+
+body {
+  background: url(aurora.jpeg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  font-family: Helvetica, sans-serif;
+  font-size: 15px;
+}
+
+#main_content {
+  width: 800px;
+  background: white;
+  margin: 50px auto;
+  padding: 15px;
+  @include round;
+}
+
+footer {
+  text-align: center;
+  font-size: 10px;
+  color: white;
+
+  a {
+    color: white;
+  }
+}
+
+#errorExplanation {
+  margin: 15px 0px;
+  padding: 0px 15px;
+  border: 1px solid #EED3E7;
+  background: #F2DEDE;
+  color: #B94B45;
+  @include round;
+}
+
+h2 {
+  margin-top: 40px;
+}

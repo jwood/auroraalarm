@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.scrollTo-1.4.2-min
+//= require jquery.localScroll
 //= require_tree .

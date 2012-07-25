@@ -1,12 +1,23 @@
 <h1>Project Aurora</h1>
+<nav>
+  <%= link_to 'Sign up', '#signup' %>
+  <%= link_to 'How does it work?', '#how_does_it_work' %>
+  <%= link_to 'About', '#about' %>
+  <%= link_to 'FAQ', '#faq' %>
+</nav>
+
 <section>
   <p>
-  Project Aurora is a service that will notify you via SMS when conditions are optimal for
-  viewing the <%= link_to 'Northern Lights', 'http://en.wikipedia.org/wiki/Aurora_(astronomy)' %>
-  in your area.
+    Project Aurora is a <strong>FREE</strong> service that will notify you via SMS when conditions are optimal for
+    viewing the <%= link_to 'Aurora Borealis', 'http://en.wikipedia.org/wiki/Aurora_(astronomy)' %>
+    in your area.
+  </p>
+  <p>
+    Sorry, but this service is currently available to US residents only.
   </p>
 </section>
 
+<a name="signup"></a>
 <h2>Sign Up</h2>
 <section id="signup_form">
   <% if @message.present? %>
@@ -16,20 +27,53 @@
   <% end %>
 </section>
 
-<h2>About</h2>
-<section>
-  <p>Created by <%= link_to 'John Wood', 'http://johnpwood.net' %></p>
-</section>
-
+<a name="how_does_it_work"></a>
 <h2>How does it work?</h2>
 <section>
-  <p>Describe how the service works.</p>
+  <p>
+    Every evening, Projet Aurora checks to see if any <%= link_to 'solar events', 'http://en.wikipedia.org/wiki/Coronal_mass_ejections' %>
+    have occurred that could trigger a geomagnetic storm, which can produce an Aurora.  If a solar event
+    has occurred, you will receive a text message notifying you of the event, and asking if you would
+    like to receive a text message during the next few nights if conditions are optimal for viewing
+    the Aurora.
+  </p>
+  <p>
+    If you indicate that you would like to be notified, Project Aurora will send you a text
+    message at night if conditions are optimal for viewing the Aurora in your area.
+  </p>
+  <p>
+    What are optimal conditions?
+
+    <ul>
+      <li>Dark. Likely in the hours past midnight.</li>
+      <li>A <%= link_to 'Kp index', 'http://en.wikipedia.org/wiki/K-index' %> strong enough to push the Aurora down to your <%= link_to 'geomagnetic latitude', 'http://en.wikipedia.org/wiki/Geomagnetic_latitude' %>.</li>
+      <li>Clear skies.</li>
+      <li>A dark moon.</li>
+    </ul>
+  </p>
 </section>
 
+<a name="about"></a>
+<h2>About</h2>
+<section>
+  <p>Project Aurora was created and is maintained by <%= link_to 'John Wood', 'http://johnpwood.net' %>.</p>
+  <p>
+    I have always enjoyed watching the weather and the stars.  However, I'm not much of a night owl, and
+    every attempt I've made to say up to see if I could see an Aurora after a solar event has failed, miserably.
+    Time and time again I would fall alseep, and wake up to find that the conditions were great for viewing
+    an Aurora the night before.
+  </p>
+  <p>
+    I wanted something that would wake me up if there was a possibility of seeing an Aurora.  So, I created
+    this service to do just that.
+  </p>
+</section>
+
+<a name="faq"></a>
 <h2>FAQ</h2>
 <section>
   <div>
-    <p>What are the costs associated with this service?</p>
+    <p class="question">What are the costs associated with this service?</p>
     <p>
        This service is free to use.  However, it uses SMS (text messaging) to notify you of
        certain events.  Your cell phone provider may charge you for incoming SMS messages.
@@ -37,10 +81,42 @@
   </div>
 
   <div>
-    <p>Will this service wake me up in the middle of the night?</p>
+    <p class="question">Will this service wake me up in the middle of the night?</p>
     <p>
-    Yes, and that's the point!  The best time for viewing Auroras are in the hours past
-    midnight.
+      Yes, and that's the point!  The best time for viewing Auroras are in the hours past midnight.
+      But, we always ask you after a solar event has occured if you would like to be woken up
+      over the next couple of days if conditions are optimal for viewing an Aurora.  If it's not
+      a good time, you can always decline, and we'll notify you when the next solar event occurs.
+    </p>
+    <p>
+      In addition, we'll only notify you if the conditions are optimal.  If the sky is cloudy, we won't
+      wake you.  Moon to bright?  We won't wake you.  This algorithim is constantly being enhanced to
+      reduce the chances of you waking up for no reason.
+    </p>
+  </div>
+
+  <div>
+    <p class="question">If you wake me up, does that mean I'll see the Aurora for sure?</p>
+    <p>
+      Sadly, no.  Ambient light (city lights, etc) prevents many from seeing the Aurora.  And,
+      there is no good way that I know of to detect the amount of ambient light for your location.
+      So, even if all of the other conditinos are perfect, you may still be unable to see the
+      Aurora due to the amount of ambient light in your area.
+    </p>
+  </div>
+
+  <div>
+    <p class="question">Why is this service only available to US residents?</p>
+    <p>
+      I'm a software engineer at <a href="http://www.signalhq.com">Signal</a>, a digital marketing company
+      that specializes in SMS, email, and social marketing tools.  Signal sends a whole lot of SMS messages
+      for our customers, and we get a great per/message rate from our aggregator as a result (meaning, I can
+      use the service for free since it barely costs the company anything at this small volume).  Unfortunately,
+      our aggregator only delivers messages in the US.
+    </p>
+    <p>
+      If you're aware of an SMS aggregator that I could use for free to deliver SMS messages internationally,
+      please drop me a line at <%= mail_to 'john@johnpwood.net', 'john@johnpwood.net' %>.
     </p>
   </div>
 </section>
