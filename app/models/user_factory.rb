@@ -1,5 +1,5 @@
 class UserFactory
-  attr_accessor :errors
+  attr_accessor :errors, :location
 
   def create_user(mobile_phone, location_value)
     @errors = []
@@ -46,16 +46,16 @@ class UserFactory
 
   def lookup_location_data(location_value)
     service = GeolocationService.new
-    location = service.geocode(location_value)
+    @location = service.geocode(location_value)
 
-    if location.nil? || location.invalid?
+    if @location.nil? || @location.invalid?
       @errors << "Location is invalid"
       nil
-    elsif location.country_code != "US"
+    elsif @location.international?
       @errors << "Location must be within the US"
       nil
     else
-      location
+      @location
     end
   end
 

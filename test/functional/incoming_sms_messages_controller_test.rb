@@ -57,6 +57,16 @@ class IncomingSmsMessagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should send an error if the location provided is outside of the US" do
+    expects_international_location("LONDON, ENGLAND")
+    SmsMessagingService.any_instance.expects(:send_message).with('3125551213', OutgoingSmsMessages.international_location)
+
+    assert_no_new_user do
+      post :index, :mobile_phone => '3125551213', :message => ' aurora london, england ', :keyword => 'AURORA'
+    end
+    assert_response :success
+  end
+
   test "shoud let the user know if they are already signed up" do
     user = users(:dan)
     SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.already_signed_up)
@@ -119,6 +129,20 @@ class IncomingSmsMessagesControllerTest < ActionController::TestCase
 
     assert_no_new_user do
       post :index, :mobile_phone => user.mobile_phone, :message => ' aurora foobar ', :keyword => 'AURORA'
+    end
+    assert_response :success
+    assert_equal "55419", user.user_location.reload.postal_code
+  end
+
+  test "should return an error message if trying to update location to an international location" do
+    user = users(:dan)
+    assert_equal "55419", user.user_location.postal_code
+
+    expects_international_location("LONDON, ENGLAND")
+    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.international_location)
+
+    assert_no_new_user do
+      post :index, :mobile_phone => user.mobile_phone, :message => ' aurora london, england ', :keyword => 'AURORA'
     end
     assert_response :success
     assert_equal "55419", user.user_location.reload.postal_code

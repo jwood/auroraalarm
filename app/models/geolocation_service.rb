@@ -15,6 +15,10 @@ class GeolocationService
     def invalid?
       @latitude.blank? || @longitude.blank?
     end
+
+    def international?
+      @country_code != "US"
+    end
   end
 
   def initialize

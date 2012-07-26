@@ -29,6 +29,10 @@ class OutgoingSmsMessages
       "You have successfully updated your location to #{location}. #{help} #{msg_and_data_rates}"
     end
 
+    def international_location
+      "Sorry, but only locations inside the US are supported at this time. #{help} #{msg_and_data_rates}"
+    end
+
     private
 
     def msg_and_data_rates
