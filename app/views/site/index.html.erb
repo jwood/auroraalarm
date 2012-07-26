@@ -8,10 +8,14 @@
   <div id="signup">
     <a name="signup"></a>
     <div id="signup_form">
-      <% if @message.present? %>
-        <span id="signup_message"><%= @message %></span>
+      <% if Rails.env.production? %>
+        <span style="padding: 100px; font-size: 20px; font-weight: bold;">Coming Soon!</span>
       <% else %>
-        <%= render :partial => 'signup_form' %>
+        <% if @message.present? %>
+          <span id="signup_message"><%= @message %></span>
+        <% else %>
+          <%= render :partial => 'signup_form' %>
+        <% end %>
       <% end %>
     </div>
   </div>
