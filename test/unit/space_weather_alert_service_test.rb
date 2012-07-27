@@ -13,7 +13,7 @@ class SpaceWeatherAlertServiceTest < ActiveSupport::TestCase
   end
 
   test "should be able to find the strongest geomagnetic storm that occurred on a given date" do
-    assert_equal "G2", @service.strongest_geomagnetic_storm(Date.new(2012, 6, 3))
+    assert_equal "G2", @service.strongest_geomagnetic_storm(Date.new(2012, 6, 3)).geomagnetic_storm_level
   end
 
 end
