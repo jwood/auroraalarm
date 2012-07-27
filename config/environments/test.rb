@@ -36,4 +36,7 @@ Aurora::Application.configure do
   config.active_support.deprecation = :stderr
 
   config.cache_store = :memory_store
+
+  ENV['PRIVATE_CONTROLLER_USERNAME'] = "username"
+  ENV['PRIVATE_CONTROLLER_PASSWORD'] = "password"
 end

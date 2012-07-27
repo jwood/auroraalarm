@@ -65,4 +65,13 @@ class ActiveSupport::TestCase
     end
   end
 
+  def solar_event(strength, issue_time)
+    SpaceWeatherAlertReport::SpaceWeatherEvent.new("WATA050", new_serial_number, issue_time.to_s, 0, strength)
+  end
+
+  def new_serial_number
+    @@serial_number ||= 1000
+    @@serial_number += 1
+  end
+
 end
