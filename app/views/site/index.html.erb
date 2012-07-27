@@ -9,7 +9,7 @@
     <a name="signup"></a>
     <div id="signup_form">
       <% if Rails.env.production? %>
-        <span style="position: relative; top: 25px; left: 130px; font-size: 20px; font-weight: bold;">Coming Soon!</span>
+        <span id="coming_soon">Coming Soon!</span>
       <% else %>
         <% if @message.present? %>
           <span id="signup_message"><%= @message %></span>
