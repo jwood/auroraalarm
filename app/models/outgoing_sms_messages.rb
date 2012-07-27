@@ -33,6 +33,10 @@ class OutgoingSmsMessages
       "Sorry, but only locations inside the US are supported at this time. #{help} #{msg_and_data_rates}"
     end
 
+    def storm_prompt(geomagnetic_storm)
+      "A #{geomagnetic_storm.description} (#{geomagnetic_storm.scale}) geomagnetic storm is expected over the next 72 hours. Would you like to be woken up if the northern lights are viewable in your area?"
+    end
+
     private
 
     def msg_and_data_rates
