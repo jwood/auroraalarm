@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120723114458) do
+ActiveRecord::Schema.define(:version => 20120726213326) do
+
+  create_table "solar_events", :force => true do |t|
+    t.string   "message_code",            :null => false
+    t.string   "serial_number",           :null => false
+    t.datetime "issue_time",              :null => false
+    t.string   "expected_storm_strength", :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "solar_events", ["issue_time"], :name => "index_solar_events_on_issue_time"
 
   create_table "user_locations", :force => true do |t|
     t.integer  "user_id",                         :null => false

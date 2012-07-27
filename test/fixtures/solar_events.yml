@@ -1,0 +1,23 @@
+g2_2012_07_01:
+  message_code: WATA50
+  serial_number: 46
+  issue_time: <%= Time.utc(2012, 7, 1, 12, 30) %>
+  expected_storm_strength: G2
+   
+g3_2012_07_05:
+  message_code: WATA50
+  serial_number: 47
+  issue_time: <%= Time.utc(2012, 7, 5, 12, 30) %>
+  expected_storm_strength: G3
+
+g4_2012_07_06:
+  message_code: WATA50
+  serial_number: 48
+  issue_time: <%= Time.utc(2012, 7, 6, 12, 30) %>
+  expected_storm_strength: G4
+
+g3_2012_07_07:
+  message_code: WATA50
+  serial_number: 49
+  issue_time: <%= Time.utc(2012, 7, 7, 12, 30) %>
+  expected_storm_strength: G3
