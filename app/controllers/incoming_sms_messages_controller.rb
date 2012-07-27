@@ -50,7 +50,8 @@ class IncomingSmsMessagesController < ApplicationController
   end
 
   def handle_signup_confirmation
-    @user.update_attribute(:confirmed_at, Time.now)
+    @user.confirmed_at = Time.now
+    @user.save
     @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.signup_confirmation)
   end
 

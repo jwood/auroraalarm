@@ -27,7 +27,8 @@ class UserTest < ActiveSupport::TestCase
     user = User.create!(:mobile_phone => "3125551212")
     assert !user.confirmed?
 
-    user.update_attribute(:confirmed_at, Time.now)
+    user.confirmed_at = Time.now
+    user.save
     assert user.confirmed?
   end
 
