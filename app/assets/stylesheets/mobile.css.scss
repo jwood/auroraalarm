@@ -1,0 +1,74 @@
+$content-width: 96%;
+
+body {
+  width: $content-width;
+  background: black;
+}
+
+header {
+  width: $content-width;
+  text-align: center;
+}
+
+#title {
+  float: none;
+}
+
+nav {
+  float: none;
+  margin-top: 20px;
+
+  a {
+    padding: 0px 8px;
+    font-size: 16px;
+  }
+
+  a:link { text-decoration: underline; }
+}
+
+#main_content {
+  width: $content-width;
+  clear: none;
+  padding: 0px;
+  margin: 20px 0px 0px 0px;
+}
+
+section#description_and_signup {
+  height: auto;
+  text-align: center;
+}
+
+#description {
+  float: none;
+  width: $content-width;
+  margin: 25px 0px;
+}
+
+#signup {
+  float: none;
+  width: $content-width;
+  margin: 25px 0px;
+}
+
+section#details {
+  margin: 0px;
+  padding: 10px;
+  width: $content-width;
+}
+
+#errorExplanation {
+  padding: 0px;
+}
+
+input[type="text"], input[type="password"], input[type="tel"] {
+  width: $content-width;
+}
+
+button {
+  width: 80px;
+  height: 40px;
+}
+
+#background_photo_credit {
+  display: none;
+}

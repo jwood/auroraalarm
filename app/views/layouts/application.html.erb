@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
   <title>Project Aurora</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "mobile", :media => "only screen and (max-device-width: 800px) and (min-device-width: 320px)" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -22,7 +24,7 @@
 </div>
 
 <footer>
-  <p>Background photo courtesy of <%= link_to 'Tor Even Mathisen', 'http://www.flickr.com/photos/tittentem/6767922427/' %></p>
+  <p id="background_photo_credit">Background photo courtesy of <%= link_to 'Tor Even Mathisen', 'http://www.flickr.com/photos/tittentem/6767922427/' %></p>
 </footer>
 
 </body>
