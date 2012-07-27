@@ -32,4 +32,8 @@ class UserTest < ActiveSupport::TestCase
     assert user.confirmed?
   end
 
+  test "should be able to easily fetch the confirmed users" do
+    assert_equal [users(:dan), users(:bob)], User.confirmed
+  end
+
 end

@@ -8,3 +8,7 @@ dan:
   mobile_phone: 3125551202
   confirmed_at: <%= 1.day.ago %>
 
+bob:
+  mobile_phone: 3125551203
+  confirmed_at: <%= 2.days.ago %>
+
