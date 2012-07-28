@@ -88,6 +88,27 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
     end
   end
 
+  test "should replace unapproved alert conditions with new ones if old ones exist" do
+    alert_permission = AlertPermission.create!(:user => users(:dan))
+    SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.yesterday).returns(nil)
+    SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.today).returns(solar_event("G3", DateTime.now.utc))
+    assert_difference 'AlertPermission.count', 1 do
+      @monitor.alert_users_of_solar_event
+    end
+    assert_nil AlertPermission.find_by_id(alert_permission)
+    assert_not_nil AlertPermission.for_user(users(:dan)).first
+  end
+
+  test "should create a new unapproved alert condition if an existing approved one already exists" do
+    alert_permission = AlertPermission.create!(:user => users(:dan), :approved_at => Time.now)
+    SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.yesterday).returns(nil)
+    SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.today).returns(solar_event("G3", DateTime.now.utc))
+    assert_difference 'AlertPermission.count', 2 do
+      @monitor.alert_users_of_solar_event
+    end
+    assert_equal 2, AlertPermission.for_user(users(:dan)).count
+  end
+
   private
 
   def create_yesterdays_previously_recorded_event(strength)
