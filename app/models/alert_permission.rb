@@ -6,6 +6,7 @@ class AlertPermission < ActiveRecord::Base
 
   scope :for_user, lambda { |user| where(:user_id => user) }
   scope :unapproved, where(:approved_at => nil)
+  scope :expired, lambda { where(['expires_at < ?', Time.now]) }
 
   belongs_to :user
 
