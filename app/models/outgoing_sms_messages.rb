@@ -6,7 +6,7 @@ class OutgoingSmsMessages
     end
 
     def signup_confirmation
-      "You are all set to be notified when the northern lights are active in your area! Text STOP to cancel. #{help} #{msg_and_data_rates}"
+      "You are all set to be notified when the northern lights are active in your area! #{stop_text} #{help} #{msg_and_data_rates}"
     end
 
     def location_prompt
@@ -18,7 +18,7 @@ class OutgoingSmsMessages
     end
 
     def already_signed_up
-      "You are already signed up to be notified when the northern lights are active in your area. Text STOP to cancel. #{help} #{msg_and_data_rates}"
+      "You are already signed up to be notified when the northern lights are active in your area. #{stop_text} #{help} #{msg_and_data_rates}"
     end
 
     def stop
@@ -37,7 +37,19 @@ class OutgoingSmsMessages
       "A #{geomagnetic_storm.description} (#{geomagnetic_storm.scale}) geomagnetic storm is expected over the next 72 hours. Would you like to be woken up if the northern lights are viewable in your area?"
     end
 
+    def approved_alert_permission
+      "Thanks. You will be notified if this storm produces northern lights in your area over the next 72 hours. #{help} #{msg_and_data_rates}"
+    end
+
+    def declined_alert_permission
+      "Thanks. You will not be notified if this storm produces northern lights in your area. #{help} #{msg_and_data_rates}"
+    end
+
     private
+
+    def stop_text
+      "Text STOP to cancel."
+    end
 
     def msg_and_data_rates
       "Msg&data rates may apply."

@@ -148,4 +148,22 @@ class IncomingSmsMessagesControllerTest < ActionController::TestCase
     assert_equal "55419", user.user_location.reload.postal_code
   end
 
+  test "should be able to approve an unapproved alert permission" do
+    user = users(:bob)
+    alert_permission = AlertPermission.create!(:user => user)
+
+    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.approved_alert_permission)
+    post :index, :mobile_phone => user.mobile_phone, :message => ' Y ', :keyword => 'AURORA'
+    assert_not_nil alert_permission.reload.approved_at
+  end
+
+  test "should be able to decline an unapproved alert permission" do
+    user = users(:bob)
+    alert_permission = AlertPermission.create!(:user => user)
+
+    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.declined_alert_permission)
+    post :index, :mobile_phone => user.mobile_phone, :message => ' N ', :keyword => 'AURORA'
+    assert_nil AlertPermission.find_by_id(alert_permission)
+  end
+
 end

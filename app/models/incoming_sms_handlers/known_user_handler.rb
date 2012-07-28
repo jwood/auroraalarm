@@ -28,10 +28,6 @@ class KnownUserHandler < MessageHandler
     @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.signup_confirmation)
   end
 
-  def positive_response?
-    ["Y", "YES", "SURE", "OK", "YEP", "CONFIRM"].include?(@message.upcase)
-  end
-
   def update_location_for_confirmed_user
     @message.upcase =~ opt_in_message_regexp
     service = GeolocationService.new

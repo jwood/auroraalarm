@@ -22,4 +22,12 @@ class MessageHandler
     @message.upcase =~ opt_in_message_regexp
   end
 
+  def positive_response?
+    ["Y", "YES", "SURE", "OK", "YEP", "CONFIRM"].include?(@message.upcase)
+  end
+
+  def negative_response?
+    ["N", "NO", "NOPE"].include?(@message.upcase)
+  end
+
 end
