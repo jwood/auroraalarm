@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   attr_accessor :user_location_value
 
   has_one :user_location, :dependent => :destroy
+  has_one :alert_permission, :dependent => :destroy
 
   before_validation :sanitize_mobile_phone
 

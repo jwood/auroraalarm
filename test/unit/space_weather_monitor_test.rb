@@ -11,7 +11,9 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.yesterday).returns(nil)
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.today).returns(solar_event("G2", DateTime.now.utc))
     assert_difference 'SolarEvent.count', 1 do
-      @monitor.alert_users_of_solar_event
+      assert_difference 'AlertPermission.count', 2 do
+        @monitor.alert_users_of_solar_event
+      end
     end
   end
 
@@ -21,7 +23,9 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.yesterday).returns(solar_event("G2", DateTime.now.utc - 1.day))
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.today).returns()
     assert_no_difference 'SolarEvent.count' do
-      @monitor.alert_users_of_solar_event
+      assert_difference 'AlertPermission.count', 2 do
+        @monitor.alert_users_of_solar_event
+      end
     end
     assert_equal "G2", SolarEvent.occurred_on((DateTime.now.utc - 1.day).to_date).expected_storm_strength
   end
@@ -32,7 +36,9 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.yesterday).returns(solar_event("G4", DateTime.now.utc - 1.day))
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.today).returns(solar_event("G2", DateTime.now.utc))
     assert_difference 'SolarEvent.count', 1 do
-      @monitor.alert_users_of_solar_event
+      assert_difference 'AlertPermission.count', 2 do
+        @monitor.alert_users_of_solar_event
+      end
     end
   end
 
@@ -41,7 +47,9 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.yesterday).returns(solar_event("G3", DateTime.now.utc - 1.day))
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.today).returns(solar_event("G2", DateTime.now.utc))
     assert_difference 'SolarEvent.count', 2 do
-      @monitor.alert_users_of_solar_event
+      assert_difference 'AlertPermission.count', 2 do
+        @monitor.alert_users_of_solar_event
+      end
     end
   end
 
@@ -50,7 +58,9 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.yesterday).returns(nil)
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.today).returns(nil)
     assert_no_difference 'SolarEvent.count' do
-      @monitor.alert_users_of_solar_event
+      assert_no_difference 'AlertPermission.count' do
+        @monitor.alert_users_of_solar_event
+      end
     end
   end
 
@@ -60,7 +70,9 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.yesterday).returns(solar_event("G2", DateTime.now.utc - 1.day))
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.today).returns(nil)
     assert_no_difference 'SolarEvent.count' do
-      @monitor.alert_users_of_solar_event
+      assert_no_difference 'AlertPermission.count' do
+        @monitor.alert_users_of_solar_event
+      end
     end
   end
 
@@ -70,7 +82,9 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.yesterday).returns(solar_event("G1", DateTime.now.utc - 1.day))
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.today).returns(nil)
     assert_no_difference 'SolarEvent.count' do
-      @monitor.alert_users_of_solar_event
+      assert_no_difference 'AlertPermission.count' do
+        @monitor.alert_users_of_solar_event
+      end
     end
   end
 

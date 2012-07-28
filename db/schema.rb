@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120726213326) do
+ActiveRecord::Schema.define(:version => 20120727224925) do
+
+  create_table "alert_permissions", :force => true do |t|
+    t.integer  "user_id",     :null => false
+    t.datetime "approved_at"
+    t.datetime "expires_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "solar_events", :force => true do |t|
     t.string   "message_code",            :null => false
@@ -47,6 +55,8 @@ ActiveRecord::Schema.define(:version => 20120726213326) do
   end
 
   add_index "users", ["mobile_phone"], :name => "index_users_on_mobile_phone"
+
+  add_foreign_key "alert_permissions", "users", :name => "alert_permissions_user_id_fk"
 
   add_foreign_key "user_locations", "users", :name => "user_locations_user_id_fk"
 

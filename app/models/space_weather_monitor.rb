@@ -71,6 +71,7 @@ class SpaceWeatherMonitor
     sms_messaging_service = SmsMessagingService.new
     message = OutgoingSmsMessages.storm_prompt(GeomagneticStorm.new(solar_event.geomagnetic_storm_level))
     User.confirmed.find_each do |user|
+      AlertPermission.create!(:user => user)
       sms_messaging_service.send_message(user.mobile_phone, message)
     end
   end
