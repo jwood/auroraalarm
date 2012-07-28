@@ -13,21 +13,9 @@ class IncomingSmsMessagesController < ApplicationController
       handle_stop_message
     else
       if @user.nil?
-        if opt_in_via_sms_missing_location?
-          handle_opt_in_via_sms_missing_location
-        elsif opt_in_via_sms?
-          handle_opt_in_via_sms
-        else
-          Rails.logger.error "No user could be found with a mobile phone of #{@mobile_phone}"
-        end
+        handle_unknown_user
       else
-        if signup_confirmation?
-          handle_signup_confirmation
-        elsif opt_in_via_sms?
-          update_location_for_confirmed_user
-        else
-          handle_already_signed_up
-        end
+        handle_known_user
       end
     end
 
@@ -35,6 +23,26 @@ class IncomingSmsMessagesController < ApplicationController
   end
 
   private
+
+  def handle_unknown_user
+    if opt_in_via_sms_missing_location?
+      handle_opt_in_via_sms_missing_location
+    elsif opt_in_via_sms?
+      handle_opt_in_via_sms
+    else
+      Rails.logger.error "No user could be found with a mobile phone of #{@mobile_phone}"
+    end
+  end
+
+  def handle_known_user
+    if signup_confirmation?
+      handle_signup_confirmation
+    elsif opt_in_via_sms?
+      update_location_for_confirmed_user
+    else
+      handle_already_signed_up
+    end
+  end
 
   def stop_message?
     @message.upcase =~ /STOP/
