@@ -1,6 +1,7 @@
 class SpaceWeatherMonitor
 
   def alert_users_of_solar_event
+    clear_expired_alert_permissions
     solar_event = fetch_solar_event
     if solar_event
       alert_users(solar_event)
@@ -9,6 +10,10 @@ class SpaceWeatherMonitor
 
   private
   
+  def clear_expired_alert_permissions
+    AlertPermission.expired.destroy_all
+  end
+
   def fetch_solar_event
     today = DateTime.now.utc.to_date
     yesterday = today - 1.day

@@ -88,7 +88,7 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
     end
   end
 
-  test "should replace unapproved alert conditions with new ones if old ones exist" do
+  test "should replace unapproved alert permissions with new ones if old ones exist" do
     alert_permission = AlertPermission.create!(:user => users(:dan))
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.yesterday).returns(nil)
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.today).returns(solar_event("G3", DateTime.now.utc))
@@ -99,7 +99,7 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
     assert_not_nil AlertPermission.for_user(users(:dan)).first
   end
 
-  test "should create a new unapproved alert condition if an existing approved one already exists" do
+  test "should create a new unapproved alert permissions if an existing approved one already exists" do
     alert_permission = AlertPermission.create!(:user => users(:dan), :approved_at => Time.now)
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.yesterday).returns(nil)
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.today).returns(solar_event("G3", DateTime.now.utc))
@@ -107,6 +107,18 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
       @monitor.alert_users_of_solar_event
     end
     assert_equal 2, AlertPermission.for_user(users(:dan)).count
+  end
+
+  test "should destroy all expired alert permissions before running the process to create new ones" do
+    AlertPermission.create!(:user => users(:dan), :approved_at => Time.now, :expires_at => 1.minute.ago)
+    AlertPermission.create!(:user => users(:john), :approved_at => Time.now, :expires_at => 1.minute.ago)
+    AlertPermission.create!(:user => users(:bob), :approved_at => Time.now, :expires_at => 10.minutes.from_now)
+
+    SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.yesterday).returns(nil)
+    SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(Date.today).returns(nil)
+    assert_difference 'AlertPermission.count', -2 do
+      @monitor.alert_users_of_solar_event
+    end
   end
 
   private
