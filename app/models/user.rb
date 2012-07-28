@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   attr_accessor :user_location_value
 
   has_one :user_location, :dependent => :destroy
-  has_one :alert_permission, :dependent => :destroy
+  has_many :alert_permissions, :dependent => :destroy
 
   before_validation :sanitize_mobile_phone
 
@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
     !self.confirmed_at.nil?
   end
 
-  def has_unapproved_alert_permission?
-    alert_permission && alert_permission.approved_at.nil?
+  def unapproved_alert_permission
+    alert_permissions.unapproved.first
   end
 
   private
