@@ -36,4 +36,14 @@ class UserTest < ActiveSupport::TestCase
     assert_equal [users(:dan), users(:bob)], User.confirmed
   end
 
+  test "should be able to tell if we have asked the user for their permission to send alerts" do
+    assert !users(:john).has_unapproved_alert_permission?
+
+    alert_permission = AlertPermission.create!(:user => users(:john))
+    assert users(:john).reload.has_unapproved_alert_permission?
+
+    alert_permission.update_attributes(:approved_at => Time.now)
+    assert !users(:john).reload.has_unapproved_alert_permission?
+  end
+
 end

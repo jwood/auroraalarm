@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
     !self.confirmed_at.nil?
   end
 
+  def has_unapproved_alert_permission?
+    alert_permission && alert_permission.approved_at.nil?
+  end
+
   private
 
   def sanitize_mobile_phone
