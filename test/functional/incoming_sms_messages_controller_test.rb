@@ -155,6 +155,7 @@ class IncomingSmsMessagesControllerTest < ActionController::TestCase
     SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.approved_alert_permission)
     post :index, :mobile_phone => user.mobile_phone, :message => ' Y ', :keyword => 'AURORA'
     assert_not_nil alert_permission.reload.approved_at
+    assert_not_nil alert_permission.reload.expires_at
   end
 
   test "should be able to decline an unapproved alert permission" do
