@@ -1,10 +1,8 @@
 class AlertedUserHandler < MessageHandler
 
   def handle
-    if @user
-      if @user.unapproved_alert_permission
-        return handle_alert_permission_response
-      end
+    if @user && @user.unapproved_alert_permission
+      return handle_alert_permission_response
     end
     return false
   end
