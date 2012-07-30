@@ -1,0 +1,33 @@
+:Data_list: wingkp_list.txt
+:Created: 2012 Jul 17 2108 UT
+# Prepared by the U.S. Dept. of Commerce, NOAA, Space Weather Prediction Center.
+# Please send comments and suggestions to SWPC.Webmaster@noaa.gov 
+#
+# Units: Predicted Index 0-9 in Kp units
+# Status(S): 0 = nominal solar wind input data,
+#            1 = data are good but required an extrapolation
+#            2 = data are bad: incomplete ACE speed data
+#            3 = data are bad: solar wind speed input errors; model output likely unreliable
+#            4 = missing Wing Kp data
+# Solar Wind Source: ACE Satellite.  Wing Kp data provided by USAF AFWA.
+# The value -1 in the report indicates bad data (data status 2 and 3) or missing data (data status 4).
+#
+#                      USAF 15-minute Wing Kp Geomagnetic Activity Index
+#
+#                           1-hour         1-hour                    4-hour         4-hour     
+# UT Date   Time         Predicted Time  Predicted  Lead-time     Predicted Time  Predicted  Lead-time   USAF Est.
+# YR MO DA  HHMM   S     YR MO DA  HHMM    Index    in Minutes    YR MO DA  HHMM    Index    in Minutes     Kp    
+#-----------------------------------------------------------------------------------------------------------------
+2012 07 17  1800   0   2012 07 17  1851     2.33       51.0     2012 07 17  2151      1.67     231.0        3.67
+2012 07 17  1815   0   2012 07 17  1904     2.00       50.0     2012 07 17  2204      1.67     230.0        3.67
+2012 07 17  1830   1   2012 07 17  1924     2.00       54.0     2012 07 17  2224      1.67     234.0        3.67
+2012 07 17  1845   1   2012 07 17  1939     2.00       54.0     2012 07 17  2239      1.67     234.0        3.67
+2012 07 17  1900   1   2012 07 17  1955     2.00       56.0     2012 07 17  2255      2.00     236.0        3.67
+2012 07 17  1915   1   2012 07 17  2013     2.00       58.0     2012 07 17  2313      2.00     238.0        3.67
+2012 07 17  1930   1   2012 07 17  2026     2.00       56.0     2012 07 17  2326      2.00     236.0        3.67
+2012 07 17  1945   1   2012 07 17  2041     4.00       57.0     2012 07 17  2341      3.33     237.0        3.67
+2012 07 17  2000   1   2012 07 17  2056     3.67       56.0     2012 07 17  2356      3.00     236.0        3.67
+2012 07 17  2015   1   2012 07 17  2113     3.33       58.0     2012 07 18  0013      3.00     238.0        3.67
+2012 07 17  2030   0   2012 07 17  2121     3.33       52.0     2012 07 18  0021      2.67     232.0        3.67
+2012 07 17  2045   1   2012 07 17  2141     4.00       56.0     2012 07 18  0041      3.33     236.0        3.67
+2012 07 17  2100   0   2012 07 17  2150     3.67       50.0     2012 07 18  0050      3.33     230.0        3.67
