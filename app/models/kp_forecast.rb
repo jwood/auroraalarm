@@ -5,4 +5,5 @@ class KpForecast < ActiveRecord::Base
   validates :expected_kp, :presence => true, :numericality => true
 
   default_scope order(:forecast_time)
+  scope :old, lambda { where(['forecast_time < ?', 1.week.ago]) }
 end

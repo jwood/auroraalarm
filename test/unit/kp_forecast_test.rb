@@ -21,4 +21,19 @@ class KpForecastTest < ActiveSupport::TestCase
     assert KpForecast.new(:forecast_time => t, :expected_kp => 4.33).invalid?
   end
 
+  test "should be able to find old forecast data" do
+    old_1 = KpForecast.create!(:forecast_time => 9.days.ago, :expected_kp => 3.33)
+    old_2 = KpForecast.create!(:forecast_time => 8.days.ago, :expected_kp => 3.33)
+    old_3 = KpForecast.create!(:forecast_time => 7.days.ago, :expected_kp => 3.33)
+    KpForecast.create!(:forecast_time => 6.days.ago, :expected_kp => 3.33)
+    KpForecast.create!(:forecast_time => 5.days.ago, :expected_kp => 3.33)
+    KpForecast.create!(:forecast_time => 4.days.ago, :expected_kp => 3.33)
+
+    old = KpForecast.old
+    assert_equal 3, old.size
+    assert old.include?(old_1)
+    assert old.include?(old_2)
+    assert old.include?(old_3)
+  end
+
 end
