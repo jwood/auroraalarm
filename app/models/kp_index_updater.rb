@@ -1,6 +1,7 @@
 class KpIndexUpdater
 
   def update_kp_index
+    remove_old_data
     KpIndexService.new.current_forecast.reverse.each do |time, kp_index|
       if KpForecast.exists?(:forecast_time => time)
         break
@@ -8,6 +9,12 @@ class KpIndexUpdater
         KpForecast.create!(:forecast_time => time, :expected_kp => kp_index)
       end
     end
+  end
+
+  private
+
+  def remove_old_data
+    KpForecast.old.destroy_all
   end
 
 end

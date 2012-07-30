@@ -26,6 +26,7 @@ group :test do
   gem 'fakeweb', '1.3.0'
   gem 'mocha', '0.12.0'
   gem 'simplecov', '0.6.4', :require => false
+  gem 'timecop', '0.4.4'
 end
 
 group :production do
