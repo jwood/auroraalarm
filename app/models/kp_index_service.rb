@@ -7,9 +7,9 @@ class KpIndexService
     data = forecast_data
     unless data.blank?
       data = data.split("\n").last.split(/\s+/)
-      forecast_date = Time.parse("#{data[5]}#{data[6]}#{data[7]} #{data[8][0..1]}:#{data[8][2..3]} UTC")
+      forecast_time = Time.parse("#{data[5]}#{data[6]}#{data[7]} #{data[8][0..1]}:#{data[8][2..3]} UTC")
       forecast_kp = data[9].to_f
-      [forecast_date, forecast_kp]
+      [forecast_time, forecast_kp]
     end
   end
 
