@@ -36,4 +36,15 @@ class KpForecastTest < ActiveSupport::TestCase
     assert old.include?(old_3)
   end
 
+  test "should be able to find the current forecast data" do
+    KpForecast.create!(:forecast_time => 14.minutes.ago, :expected_kp => 4.33)
+    kp_forecast = KpForecast.create!(:forecast_time => 1.minute.ago, :expected_kp => 4.33)
+    assert_equal kp_forecast, KpForecast.current
+  end
+
+  test "should return nil if there is no forecast data for the current time period" do
+    KpForecast.create!(:forecast_time => 16.minutes.ago, :expected_kp => 4.33)
+    assert_nil KpForecast.current
+  end
+
 end
