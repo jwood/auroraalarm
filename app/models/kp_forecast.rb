@@ -11,4 +11,8 @@ class KpForecast < ActiveRecord::Base
     where(['forecast_time BETWEEN ? and ?', 15.minutes.ago, Time.now.utc]).last
   end
 
+  def storm_level?
+    self.expected_kp >= 4
+  end
+
 end

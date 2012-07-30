@@ -47,4 +47,10 @@ class KpForecastTest < ActiveSupport::TestCase
     assert_nil KpForecast.current
   end
 
+  test "should be able to tell if the Kp index is at or exceeds storm level" do
+    assert !KpForecast.new(:forecast_time => Time.now, :expected_kp => 3.99).storm_level?
+    assert KpForecast.new(:forecast_time => Time.now, :expected_kp => 4.00).storm_level?
+    assert KpForecast.new(:forecast_time => Time.now, :expected_kp => 4.01).storm_level?
+  end
+
 end
