@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120727224925) do
+ActiveRecord::Schema.define(:version => 20120730005448) do
 
   create_table "alert_permissions", :force => true do |t|
     t.integer  "user_id",     :null => false
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(:version => 20120727224925) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "kp_forecasts", :force => true do |t|
+    t.datetime "forecast_time", :null => false
+    t.float    "expected_kp",   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "kp_forecasts", ["forecast_time"], :name => "index_kp_forecasts_on_forecast_time"
 
   create_table "solar_events", :force => true do |t|
     t.string   "message_code",            :null => false
