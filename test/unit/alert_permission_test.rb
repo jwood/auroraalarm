@@ -39,4 +39,37 @@ class AlertPermissionTest < ActiveSupport::TestCase
     end
   end
 
+  test "should be able to find active alert permissions" do
+    should_find = [
+      AlertPermission.create!(:user => users(:john), :approved_at => Time.now, :expires_at => 10.seconds.from_now),
+      AlertPermission.create!(:user => users(:dan), :approved_at => Time.now, :expires_at => 1.minute.from_now)
+    ]
+
+    AlertPermission.create!(:user => users(:dan), :approved_at => Time.now, :expires_at => 10.seconds.ago)
+    AlertPermission.create!(:user => users(:dan))
+    AlertPermission.create!(:user => users(:john), :approved_at => Time.now)
+    AlertPermission.create!(:user => users(:bob), :expires_at => 1.hour.from_now)
+
+    alert_permissions = AlertPermission.active
+    assert_equal should_find.size, alert_permissions.size
+    should_find.each do |alert_permission|
+      assert alert_permissions.include?(alert_permission)
+    end
+  end
+
+  test "should be able to find the ids of users with active alert permissions" do
+    should_find = [
+      AlertPermission.create!(:user => users(:john), :approved_at => Time.now, :expires_at => 10.seconds.from_now),
+      AlertPermission.create!(:user => users(:john), :approved_at => Time.now, :expires_at => 10.minutes.from_now),
+      AlertPermission.create!(:user => users(:dan), :approved_at => Time.now, :expires_at => 1.minute.from_now)
+    ]
+
+    AlertPermission.create!(:user => users(:joe), :approved_at => Time.now, :expires_at => 10.seconds.ago)
+    AlertPermission.create!(:user => users(:bob))
+    AlertPermission.create!(:user => users(:joe), :approved_at => Time.now)
+    AlertPermission.create!(:user => users(:bob), :approved_at => Time.now, :expires_at => 1.hour.ago)
+
+    assert_equal [users(:john).id, users(:dan).id], AlertPermission.active.distinct_user_ids
+  end
+
 end

@@ -7,8 +7,13 @@ class AlertPermission < ActiveRecord::Base
   scope :for_user, lambda { |user| where(:user_id => user) }
   scope :unapproved, where(:approved_at => nil)
   scope :expired, lambda { where(['expires_at < ?', Time.now]) }
+  scope :active, lambda { where(['approved_at IS NOT NULL AND expires_at > ?', Time.now]) }
 
   belongs_to :user
+
+  def self.distinct_user_ids
+    select(:user_id).uniq.map(&:user_id)
+  end
 
   private
 
