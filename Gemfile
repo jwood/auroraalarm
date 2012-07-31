@@ -12,6 +12,8 @@ gem 'signal_api', :git => 'git://github.com/signal/signal-ruby.git'
 gem 'proby', '2.2.0'
 gem 'exception_notification', '2.6.1', :require => 'exception_notifier'
 
+gem 'moonphase', :git => 'git://github.com/chaserx/moonphase.git'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

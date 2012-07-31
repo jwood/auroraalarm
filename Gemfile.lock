@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/chaserx/moonphase.git
+  revision: 3db41f50fa5c9e9f1f15915abbb402c4e0c66506
+  specs:
+    moonphase (0.0.1)
+
+GIT
   remote: git://github.com/signal/signal-ruby.git
   revision: 249d69e5534a3136213e957315706259ddbb05f8
   specs:
@@ -154,6 +160,7 @@ DEPENDENCIES
   geokit (= 1.6.5)
   jquery-rails (= 2.0.2)
   mocha (= 0.12.0)
+  moonphase!
   newrelic_rpm (= 3.4.0.1)
   pg (= 0.14.0)
   proby (= 2.2.0)
