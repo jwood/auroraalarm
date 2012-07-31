@@ -13,6 +13,7 @@ gem 'proby', '2.2.0'
 gem 'exception_notification', '2.6.1', :require => 'exception_notifier'
 
 gem 'moonphase', :git => 'git://github.com/chaserx/moonphase.git'
+gem 'RubySunrise', '0.3', :require => 'solareventcalculator'
 
 # Gems used only for assets and not required
 # in production environments by default.
