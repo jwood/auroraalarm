@@ -11,26 +11,26 @@ class NighttimeTest < ActiveSupport::TestCase
     Timecop.return
   end
 
-  # Sunrise: Tue, 17 Jul 2012 10:43:00 +0000
-  # Sunset:  Tue, 17 Jul 2012 01:54:00 +0000
+  # Astronomical Sunrise: Tue, 17 Jul 2012 08:26:00 +0000
+  # Astronomical Sunset:  Tue, 17 Jul 2012 04:11:00 +0000
 
-  test "should be nighttime if it is more than 2 hours before sunrise" do
-    Timecop.freeze(Time.utc(2012, 7, 17, 8, 42))
+  test "should be nighttime if time is before astronomical sunrise" do
+    Timecop.freeze(Time.utc(2012, 7, 17, 8, 25))
     assert @nighttime.nighttime?(@user)
   end
 
-  test "should not be nighttime less than 2 hours before sunrise" do
-    Timecop.freeze(Time.utc(2012, 7, 17, 8, 44))
+  test "should not be nighttime if time is after astronomical" do
+    Timecop.freeze(Time.utc(2012, 7, 17, 8, 27))
     assert !@nighttime.nighttime?(@user)
   end
 
-  test "should not be nighttime less than 2 hours after sunset" do
-    Timecop.freeze(Time.utc(2012, 7, 17, 3, 53))
+  test "should not be nighttime if time is before astronomical sunset" do
+    Timecop.freeze(Time.utc(2012, 7, 17, 4, 10))
     assert !@nighttime.nighttime?(@user)
   end
 
-  test "should be nighttime if it is more than 2 hours past sunset" do
-    Timecop.freeze(Time.utc(2012, 7, 17, 3, 55))
+  test "should be nighttime if time is after astronomical sunset" do
+    Timecop.freeze(Time.utc(2012, 7, 17, 4, 12))
     assert @nighttime.nighttime?(@user)
   end
 
