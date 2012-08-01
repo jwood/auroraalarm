@@ -1,11 +1,24 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+message_1:
+  mobile_phone: 3125551212
+  message_type: MO
+  message: AURORA
+  created_at: <%= 15.days.ago %>
 
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-#one: {}
-# column: value
-#
-#two: {}
-#  column: value
+message_2:
+  mobile_phone: 3125551212
+  message_type: MT
+  message: Thanks for signing up!
+  created_at: <%= 15.days.ago %>
+
+message_3:
+  mobile_phone: 3125551213
+  message_type: MO
+  message: AURORA 90210
+  created_at: <%= 13.days.ago %>
+
+message_4:
+  mobile_phone: 3125551213
+  message_type: MT
+  message: Thanks for signing up!
+  created_at: <%= 13.days.ago %>
+

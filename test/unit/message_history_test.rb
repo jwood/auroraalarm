@@ -16,4 +16,20 @@ class MessageHistoryTest < ActiveSupport::TestCase
     assert MessageHistory.new(:mobile_phone => '3125551212', :message => "This is a test", :message_type => "XX").invalid?
   end
 
+  test "should be able to find all old messages" do
+    assert_equal [message_history(:message_1), message_history(:message_2)], MessageHistory.old
+  end
+
+  test "should be able to destroy all old messages" do
+    message_1 = message_history(:message_1)
+    message_2 = message_history(:message_2)
+
+    assert_difference 'MessageHistory.count', -2 do
+      MessageHistory.purge_old_messages
+    end
+
+    assert_nil MessageHistory.find_by_id(message_1)
+    assert_nil MessageHistory.find_by_id(message_2)
+  end
+
 end
