@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120730005448) do
+ActiveRecord::Schema.define(:version => 20120801133144) do
 
   create_table "alert_permissions", :force => true do |t|
     t.integer  "user_id",     :null => false
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(:version => 20120730005448) do
   end
 
   add_index "kp_forecasts", ["forecast_time"], :name => "index_kp_forecasts_on_forecast_time"
+
+  create_table "message_history", :force => true do |t|
+    t.string   "mobile_phone",              :null => false
+    t.string   "message",                   :null => false
+    t.string   "message_type", :limit => 2, :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "message_history", ["mobile_phone"], :name => "index_message_history_on_mobile_phone"
 
   create_table "solar_events", :force => true do |t|
     t.string   "message_code",            :null => false
