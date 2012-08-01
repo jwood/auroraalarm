@@ -3,7 +3,6 @@ require 'test_helper'
 class AuroraConditionsMonitorTest < ActiveSupport::TestCase
 
   def setup
-    body = File.read(File.expand_path('../../data/wingkp_list.txt', __FILE__))
     FakeWeb.register_uri(:get, "http://www.swpc.noaa.gov/wingkp/wingkp_list.txt", :body => "")
     @monitor = AuroraConditionsMonitor.new
 

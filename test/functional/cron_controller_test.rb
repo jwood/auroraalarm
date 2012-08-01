@@ -21,6 +21,14 @@ class CronControllerTest < ActionController::TestCase
     assert_difference 'SolarEvent.count', 2 do
       post :alert_users_of_solar_event
     end
+    assert_response :success
+  end
+
+  test "should be able to alert users of an aurora" do
+    FakeWeb.register_uri(:get, "http://www.swpc.noaa.gov/wingkp/wingkp_list.txt", :body => "")
+    AuroraConditionsMonitor.any_instance.expects(:alert_users_of_aurora_if_conditions_optimal)
+    post :alert_users_of_aurora
+    assert_response :success
   end
 
 end

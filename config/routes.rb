@@ -4,6 +4,7 @@ Aurora::Application.routes.draw do
   match '/incoming_sms_messages' => 'incoming_sms_messages#index', :via => :post, :as => :incoming_sms_messages
 
   match '/cron/alert_users_of_solar_event' => 'cron#alert_users_of_solar_event', :via => :post, :as => :cron_alert_users_of_solar_event
+  match '/cron/alert_users_of_aurora' => 'cron#alert_users_of_aurora', :via => :post, :as => :cron_alert_users_of_aurora
 
   root :to => 'site#index'
 end

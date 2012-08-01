@@ -8,4 +8,11 @@ class CronController < ApplicationController
     end
   end
 
+  def alert_users_of_aurora
+    Proby.monitor(ENV['PROBY_ALERT_USERS_OF_AURORA']) do
+      AuroraConditionsMonitor.new.alert_users_of_aurora_if_conditions_optimal
+      render :nothing => true
+    end
+  end
+
 end
