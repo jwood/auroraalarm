@@ -45,6 +45,10 @@ class OutgoingSmsMessages
       "Thanks. You will not be notified if this storm produces northern lights in your area. #{help} #{msg_and_data_rates}"
     end
 
+    def aurora_alert
+      "The northern lights may be active in your area! Reply  0) acknowledge alert  1) remind me in 1 hour  2) remind me in 2 hours  3) no more messages tonight"
+    end
+
     private
 
     def stop_text

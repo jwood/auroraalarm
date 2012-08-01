@@ -18,3 +18,13 @@ dan_location:
   longitude: -93.2885455
   magnetic_latitude: 56
 
+bob_location:
+  user: bob
+  city: Louisville
+  state: KY
+  postal_code: 40201
+  country: US
+  latitude: 38.2526647
+  longitude: -85.7584557
+  magnetic_latitude: 49
+
