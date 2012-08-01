@@ -15,4 +15,11 @@ class CronController < ApplicationController
     end
   end
 
+  def cleanup
+    Proby.monitor(ENV['PROBY_CLEANUP']) do
+      MessageHistory.purge_old_messages
+      render :nothing => true
+    end
+  end
+
 end

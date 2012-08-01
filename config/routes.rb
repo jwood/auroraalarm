@@ -5,6 +5,7 @@ Aurora::Application.routes.draw do
 
   match '/cron/alert_users_of_solar_event' => 'cron#alert_users_of_solar_event', :via => :post, :as => :cron_alert_users_of_solar_event
   match '/cron/alert_users_of_aurora' => 'cron#alert_users_of_aurora', :via => :post, :as => :cron_alert_users_of_aurora
+  match '/cron/cleanup' => 'cron#cleanup', :via => :post, :as => :cron_cleanup
 
   root :to => 'site#index'
 end

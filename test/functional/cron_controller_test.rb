@@ -31,4 +31,11 @@ class CronControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should be able to perform any necessary cleanup" do
+    assert_difference 'MessageHistory.count', -2 do
+      post :cleanup
+    end
+    assert_response :success
+  end
+
 end
