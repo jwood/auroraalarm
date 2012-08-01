@@ -167,4 +167,17 @@ class IncomingSmsMessagesControllerTest < ActionController::TestCase
     assert_nil AlertPermission.find_by_id(alert_permission)
   end
 
+  test "should record all incoming messages in the message history table" do
+    expects_valid_location("90210")
+    SmsMessagingService.any_instance.expects(:send_message).with('3125551213', OutgoingSmsMessages.signup_confirmation)
+    assert_difference 'MessageHistory.count', 1 do
+      post :index, :mobile_phone => '3125551213', :message => ' aurora 90210 ', :keyword => 'AURORA'
+    end
+    assert_response :success
+
+    message_history = MessageHistory.last
+    assert_equal '3125551213', message_history.mobile_phone
+    assert_equal 'aurora 90210', message_history.message
+    assert_equal 'MO', message_history.message_type
+  end
 end

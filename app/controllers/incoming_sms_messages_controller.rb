@@ -5,6 +5,8 @@ class IncomingSmsMessagesController < ApplicationController
     mobile_phone = params[:mobile_phone]
     message = (params[:message] && params[:message].strip)
     keyword = (params[:keyword] && params[:keyword].strip)
+
+    MessageHistory.create(:mobile_phone => mobile_phone, :message => message, :message_type => "MO")
     user = User.find_by_mobile_phone(mobile_phone)
 
     handlers = [
