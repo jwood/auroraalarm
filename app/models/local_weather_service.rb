@@ -2,10 +2,12 @@ class LocalWeatherService
   include HttpGetter
 
   def cloud_cover_percentage(user)
-    data = http_get(request_url(user.user_location))
-    doc = Nokogiri::XML(data)
-    element = doc.xpath('//cloud-amount/value').first
-    element ? element.text.to_i : nil
+    Rails.cache.fetch("cloud_cover_percentage:user_#{user.id}", :expires_in => 1.hour) do
+      data = http_get(request_url(user.user_location))
+      doc = Nokogiri::XML(data)
+      element = doc.xpath('//cloud-amount/value').first
+      element ? element.text.to_i : nil
+    end
   end
 
   private
