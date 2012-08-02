@@ -13,7 +13,13 @@ class KpIndexServiceTest < ActiveSupport::TestCase
     assert_equal [Time.utc(2012, 7, 17, 21, 50), 3.67], @service.current_forecast.last
   end
 
-  test "should not freak out if we could not fetch the data" do
+  test "should return an empty array if we could not fetch the data" do
+    FakeWeb.register_uri(:get, "http://www.swpc.noaa.gov/wingkp/wingkp_list.txt", :body => "")
+    assert_equal [], @service.current_forecast
+  end
+
+  test "should return an empty array if the service times out" do
+    Net::HTTP.any_instance.expects(:request).raises(Timeout::Error)
     FakeWeb.register_uri(:get, "http://www.swpc.noaa.gov/wingkp/wingkp_list.txt", :body => "")
     assert_equal [], @service.current_forecast
   end
