@@ -1,0 +1,10 @@
+$white: #FFFFFF;
+$black: #000000;
+$background-color: #134B4C;
+
+@mixin round ($radius: 10px) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
+

@@ -5,10 +5,18 @@
   <title>AuroraAlarm</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag    "mobile", :media => "only screen and (max-device-width: 800px) and (min-device-width: 320px)" %>
+  <!--[if IE]><%= stylesheet_link_tag  "ie" %><![endif]-->
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
   <script type="text/javascript">
+    document.createElement("article");
+    document.createElement("section");
+    document.createElement("footer");
+    document.createElement("header");
+    document.createElement("hgroup");
+    document.createElement("nav");
+
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', '<%= ENV['GA_TRACKING_ID'] %>']);
     _gaq.push(['_trackPageview']);

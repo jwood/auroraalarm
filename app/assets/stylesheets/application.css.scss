@@ -11,16 +11,9 @@
  *= require_self
  */
 
+@import "globals.scss";
+
 $content-width: 800px;
-
-$white: #FFFFFF;
-$black: #000000;
-
-@mixin round ($radius: 10px) {
-  -moz-border-radius: $radius;
-  -webkit-border-radius: $radius;
-  border-radius: $radius;
-}
 
 a:hover {
   text-decoration: none;

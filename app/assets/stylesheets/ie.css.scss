@@ -1,0 +1,15 @@
+@import "globals.scss";
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  background-color: $background-color;
+}
+
+img {
+  border: none;
+  outline: none;
+}
+

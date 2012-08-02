@@ -1,8 +1,10 @@
+@import "globals.scss";
+
 $content-width: 96%;
 
 body {
   width: $content-width;
-  background: #134B4C;
+  background: $background-color;
 }
 
 header {
