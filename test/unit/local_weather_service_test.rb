@@ -23,4 +23,16 @@ class LocalWeatherServiceTest < ActiveSupport::TestCase
     assert_nil @service.cloud_cover_percentage(users(:john))
   end
 
+  test "should return nil if an error was returned from the service" do
+    FakeWeb.register_uri(:get, "http://graphical.weather.gov/xml/sample_products/browser_interface/ndfdXMLclient.php?lat=44.9061358&lon=-93.2885455&product=time-series&Unit=e&sky=sky", :body => <<-BODY)
+<error>
+<h2>ERROR</h2>
+<pre>
+Point with latitude "51.5073346" longitude "-0.1276831" is not on an NDFD grid
+</pre>
+</error>
+    BODY
+    assert_nil @service.cloud_cover_percentage(users(:john))
+  end
+
 end
