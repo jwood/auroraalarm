@@ -2,7 +2,7 @@
   <div id="description">
     AuroraAlarm is a <strong>FREE</strong> service that will notify you via SMS when conditions are optimal for
     viewing the <%= link_to 'Aurora Borealis', 'http://en.wikipedia.org/wiki/Aurora_(astronomy)' %>
-    in your area. <span id="us_only">Sorry, but this service is currently available to US residents only.</span>
+    in your area. <span id="us_only"><a href="#us_only_explanation">Sorry, but this service is currently available to US residents only.</a></span>
   </div>
 
   <div id="signup">
@@ -27,7 +27,7 @@
     <p>
       Every evening, AuroraAlarm checks to see if any <%= link_to 'solar events', 'http://en.wikipedia.org/wiki/Coronal_mass_ejections' %>
       have occurred that could trigger a geomagnetic storm, which can produce an Aurora.  If a solar event
-      has occurred, you will receive a text message notifying you of the event, and asking if you would
+      has occurred, you will receive a text message notifying you of the event, asking if you would
       like to receive a text message during the next few nights if conditions are optimal for viewing
       the Aurora.
     </p>
@@ -66,7 +66,8 @@
     <p class="question">What are the costs associated with this service?</p>
     <p>
        This service is free to use.  However, it uses SMS (text messaging) to notify you of
-       certain events.  Your cell phone provider may charge you for incoming SMS messages.
+       certain events, and expects a reply in certain scenarios.  Your cell phone provider
+       may charge you for incoming and outgoing SMS messages.
     </p>
   </div>
 
@@ -75,11 +76,11 @@
     <p>
       Yes, and that's the point!  The best time for viewing Auroras are in the hours past midnight.
       But, we always ask you after a solar event has occurred if you would like to be woken up
-      over the next couple of days if conditions are optimal for viewing an Aurora.  If it's not
+      over the next few days if conditions are optimal for viewing an Aurora.  If it's not
       a good time, you can always decline, and we'll notify you when the next solar event occurs.
     </p>
     <p>
-      In addition, we'll only notify you if the conditions are optimal for viewing the Aurora.  If the sky is cloudy, we won't
+      In addition, we'll only notify you if the conditions are optimal for viewing the Aurora in your area.  If the sky is cloudy, we won't
       wake you.  Moon to bright?  We won't wake you.  This algorithm is constantly being enhanced to
       reduce the chances of waking you up for no reason.
     </p>
@@ -96,6 +97,7 @@
   </div>
 
   <div>
+    <a name="us_only_explanation"></a>
     <p class="question">Why is this service only available to US residents?</p>
     <p>
       I'm a software engineer at <a href="http://www.signalhq.com">Signal</a>, a digital marketing company
@@ -123,13 +125,13 @@
   <div>
     <p class="question">What do you do with my mobile phone number and location information?</p>
     <p>
-      We determine if conditions are right for viewing the Aurora in your area, and send you a text message when they are.  That's it.
-      We won't sell, trade, exchange, hock, auction, vend, expose, or barter any of the information we collect.  We respect your
-      privacy, becuase we love it when people respect ours.
+      We use your location information to determine if conditions are right for viewing the Aurora in your area, and we use your mobile
+      phone number to send you a text message when they are.  That's it. We won't sell, trade, exchange, hock, auction, vend, expose,
+      or barter any of the information we collect.  We respect your privacy, because we love it when people respect ours.
     </p>
     <p>
       If you decide to cancel the service, all information we have about you is immediately and permanently deleted from our database,
-      except for the SMS messages that were sent and received.  All messages are deleted two weeks after they are sent or received, giving
+      except for any SMS messages that were sent or received.  All SMS messages are deleted two weeks after they are sent or received, giving
       us time to investigate any issues that may be reported.
     </p>
   </div>
