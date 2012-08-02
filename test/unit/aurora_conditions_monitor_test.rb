@@ -11,13 +11,13 @@ class AuroraConditionsMonitorTest < ActiveSupport::TestCase
   end
 
   test "should send alerts if conditions are optimal" do
-    set_kp(9.66); set_nighttime(true); set_moon(:new)
+    set_kp(9.66); set_nighttime(true); set_moon(:new); set_cloud_cover(10)
     expect_alerts(users(:bob), users(:dan))
     @monitor.alert_users_of_aurora_if_conditions_optimal
   end
 
   test "should not send any alerts if the kp level is not at storm level" do
-    set_kp(2.33); set_nighttime(true); set_moon(:new)
+    set_kp(2.33); set_nighttime(true); set_moon(:new); set_cloud_cover(10)
     no_alerts_expected
     @monitor.alert_users_of_aurora_if_conditions_optimal
   end
@@ -26,37 +26,43 @@ class AuroraConditionsMonitorTest < ActiveSupport::TestCase
     @bob_permission.destroy
     @dan_permission.destroy
 
-    set_kp(9.66); set_nighttime(true); set_moon(:new)
+    set_kp(9.66); set_nighttime(true); set_moon(:new); set_cloud_cover(10)
     no_alerts_expected
     @monitor.alert_users_of_aurora_if_conditions_optimal
   end
 
   test "should only send the alert to users at geomagnetic latitudes that can see the aurora" do
-    set_kp(6.33); set_nighttime(true); set_moon(:new)
+    set_kp(6.33); set_nighttime(true); set_moon(:new); set_cloud_cover(10)
     expect_alerts(users(:dan))
     @monitor.alert_users_of_aurora_if_conditions_optimal
   end
 
   test "should not send any alerts if it is daytime" do
-    set_kp(9.66); set_nighttime(false); set_moon(:new)
+    set_kp(9.66); set_nighttime(false); set_moon(:new); set_cloud_cover(10)
     no_alerts_expected
     @monitor.alert_users_of_aurora_if_conditions_optimal
   end
 
   test "should not send any alerts on a full moon" do
-    set_kp(9.66); set_nighttime(true); set_moon(:full)
+    set_kp(9.66); set_nighttime(true); set_moon(:full); set_cloud_cover(10)
     no_alerts_expected
     @monitor.alert_users_of_aurora_if_conditions_optimal
   end
 
   test "should not send any alerts on a waxing gibbous moon" do
-    set_kp(9.66); set_nighttime(true); set_moon(:waxing_gibbous)
+    set_kp(9.66); set_nighttime(true); set_moon(:waxing_gibbous); set_cloud_cover(10)
     no_alerts_expected
     @monitor.alert_users_of_aurora_if_conditions_optimal
   end
 
   test "should not send any alerts on a waning gibbous moon" do
-    set_kp(9.66); set_nighttime(true); set_moon(:waning_gibbous)
+    set_kp(9.66); set_nighttime(true); set_moon(:waning_gibbous); set_cloud_cover(10)
+    no_alerts_expected
+    @monitor.alert_users_of_aurora_if_conditions_optimal
+  end
+
+  test "should not send any alerts if the cloud cover exceeds 20 percent" do
+    set_kp(9.66); set_nighttime(true); set_moon(:new); set_cloud_cover(21)
     no_alerts_expected
     @monitor.alert_users_of_aurora_if_conditions_optimal
   end
@@ -73,6 +79,10 @@ class AuroraConditionsMonitorTest < ActiveSupport::TestCase
 
   def set_moon(phase)
     @monitor.moon = StubbedMoon.new(phase)
+  end
+
+  def set_cloud_cover(percentage)
+    @monitor.local_weather_service = StubbedLocalWeatherService.new(percentage)
   end
 
   def expect_alerts(*users)

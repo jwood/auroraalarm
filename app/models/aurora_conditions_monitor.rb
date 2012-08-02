@@ -1,11 +1,12 @@
 class AuroraConditionsMonitor
-  attr_accessor :alert_recipient_finder, :kp_forecaster, :nighttime, :moon
+  attr_accessor :alert_recipient_finder, :kp_forecaster, :nighttime, :moon, :local_weather_service
 
   def initialize
     @alert_recipient_finder = AlertRecipientFinder.new
     @kp_forecaster = KpForecaster.new
     @nighttime = Nighttime.new
     @moon = Moon.new
+    @local_weather_service = LocalWeatherService.new
     @sms_messaging_service = SmsMessagingService.new
   end
 
@@ -62,8 +63,8 @@ class AuroraConditionsMonitor
   end
 
   def clear_skies?(user)
-    # TODO
-    true
+    cloud_cover_percentage = @local_weather_service.cloud_cover_percentage(user)
+    cloud_cover_percentage && cloud_cover_percentage <= 20
   end
 
   def alert_user(user)
