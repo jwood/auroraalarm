@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<dwml version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://graphical.weather.gov/xml/DWMLgen/schema/DWML.xsd">
+  <head>
+    <product srsName="WGS 1984" concise-name="time-series" operational-mode="official">
+      <title>NOAA's National Weather Service Forecast Data</title>
+      <field>meteorological</field>
+      <category>forecast</category>
+      <creation-date refresh-frequency="PT1H">2012-08-01T21:29:24Z</creation-date>
+    </product>
+    <source>
+      <more-information>http://graphical.weather.gov/xml/</more-information>
+      <production-center>Meteorological Development Laboratory<sub-center>Product Generation Branch</sub-center></production-center>
+      <disclaimer>http://www.nws.noaa.gov/disclaimer.html</disclaimer>
+      <credit>http://www.weather.gov/</credit>
+      <credit-logo>http://www.weather.gov/images/xml_logo.gif</credit-logo>
+      <feedback>http://www.weather.gov/feedback.php</feedback>
+    </source>
+  </head>
+  <data>
+    <location>
+      <location-key>point1</location-key>
+      <point latitude="41.57" longitude="-87.79"/>
+    </location>
+    <moreWeatherInformation applicable-location="point1">http://forecast.weather.gov/MapClick.php?textField1=41.57&amp;textField2=-87.79</moreWeatherInformation>
+    <time-layout time-coordinate="local" summarization="none">
+      <layout-key>k-p3h-n33-1</layout-key>
+      <start-valid-time>2012-08-01T19:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-01T22:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-02T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-02T04:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-02T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-02T10:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-02T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-02T16:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-02T19:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-02T22:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-03T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-03T04:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-03T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-03T10:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-03T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-03T16:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-03T19:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-04T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-04T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-04T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-04T19:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-05T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-05T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-05T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-05T19:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-06T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-06T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-06T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-06T19:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-07T01:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-07T07:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-07T13:00:00-05:00</start-valid-time>
+      <start-valid-time>2012-08-07T19:00:00-05:00</start-valid-time>
+    </time-layout>
+    <parameters applicable-location="point1">
+      <cloud-amount type="total" units="percent" time-layout="k-p3h-n33-1">
+        <name>Cloud Cover Amount</name>
+        <value>11</value>
+        <value>12</value>
+        <value>16</value>
+        <value>31</value>
+        <value>34</value>
+        <value>44</value>
+        <value>48</value>
+        <value>47</value>
+        <value>53</value>
+        <value>48</value>
+        <value>43</value>
+        <value>42</value>
+        <value>45</value>
+        <value>46</value>
+        <value>46</value>
+        <value>44</value>
+        <value>42</value>
+        <value>34</value>
+        <value>46</value>
+        <value>56</value>
+        <value>70</value>
+        <value>70</value>
+        <value>42</value>
+        <value>25</value>
+        <value>18</value>
+        <value>16</value>
+        <value>16</value>
+        <value>20</value>
+        <value>16</value>
+        <value>15</value>
+        <value>22</value>
+        <value>21</value>
+        <value>31</value>
+      </cloud-amount>
+    </parameters>
+  </data>
+</dwml>
