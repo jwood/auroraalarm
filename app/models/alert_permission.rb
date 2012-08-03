@@ -1,19 +1,14 @@
 class AlertPermission < ActiveRecord::Base
+  include BelongsToUser
+
   attr_accessible :user, :approved_at, :expires_at
 
   validates :user_id, :presence => true
   validate :ensure_only_one_unapproved_alert_permission_per_user
 
-  scope :for_user, lambda { |user| where(:user_id => user) }
   scope :unapproved, where(:approved_at => nil)
   scope :expired, lambda { where(['expires_at < ?', Time.now]) }
   scope :active, lambda { where(['approved_at IS NOT NULL AND expires_at > ?', Time.now]) }
-
-  belongs_to :user
-
-  def self.distinct_user_ids
-    select(:user_id).uniq.map(&:user_id)
-  end
 
   private
 
