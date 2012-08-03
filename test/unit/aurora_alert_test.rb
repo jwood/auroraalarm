@@ -29,4 +29,34 @@ class AuroraAlertTest < ActiveSupport::TestCase
     assert_equal should_not_be_resent, AuroraAlert.do_not_resend
   end
 
+  test "should be able to find old alerts" do
+    old_alerts = [
+      AuroraAlert.create!(:user => users(:john), :first_sent_at => 12.hours.ago),
+      AuroraAlert.create!(:user => users(:joe), :first_sent_at => 12.hours.ago - 1.minute)
+    ]
+
+    AuroraAlert.create!(:user => users(:bob), :first_sent_at => 12.hours.ago + 1.minute)
+    AuroraAlert.create!(:user => users(:dan), :first_sent_at => 12.hours.ago + 2.minutes)
+
+    assert_equal old_alerts, AuroraAlert.old
+  end
+
+  test "should be able to destroy old alerts" do
+    old_alerts = [
+      AuroraAlert.create!(:user => users(:john), :first_sent_at => 12.hours.ago),
+      AuroraAlert.create!(:user => users(:joe), :first_sent_at => 12.hours.ago - 1.minute)
+    ]
+
+    AuroraAlert.create!(:user => users(:bob), :first_sent_at => 12.hours.ago + 1.minute)
+    AuroraAlert.create!(:user => users(:dan), :first_sent_at => 12.hours.ago + 2.minutes)
+
+    assert_difference 'AuroraAlert.count', -2 do
+      AuroraAlert.purge_old_alerts
+    end
+
+    old_alerts.each do |old_alert|
+      assert_nil AuroraAlert.find_by_id(old_alert)
+    end
+  end
+
 end
