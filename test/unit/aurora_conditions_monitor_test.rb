@@ -13,7 +13,9 @@ class AuroraConditionsMonitorTest < ActiveSupport::TestCase
   test "should send alerts if conditions are optimal" do
     set_kp(9.66); set_nighttime(true); set_moon(:new); set_cloud_cover(10)
     expect_alerts(users(:bob), users(:dan))
-    @monitor.alert_users_of_aurora_if_conditions_optimal
+    assert_difference 'AuroraAlert.count', 2 do
+      @monitor.alert_users_of_aurora_if_conditions_optimal
+    end
   end
 
   test "should not send any alerts if the kp level is not at storm level" do
@@ -32,9 +34,23 @@ class AuroraConditionsMonitorTest < ActiveSupport::TestCase
   end
 
   test "should only send the alert to users at geomagnetic latitudes that can see the aurora" do
+    assert_nil users(:dan).aurora_alert
     set_kp(6.33); set_nighttime(true); set_moon(:new); set_cloud_cover(10)
     expect_alerts(users(:dan))
-    @monitor.alert_users_of_aurora_if_conditions_optimal
+    assert_difference 'AuroraAlert.count', 1 do
+      @monitor.alert_users_of_aurora_if_conditions_optimal
+    end
+    assert_not_nil users(:dan).reload.aurora_alert
+  end
+
+  test "should resend the alert if the user never confirmed the initial one" do
+    aurora_alert = AuroraAlert.create!(:user => users(:dan))
+    set_kp(6.33); set_nighttime(true); set_moon(:new); set_cloud_cover(10)
+    expect_alerts(users(:dan))
+    assert_no_difference 'AuroraAlert.count' do
+      @monitor.alert_users_of_aurora_if_conditions_optimal
+    end
+    assert_equal 2, aurora_alert.reload.times_sent
   end
 
   test "should not send any alerts if it is daytime" do
