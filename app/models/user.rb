@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :mobile_phone, :user_location, :user_location_value
+  attr_accessible :mobile_phone, :user_location, :user_location_value, :confirmed_at
   attr_accessor :user_location_value
 
   has_one :user_location, :dependent => :destroy
