@@ -13,6 +13,7 @@ class IncomingSmsMessagesController < ApplicationController
       StopMessageHandler.new(mobile_phone, message, keyword, user),
       UnknownUserHandler.new(mobile_phone, message, keyword, user),
       AlertedUserHandler.new(mobile_phone, message, keyword, user),
+      AlarmedUserHandler.new(mobile_phone, message, keyword, user),
       KnownUserHandler.new(mobile_phone, message, keyword, user)
     ]
 

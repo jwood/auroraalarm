@@ -49,6 +49,18 @@ class OutgoingSmsMessages
       "The northern lights may be active in your area! Reply  0) acknowledge alert  1) remind me in 1 hour  2) remind me in 2 hours  3) no more messages tonight"
     end
 
+    def acknowledge_alert
+      "We hope you can see the northern lights!  After you've checked, reply 1) remind me in 1 hour  2) remind me in 2 hours  3) no more messages tonight"
+    end
+
+    def remind_at(time)
+      "You will be reminded to check for the northern lights in #{time} if they are still active."
+    end
+
+    def no_more_messages_tonight
+      "You will recieve no more messages tonight."
+    end
+
     private
 
     def stop_text

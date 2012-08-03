@@ -180,4 +180,55 @@ class IncomingSmsMessagesControllerTest < ActionController::TestCase
     assert_equal 'aurora 90210', message_history.message
     assert_equal 'MO', message_history.message_type
   end
+
+  test "should be able to handle the acknowledgement of an aurora alert" do
+    user = users(:bob)
+    AuroraAlert.create!(:user => user)
+    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.acknowledge_alert)
+    post :index, :mobile_phone => user.mobile_phone, :message => ' 0 ', :keyword => 'AURORA'
+    user.reload
+    assert_not_nil user.aurora_alert.confirmed_at
+    assert_nil user.aurora_alert.send_reminder_at
+  end
+
+  test "should be able handle users asking to be reminded of the aurora in 1 hour" do
+    begin
+      Timecop.freeze(Time.now)
+      user = users(:bob)
+      AuroraAlert.create!(:user => user)
+      SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.remind_at("1 hour"))
+      post :index, :mobile_phone => user.mobile_phone, :message => ' 1 ', :keyword => 'AURORA'
+      user.reload
+      assert_not_nil user.aurora_alert.confirmed_at
+      assert_equal 1.hour.from_now, user.aurora_alert.send_reminder_at
+    ensure
+      Timecop.return
+    end
+  end
+
+  test "should be able handle users asking to be reminded of the aurora in 2 hours" do
+    begin
+      Timecop.freeze(Time.now)
+      user = users(:bob)
+      AuroraAlert.create!(:user => user)
+      SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.remind_at("2 hours"))
+      post :index, :mobile_phone => user.mobile_phone, :message => ' 2) ', :keyword => 'AURORA'
+      user.reload
+      assert_not_nil user.aurora_alert.confirmed_at
+      assert_equal 2.hours.from_now, user.aurora_alert.send_reminder_at
+    ensure
+      Timecop.return
+    end
+  end
+
+  test "should be able handle users asking that no more auora alarms be sent that night" do
+    user = users(:bob)
+    AuroraAlert.create!(:user => user)
+    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.no_more_messages_tonight)
+    post :index, :mobile_phone => user.mobile_phone, :message => ' 3 ', :keyword => 'AURORA'
+    user.reload
+    assert_not_nil user.aurora_alert.confirmed_at
+    assert_nil user.aurora_alert.send_reminder_at
+  end
+
 end
