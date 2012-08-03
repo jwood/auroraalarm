@@ -32,8 +32,11 @@ class CronControllerTest < ActionController::TestCase
   end
 
   test "should be able to perform any necessary cleanup" do
+    AuroraAlert.create!(:user => users(:john), :first_sent_at => 12.hours.ago)
     assert_difference 'MessageHistory.count', -2 do
-      post :cleanup
+      assert_difference 'AuroraAlert.count', -1 do
+        post :cleanup
+      end
     end
     assert_response :success
   end
