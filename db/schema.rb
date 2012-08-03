@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120801133144) do
+ActiveRecord::Schema.define(:version => 20120802195934) do
 
   create_table "alert_permissions", :force => true do |t|
     t.integer  "user_id",     :null => false
@@ -20,6 +20,19 @@ ActiveRecord::Schema.define(:version => 20120801133144) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "aurora_alerts", :force => true do |t|
+    t.integer  "user_id",                         :null => false
+    t.datetime "first_sent_at",                   :null => false
+    t.datetime "last_sent_at"
+    t.integer  "times_sent",       :default => 1, :null => false
+    t.datetime "confirmed_at"
+    t.datetime "send_reminder_at"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "aurora_alerts", ["confirmed_at", "send_reminder_at"], :name => "index_aurora_alerts_on_confirmed_at_and_send_reminder_at"
 
   create_table "kp_forecasts", :force => true do |t|
     t.datetime "forecast_time", :null => false
