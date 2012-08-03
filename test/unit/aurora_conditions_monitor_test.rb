@@ -44,13 +44,16 @@ class AuroraConditionsMonitorTest < ActiveSupport::TestCase
   end
 
   test "should resend the alert if the user never confirmed the initial one" do
-    aurora_alert = AuroraAlert.create!(:user => users(:dan))
+    aurora_alert = AuroraAlert.create!(:user => users(:dan), :confirmed_at => Time.now, :send_reminder_at => 1.minute.ago)
     set_kp(6.33); set_nighttime(true); set_moon(:new); set_cloud_cover(10)
     expect_alerts(users(:dan))
     assert_no_difference 'AuroraAlert.count' do
       @monitor.alert_users_of_aurora_if_conditions_optimal
     end
-    assert_equal 2, aurora_alert.reload.times_sent
+    aurora_alert.reload
+    assert_equal 2, aurora_alert.times_sent
+    assert_nil aurora_alert.confirmed_at
+    assert_nil aurora_alert.send_reminder_at
   end
 
   test "should not send any alerts if it is daytime" do
