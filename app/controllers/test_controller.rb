@@ -10,7 +10,7 @@ class TestController < ApplicationController
     @date = params[:date]
 
     if @date.blank?
-      flash[:notice] = "Date is required"
+      flash.now[:notice] = "Date is required"
     else
       sms_messaging_service = StubbedSmsMessagingService.new
       monitor = SpaceWeatherMonitor.new(:date => Date.parse(@date))
