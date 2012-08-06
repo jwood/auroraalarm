@@ -23,7 +23,22 @@ class TestController < ApplicationController
   end
 
   def alert_users_of_aurora
-    redirect_to test_path
+    @kp = params[:kp].blank? ? 0.00 : params[:kp].to_f
+    @nighttime = params[:nighttime] == "1"
+    @moon_phase = params[:moon_phase].to_sym
+    @cloud_cover_percentage = params[:cloud_cover_percentage].blank? ? 0 : params[:cloud_cover_percentage].to_i
+
+    sms_messaging_service = StubbedSmsMessagingService.new
+    monitor = AuroraConditionsMonitor.new
+    monitor.kp_forecaster = StubbedKpForecaster.new(@kp)
+    monitor.nighttime = StubbedNighttime.new(@nighttime)
+    monitor.moon = StubbedMoon.new(@moon_phase)
+    monitor.local_weather_service = StubbedLocalWeatherService.new(@cloud_cover_percentage)
+    monitor.sms_messaging_service = sms_messaging_service
+    monitor.alert_users_of_aurora_if_conditions_optimal
+
+    @sent_messages = sms_messaging_service.sent_messages
+    render :action => :index
   end
 
   def send_message

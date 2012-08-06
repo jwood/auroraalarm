@@ -37,6 +37,25 @@
   <hr/>
   <h2>Alert Users of Aurora</h2>
   <%= form_tag test_alert_users_of_aurora_path do %>
+    <table>
+      <tr>
+        <td><%= label_tag :kp %></td>
+        <td><%= number_field_tag :kp, @kp, :step => 0.1 %></td>
+      </tr>
+      <tr>
+        <td><%= label_tag :nighttime %></td>
+        <td><%= check_box_tag :nighttime, "1", @nighttime %></td>
+      </tr>
+      <tr>
+        <td><%= label_tag :moon_phase %></td>
+        <td><%= select_tag :moon_phase, options_for_select(Moon.phases, @moon_phase) %></td>
+      </tr>
+      <tr>
+        <td><%= label_tag :cloud_cover_percentage %></td>
+        <td><%= number_field_tag :cloud_cover_percentage, @cloud_cover_percentage %></td>
+      </tr>
+    </table>
+    <p><%= button_tag 'Submit' %></p>
   <% end %>
 
   <hr/>
