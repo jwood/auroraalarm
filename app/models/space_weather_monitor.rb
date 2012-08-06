@@ -1,4 +1,11 @@
 class SpaceWeatherMonitor
+  attr_accessor :sms_messaging_service
+
+  def initialize(params={})
+    @today = params[:date] || DateTime.now.utc.to_date
+    @yesterday = @today - 1.day
+    @sms_messaging_service = SmsMessagingService.new
+  end
 
   def alert_users_of_solar_event
     clear_expired_alert_permissions
@@ -15,12 +22,9 @@ class SpaceWeatherMonitor
   end
 
   def fetch_solar_event
-    today = DateTime.now.utc.to_date
-    yesterday = today - 1.day
-
-    yesterdays_old_event = SolarEvent.occurred_on(yesterday)
-    yesterdays_event = strongest_solar_event(yesterday)
-    todays_event = strongest_solar_event(today)
+    yesterdays_old_event = SolarEvent.occurred_on(@yesterday)
+    yesterdays_event = strongest_solar_event(@yesterday)
+    todays_event = strongest_solar_event(@today)
 
     persist_events(yesterdays_old_event, yesterdays_event, todays_event)
     event_to_alert_on(yesterdays_old_event, yesterdays_event, todays_event)
@@ -64,7 +68,7 @@ class SpaceWeatherMonitor
 
   def persist_solar_event(new_event)
     if new_event
-      SolarEvent.create!(
+      SolarEvent.create(
         :message_code => new_event.message_code,
         :serial_number => new_event.serial_number,
         :issue_time => new_event.issue_time,
@@ -73,7 +77,6 @@ class SpaceWeatherMonitor
   end
 
   def alert_users(solar_event)
-    sms_messaging_service = SmsMessagingService.new
     message = OutgoingSmsMessages.storm_prompt(GeomagneticStorm.new(solar_event.geomagnetic_storm_level))
     User.confirmed.find_each do |user|
       create_alert_permission(user)

@@ -36,4 +36,7 @@ Aurora::Application.configure do
   config.assets.debug = true
 
   config.cache_store = :dalli_store
+
+  ENV['PRIVATE_CONTROLLER_USERNAME'] = "user"
+  ENV['PRIVATE_CONTROLLER_PASSWORD'] = "password"
 end

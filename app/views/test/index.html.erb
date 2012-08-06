@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AuroraAlarm Test</title>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <% if flash[:notice] %>
+    <div style="color: red;"><%= flash[:notice] %></div>
+  <% end %>
+
+  <h2>Sent Messages</h2>
+  <div>
+    <% if @sent_messages.blank? %>
+      None
+    <% else %>
+      <% @sent_messages.each do |sent_message| %>
+        <%= sent_message[:mobile_phone] %> =&gt; <%= sent_message[:message] %><br/>
+      <% end %>
+    <% end %>
+  </div>
+
+  <hr/>
+  <h2>Alert Users of Solar Event</h2>
+  <%= form_tag test_alert_users_of_solar_event_path do %>
+    <table>
+      <tr>
+        <td><%= label_tag :date %></td>
+        <td><%= text_field_tag :date, @date %></td>
+      </tr>
+    </table>
+    <p><%= button_tag 'Submit' %></p>
+  <% end %>
+
+  <hr/>
+  <h2>Alert Users of Aurora</h2>
+  <%= form_tag test_alert_users_of_aurora_path do %>
+  <% end %>
+
+  <hr/>
+  <h2>Send Message</h2>
+  <%= form_tag test_send_message_path do %>
+  <% end %>
+</body>
+</html>
+
