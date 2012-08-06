@@ -1,5 +1,5 @@
 class AuroraConditionsMonitor
-  attr_accessor :alert_recipient_finder, :kp_forecaster, :nighttime, :moon, :local_weather_service
+  attr_accessor :alert_recipient_finder, :kp_forecaster, :nighttime, :moon, :local_weather_service, :sms_messaging_service
 
   def initialize
     @alert_recipient_finder = AlertRecipientFinder.new
@@ -31,25 +31,25 @@ class AuroraConditionsMonitor
     kp_value = kp_forecaster.current_kp_forecast.expected_kp
     magnetic_latitude = user.user_location.magnetic_latitude
 
-    if kp_value <= 1.0
+    if kp_value <= 0.9990
       magnetic_latitude >= 66.5
-    elsif kp_value <= 2.0
+    elsif kp_value <= 1.9999
       magnetic_latitude >= 64.5
-    elsif kp_value <= 3.0
+    elsif kp_value <= 2.9999
       magnetic_latitude >= 62.4
-    elsif kp_value <= 4.0
+    elsif kp_value <= 3.9999
       magnetic_latitude >= 60.4
-    elsif kp_value <= 5.0
+    elsif kp_value <= 4.9999
       magnetic_latitude >= 58.3
-    elsif kp_value <= 6.0
+    elsif kp_value <= 5.9999
       magnetic_latitude >= 56.3
-    elsif kp_value <= 7.0
+    elsif kp_value <= 6.9999
       magnetic_latitude >= 54.2
-    elsif kp_value <= 8.0
+    elsif kp_value <= 7.9999
       magnetic_latitude >= 52.2
-    elsif kp_value <= 9.0
+    elsif kp_value <= 8.9999
       magnetic_latitude >= 50.1
-    elsif kp_value <= 10.0
+    elsif kp_value <= 9.9999
       magnetic_latitude >= 48.1
     end
   end
