@@ -32,6 +32,7 @@ module IncomingSmsHandlers
 
       if @errors.blank?
         response_message = OutgoingSmsMessages.signup_confirmation
+        @user.update_attributes(:confirmed_at => Time.now)
       elsif factory.location && factory.location.international?
         response_message = OutgoingSmsMessages.international_location
       else

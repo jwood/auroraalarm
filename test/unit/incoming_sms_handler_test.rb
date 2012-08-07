@@ -34,6 +34,7 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
     assert_new_user do
       IncomingSmsHandler.new('3125551213', 'aurora 90210', 'AURORA').process
     end
+    assert User.find_by_mobile_phone('3125551213').confirmed?
   end
 
   test "should send an error if we cannot recognize the location" do
