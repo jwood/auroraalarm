@@ -15,7 +15,7 @@ $(function() {
     $("#loading").hide();
   });
 
-  $('nav, #us_only').localScroll({
+  $('nav, #us_only, #faq_links').localScroll({
     duration: 400,
     hash: true
   });

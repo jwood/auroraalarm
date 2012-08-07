@@ -62,7 +62,19 @@
 
   <a name="faq"></a>
   <h2>FAQ</h2>
+  <ul id="faq_links">
+    <li><%= link_to "What are the costs associated with the service?", "#what_are_the_costs" %></li>
+    <li><%= link_to "Will this service wake me up in the middle of the night?", "#wake_me_up" %></li>
+    <li><%= link_to "If you wake me up, does that mean I'll see the Aurora for sure?", "#see_aurora_for_sure" %></li>
+    <li><%= link_to "Why is this service only available to US residents?", "#us_only_explanation" %></li>
+    <li><%= link_to "How do I cancel this service?", "#how_to_cancel" %></li>
+    <li><%= link_to "How do I update my zipcode?", "#how_to_update_zipcode" %></li>
+    <li><%= link_to "What do you do with my mobile phone number and location information?", "#privacy" %></li>
+    <li><%= link_to "Who do I contact if I have any questions, comments, or concerns?", "#who_can_i_contact" %></li>
+  </ul>
+
   <div>
+    <a name="what_are_the_costs"></a>
     <p class="question">What are the costs associated with this service?</p>
     <p>
        This service is free to use.  However, it uses SMS (text messaging) to notify you of
@@ -72,6 +84,7 @@
   </div>
 
   <div>
+    <a name="wake_me_up"></a>
     <p class="question">Will this service wake me up in the middle of the night?</p>
     <p>
       Yes, and that's the point!  The best time for viewing Auroras are in the hours past midnight.
@@ -87,6 +100,7 @@
   </div>
 
   <div>
+    <a name="see_aurora_for_sure"></a>
     <p class="question">If you wake me up, does that mean I'll see the Aurora for sure?</p>
     <p>
       Sadly, no.  Ambient light (city lights, etc) prevents many from seeing the Aurora.  And,
@@ -113,16 +127,19 @@
   </div>
 
   <div>
+    <a name="how_to_cancel"></a>
     <p class="question">How do I cancel this service?</p>
     <p>You can cancel the service at any time by texting <strong>STOP</strong> to 839863.</p>
   </div>
 
   <div>
+    <a name="how_to_update_zipcode"></a>
     <p class="question">How do I update my zipcode?</p>
     <p>You can update your zipcode at any time by texting <strong>AURORA <zipcode></strong> to 839863. (ex. AURORA 90210)</p>
   </div>
 
   <div>
+    <a name="privacy"></a>
     <p class="question">What do you do with my mobile phone number and location information?</p>
     <p>
       We use your location information to determine if conditions are right for viewing the Aurora in your area, and we use your mobile
@@ -134,6 +151,12 @@
       except for any SMS messages that were sent or received.  All SMS messages are deleted two weeks after they are sent or received, giving
       us time to investigate any issues that may be reported.
     </p>
+  </div>
+
+  <div>
+    <a name="who_can_i_contact"></a>
+    <p class="question">Who do I contact if I have any questions, comments, or concerns?</p>
+    <p>You can reach me, John Wood, at <%= mail_to 'john@johnpwood.net', 'john@johnpwood.net' %>.</p>
   </div>
 </section>
 
