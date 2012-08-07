@@ -25,7 +25,10 @@ class IncomingSmsHandler
       break if handled
     end
 
-    Rails.logger.error "Unable to handle message \"#{@message}\" from mobile phone #{@mobile_phone}" unless handled
+    if !handled
+      @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.unknown_request)
+      Rails.logger.error "Unable to handle message \"#{@message}\" from mobile phone #{@mobile_phone}"
+    end
   end
 
 end

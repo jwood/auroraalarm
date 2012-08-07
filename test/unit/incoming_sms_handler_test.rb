@@ -3,8 +3,10 @@ require 'test_helper'
 class IncomingSmsHandlerTest < ActiveSupport::TestCase
 
   test "should not freak out if we get a message for a mobile phone number we do not know about" do
-    SmsMessagingService.any_instance.expects(:send_message).never
-    IncomingSmsHandler.new('9999999999', 'foo bar', nil).process
+    SmsMessagingService.any_instance.expects(:send_message).with('9999999999', OutgoingSmsMessages.unknown_request)
+    assert_no_new_user do
+      IncomingSmsHandler.new('9999999999', 'foo bar', nil).process
+    end
   end
 
   test "should be able to confirm an unconfirmed user" do

@@ -61,6 +61,10 @@ class OutgoingSmsMessages
       "You will recieve no more messages tonight."
     end
 
+    def unknown_request
+      "We have received your message, but we're not sure what you're trying to do. #{stop_text} #{help}"
+    end
+
     private
 
     def stop_text
