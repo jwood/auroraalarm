@@ -61,6 +61,17 @@
   <hr/>
   <h2>Send Message</h2>
   <%= form_tag test_send_message_path do %>
+    <table>
+      <tr>
+        <td><%= label_tag :mobile_phone %></td>
+        <td><%= phone_field_tag :mobile_phone, @mobile_phone %></td>
+      </tr>
+      <tr>
+        <td><%= label_tag :message %></td>
+        <td><%= text_area_tag :message, @message, :rows => 3, :cols => 80 %></td>
+      </tr>
+    </table>
+    <p><%= button_tag 'Submit' %></p>
   <% end %>
 </body>
 </html>

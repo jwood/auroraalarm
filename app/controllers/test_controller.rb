@@ -42,7 +42,18 @@ class TestController < ApplicationController
   end
 
   def send_message
-    redirect_to test_path
+    @mobile_phone = params[:mobile_phone]
+    @message = params[:message]
+
+    if @mobile_phone.blank? || @message.blank?
+      flash.now[:notice] = "Mobile phone and message are required"
+    else
+      sms_messaging_service = StubbedSmsMessagingService.new
+      IncomingSmsHandler.new(@mobile_phone, @message, "AURORA", sms_messaging_service).process
+      @sent_messages = sms_messaging_service.sent_messages
+    end
+
+    render :action => :index
   end
 
 end
