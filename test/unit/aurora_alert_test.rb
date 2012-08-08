@@ -6,6 +6,7 @@ class AuroraAlertTest < ActiveSupport::TestCase
     aurora_alert = AuroraAlert.create!(:user => users(:john))
     assert_equal 1, aurora_alert.times_sent
     assert_not_nil aurora_alert.first_sent_at
+    assert_not_nil aurora_alert.last_sent_at
   end
 
   test "should not be able to create a new aurora alert with missing information" do
