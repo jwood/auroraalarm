@@ -6,6 +6,9 @@ module IncomingSmsHandlers
         if signup_confirmation?
           handle_signup_confirmation
           return true
+        elsif signup_declined?
+          handle_declined_signup
+          return true
         elsif opt_in_via_sms?
           update_location_for_confirmed_user
           return true
@@ -24,9 +27,16 @@ module IncomingSmsHandlers
     end
 
     def handle_signup_confirmation
-      @user.confirmed_at = Time.now
-      @user.save
+      confirm_user_if_necessary
       @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.signup_confirmation)
+    end
+
+    def signup_declined?
+      negative_response? && !@user.confirmed?
+    end
+
+    def handle_declined_signup
+      @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.stop)
     end
 
     def update_location_for_confirmed_user
@@ -39,6 +49,7 @@ module IncomingSmsHandlers
       elsif location.international?
         @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.international_location)
       else
+        confirm_user_if_necessary
         @user.user_location.update_attributes(:city => location.city,
                                               :state => location.state,
                                               :postal_code => location.zip,
@@ -51,7 +62,14 @@ module IncomingSmsHandlers
     end
 
     def handle_already_signed_up
+      confirm_user_if_necessary
       @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.already_signed_up)
+    end
+
+    def confirm_user_if_necessary
+      if !@user.confirmed?
+        @user.update_attributes(:confirmed_at => Time.now)
+      end
     end
 
   end

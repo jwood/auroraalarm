@@ -19,6 +19,16 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
     assert user.reload.confirmed?
   end
 
+  test "should be able to decline an unconfirmed user" do
+    user = users(:john)
+    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.stop)
+
+    assert_no_new_user do
+      IncomingSmsHandler.new(user.mobile_phone, 'n', nil).process
+    end
+    assert !user.reload.confirmed?
+  end
+
   test "should ask the user for their location if only the keyword is sent" do
     SmsMessagingService.any_instance.expects(:send_message).with('3125551213', OutgoingSmsMessages.location_prompt)
 
@@ -64,6 +74,17 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
     end
   end
 
+  test "shoud confirm the user if they are unconfirmed and text the keyword" do
+    user = users(:john)
+    assert !user.confirmed?
+    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.already_signed_up)
+
+    assert_no_new_user do
+      IncomingSmsHandler.new(user.mobile_phone, 'aurora', 'AURORA').process
+    end
+    assert user.reload.confirmed?
+  end
+
   test "should unsubscribe confirmed user when they text STOP" do
     user = users(:dan)
     SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.stop)
@@ -101,6 +122,21 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
       IncomingSmsHandler.new(user.mobile_phone, 'aurora 60477', '').process
     end
     assert_equal "60477", user.user_location.reload.postal_code
+  end
+
+  test "should confirm a user and update their zip code if they are already subscribed and text AURORA followed by their zipcode" do
+    user = users(:john)
+    assert_equal "55419", user.user_location.postal_code
+    assert !user.confirmed?
+
+    expects_valid_location("60477")
+    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.location_update("60477"))
+
+    assert_no_new_user do
+      IncomingSmsHandler.new(user.mobile_phone, 'aurora 60477', '').process
+    end
+    assert_equal "60477", user.user_location.reload.postal_code
+    assert user.reload.confirmed?
   end
 
   test "should return an error message if trying to update location with an invalid location value" do
