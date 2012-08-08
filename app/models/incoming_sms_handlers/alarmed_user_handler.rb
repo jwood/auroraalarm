@@ -4,7 +4,7 @@ module IncomingSmsHandlers
     def handle
       if @user && @user.aurora_alert && valid_response?
         if acknowledge_alert?
-          update_alert(:confirmed_at => Time.now.utc)
+          update_alert(:confirmed_at => Time.now.utc, :send_reminder_at => nil)
           send_message(OutgoingSmsMessages.acknowledge_alert)
         elsif remind_in_1_hour?
           update_alert(:confirmed_at => Time.now.utc, :send_reminder_at => 1.hour.from_now)
@@ -13,7 +13,7 @@ module IncomingSmsHandlers
           update_alert(:confirmed_at => Time.now.utc, :send_reminder_at => 2.hours.from_now)
           send_message(OutgoingSmsMessages.remind_at("2 hours"))
         elsif no_more_messages_tonight?
-          update_alert(:confirmed_at => Time.now.utc)
+          update_alert(:confirmed_at => Time.now.utc, :send_reminder_at => nil)
           send_message(OutgoingSmsMessages.no_more_messages_tonight)
         end
         return true
