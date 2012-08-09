@@ -75,12 +75,13 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
   end
 
   test "shoud confirm the user if they are unconfirmed and text the keyword" do
+    expects_valid_location("90210")
     user = users(:john)
     assert !user.confirmed?
-    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.already_signed_up)
+    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.location_update("60477"))
 
     assert_no_new_user do
-      IncomingSmsHandler.new(user.mobile_phone, 'aurora', 'AURORA').process
+      IncomingSmsHandler.new(user.mobile_phone, 'aurora 90210', 'AURORA').process
     end
     assert user.reload.confirmed?
   end

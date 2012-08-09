@@ -12,7 +12,7 @@ module IncomingSmsHandlers
         elsif opt_in_via_sms?
           update_location_for_confirmed_user
           return true
-        else
+        elsif @user.confirmed?
           handle_already_signed_up
           return true
         end
@@ -62,7 +62,6 @@ module IncomingSmsHandlers
     end
 
     def handle_already_signed_up
-      confirm_user_if_necessary
       @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.already_signed_up)
     end
 
