@@ -49,7 +49,7 @@ class UserFactory
     @location = service.geocode(location_value)
 
     if @location.nil? || @location.invalid?
-      @errors << "Location is invalid"
+      @errors << "Zipcode is invalid"
       nil
     elsif @location.international?
       @errors << "Location must be within the US"
