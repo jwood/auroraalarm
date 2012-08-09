@@ -34,6 +34,10 @@ header {
   width: $content-width;
   margin: auto;
   color: $white;
+
+  a:link { color: $white; text-decoration: none; }
+  a:visited { color: $white; }
+  a:hover { color: $white; text-decoration: none; }
 }
 
 #title {
