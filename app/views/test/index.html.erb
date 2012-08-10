@@ -1,78 +1,67 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>AuroraAlarm Test</title>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<% if flash[:notice] %>
+  <div style="color: red;"><%= flash[:notice] %></div>
+<% end %>
 
-  <% if flash[:notice] %>
-    <div style="color: red;"><%= flash[:notice] %></div>
-  <% end %>
-
-  <h2>Sent Messages</h2>
-  <div>
-    <% if @sent_messages.blank? %>
-      None
-    <% else %>
-      <% @sent_messages.each do |sent_message| %>
-        <%= sent_message[:mobile_phone] %> =&gt; <%= sent_message[:message] %><br/>
-      <% end %>
+<h2>Sent Messages</h2>
+<div>
+  <% if @sent_messages.blank? %>
+    None
+  <% else %>
+    <% @sent_messages.each do |sent_message| %>
+      <%= sent_message[:mobile_phone] %> =&gt; <%= sent_message[:message] %><br/>
     <% end %>
-  </div>
-
-  <hr/>
-  <h2>Alert Users of Solar Event</h2>
-  <%= form_tag test_alert_users_of_solar_event_path do %>
-    <table>
-      <tr>
-        <td><%= label_tag :date %></td>
-        <td><%= text_field_tag :date, @date %></td>
-      </tr>
-    </table>
-    <p><%= button_tag 'Submit' %></p>
   <% end %>
+</div>
 
-  <hr/>
-  <h2>Alert Users of Aurora</h2>
-  <%= form_tag test_alert_users_of_aurora_path do %>
-    <table>
-      <tr>
-        <td><%= label_tag :kp %></td>
-        <td><%= number_field_tag :kp, @kp, :step => 0.1 %></td>
-      </tr>
-      <tr>
-        <td><%= label_tag :nighttime %></td>
-        <td><%= check_box_tag :nighttime, "1", @nighttime %></td>
-      </tr>
-      <tr>
-        <td><%= label_tag :moon_phase %></td>
-        <td><%= select_tag :moon_phase, options_for_select(Moon.phases, @moon_phase) %></td>
-      </tr>
-      <tr>
-        <td><%= label_tag :cloud_cover_percentage %></td>
-        <td><%= number_field_tag :cloud_cover_percentage, @cloud_cover_percentage %></td>
-      </tr>
-    </table>
-    <p><%= button_tag 'Submit' %></p>
-  <% end %>
+<hr/>
+<h2>Alert Users of Solar Event</h2>
+<%= form_tag test_alert_users_of_solar_event_path do %>
+  <table>
+    <tr>
+      <td><%= label_tag :date %></td>
+      <td><%= text_field_tag :date, @date %></td>
+    </tr>
+  </table>
+  <p><%= button_tag 'Submit' %></p>
+<% end %>
 
-  <hr/>
-  <h2>Send Message</h2>
-  <%= form_tag test_send_message_path do %>
-    <table>
-      <tr>
-        <td><%= label_tag :mobile_phone %></td>
-        <td><%= phone_field_tag :mobile_phone, @mobile_phone %></td>
-      </tr>
-      <tr>
-        <td><%= label_tag :message %></td>
-        <td><%= text_area_tag :message, @message, :rows => 3, :cols => 80 %></td>
-      </tr>
-    </table>
-    <p><%= button_tag 'Submit' %></p>
-  <% end %>
-</body>
-</html>
+<hr/>
+<h2>Alert Users of Aurora</h2>
+<%= form_tag test_alert_users_of_aurora_path do %>
+  <table>
+    <tr>
+      <td><%= label_tag :kp %></td>
+      <td><%= number_field_tag :kp, @kp, :step => 0.1 %></td>
+    </tr>
+    <tr>
+      <td><%= label_tag :nighttime %></td>
+      <td><%= check_box_tag :nighttime, "1", @nighttime %></td>
+    </tr>
+    <tr>
+      <td><%= label_tag :moon_phase %></td>
+      <td><%= select_tag :moon_phase, options_for_select(Moon.phases, @moon_phase) %></td>
+    </tr>
+    <tr>
+      <td><%= label_tag :cloud_cover_percentage %></td>
+      <td><%= number_field_tag :cloud_cover_percentage, @cloud_cover_percentage %></td>
+    </tr>
+  </table>
+  <p><%= button_tag 'Submit' %></p>
+<% end %>
+
+<hr/>
+<h2>Send Message</h2>
+<%= form_tag test_send_message_path do %>
+  <table>
+    <tr>
+      <td><%= label_tag :mobile_phone %></td>
+      <td><%= phone_field_tag :mobile_phone, @mobile_phone %></td>
+    </tr>
+    <tr>
+      <td><%= label_tag :message %></td>
+      <td><%= text_area_tag :message, @message, :rows => 3, :cols => 80 %></td>
+    </tr>
+  </table>
+  <p><%= button_tag 'Submit' %></p>
+<% end %>
 
