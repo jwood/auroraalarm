@@ -56,7 +56,7 @@ class UserFactory
         @errors << "Location must be within the US"
       end
     else
-      @errors << "Zipcode is invalid"
+      @errors << "Please provide a five digit zipcode (90210)"
     end
     @location
   end

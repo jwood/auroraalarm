@@ -55,7 +55,7 @@ class UserFactoryTest < ActiveSupport::TestCase
       assert !user.persisted?
     end
 
-    assert_equal ["Zipcode is invalid"], @factory.errors
+    assert_equal ["Please provide a five digit zipcode (90210)"], @factory.errors
   end
 
   test "should not create a new user if the location provided is outside of the US" do
@@ -75,7 +75,7 @@ class UserFactoryTest < ActiveSupport::TestCase
       assert !user.persisted?
     end
 
-    assert_equal ["Zipcode is invalid"], @factory.errors
+    assert_equal ["Please provide a five digit zipcode (90210)"], @factory.errors
   end
 
 end
