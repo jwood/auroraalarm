@@ -72,8 +72,6 @@ class SiteControllerTest < ActionController::TestCase
   end
 
   test "should not be able to create a user with a bogus zip code" do
-    expects_invalid_location("abc123")
-
     assert_no_difference 'User.count' do
       assert_no_difference 'UserLocation.count' do
         xhr :post, :new_user, :user => { :mobile_phone => "3125551212", :user_location_value => "abc123" }
@@ -114,11 +112,11 @@ class SiteControllerTest < ActionController::TestCase
   end
 
   test "should not be able to create a user with a location outside of the US" do
-    expects_international_location("London, England")
+    expects_international_location("11300")
 
     assert_no_difference 'User.count' do
       assert_no_difference 'UserLocation.count' do
-        xhr :post, :new_user, :user => { :mobile_phone => "3125551212", :user_location_value => "London, England" }
+        xhr :post, :new_user, :user => { :mobile_phone => "3125551212", :user_location_value => "11300" }
       end
     end
 

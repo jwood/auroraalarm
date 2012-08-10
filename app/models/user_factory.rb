@@ -45,18 +45,20 @@ class UserFactory
   end
 
   def lookup_location_data(location_value)
-    service = GeolocationService.new
-    @location = service.geocode(location_value)
+    @location = nil
+    if ZipcodeFormat.valid?(location_value)
+      service = GeolocationService.new
+      @location = service.geocode(location_value)
 
-    if @location.nil? || @location.invalid?
-      @errors << "Zipcode is invalid"
-      nil
-    elsif @location.international?
-      @errors << "Location must be within the US"
-      nil
+      if @location.nil? || @location.invalid?
+        @errors << "Zipcode is invalid"
+      elsif @location.international?
+        @errors << "Location must be within the US"
+      end
     else
-      @location
+      @errors << "Zipcode is invalid"
     end
+    @location
   end
 
 end

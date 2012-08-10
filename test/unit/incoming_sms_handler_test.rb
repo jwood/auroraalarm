@@ -48,7 +48,6 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
   end
 
   test "should send an error if we cannot recognize the location" do
-    expects_invalid_location("FOOBAZ")
     SmsMessagingService.any_instance.expects(:send_message).with('3125551213', OutgoingSmsMessages.bad_location_at_signup)
 
     assert_no_new_user do
@@ -57,11 +56,11 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
   end
 
   test "should send an error if the location provided is outside of the US" do
-    expects_international_location("LONDON, ENGLAND")
+    expects_international_location("11300")
     SmsMessagingService.any_instance.expects(:send_message).with('3125551213', OutgoingSmsMessages.international_location)
 
     assert_no_new_user do
-      IncomingSmsHandler.new('3125551213', 'aurora london, england', 'AURORA').process
+      IncomingSmsHandler.new('3125551213', 'aurora 11300', 'AURORA').process
     end
   end
 
@@ -157,11 +156,11 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
     user = users(:dan)
     assert_equal "55419", user.user_location.postal_code
 
-    expects_international_location("LONDON, ENGLAND")
+    expects_international_location("11300")
     SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.international_location)
 
     assert_no_new_user do
-      IncomingSmsHandler.new(user.mobile_phone, 'aurora london, england', 'AURORA').process
+      IncomingSmsHandler.new(user.mobile_phone, 'aurora 11300', 'AURORA').process
     end
     assert_equal "55419", user.user_location.reload.postal_code
   end

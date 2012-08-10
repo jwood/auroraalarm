@@ -49,9 +49,7 @@ class UserFactoryTest < ActiveSupport::TestCase
     assert_equal ["A user with the specified mobile phone already exists"], @factory.errors
   end
 
-  test "should not create a new user of the location provided is invalid" do
-    expects_invalid_location("zzz")
-
+  test "should not create a new user if the location provided is invalid" do
     assert_no_new_user do
       user = @factory.create_user('3125551212', 'zzz')
       assert !user.persisted?
@@ -60,15 +58,24 @@ class UserFactoryTest < ActiveSupport::TestCase
     assert_equal ["Zipcode is invalid"], @factory.errors
   end
 
-  test "should not create a new user of the location provided is outside of the US" do
-    expects_international_location("London, England")
+  test "should not create a new user if the location provided is outside of the US" do
+    expects_international_location("11300")
 
     assert_no_new_user do
-      user = @factory.create_user('3125551212', 'London, England')
+      user = @factory.create_user('3125551212', '11300')
       assert !user.persisted?
     end
 
     assert_equal ["Location must be within the US"], @factory.errors
+  end
+
+  test "should not create a new user if the location provided is not a zip code" do
+    assert_no_new_user do
+      user = @factory.create_user('3125551212', 'Chicago, IL')
+      assert !user.persisted?
+    end
+
+    assert_equal ["Zipcode is invalid"], @factory.errors
   end
 
 end
