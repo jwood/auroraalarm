@@ -23,4 +23,10 @@ class SpaceWeatherAlertServiceTest < ActiveSupport::TestCase
     assert_nil service.strongest_geomagnetic_storm(Date.new(2012, 6, 25))
   end
 
+  test "should be able to fetch the report for a given month" do
+    service = SpaceWeatherAlertService.new(2012, 6)
+    report = service.report
+    assert_equal 83, report.find_events.length
+  end
+
 end

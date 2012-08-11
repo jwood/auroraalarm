@@ -16,11 +16,20 @@ class SpaceWeatherAlertService
     end
   end
 
+  def report
+    fetch_report
+    @report
+  end
+
+  def self.data_url(date)
+    "http://www.swpc.noaa.gov/alerts/archive/#{report_name(date)}.html"
+  end
+
   private
 
   def fetch_report
     if @report.nil?
-      data = http_get("http://www.swpc.noaa.gov/alerts/archive/#{report_name}.html")
+      data = http_get(SpaceWeatherAlertService.data_url(Date.new(@year, @month)))
       if data
         @report = SpaceWeatherAlertReport.new(data)
       end
@@ -28,8 +37,8 @@ class SpaceWeatherAlertService
     @report
   end
 
-  def report_name
-    "alerts_#{Date.new(@year, @month, 1).strftime("%b%Y")}"
+  def self.report_name(date)
+    "alerts_#{date.strftime("%b%Y")}"
   end
 
 end

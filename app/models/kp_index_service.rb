@@ -17,10 +17,14 @@ class KpIndexService
     forecast
   end
 
+  def self.data_url
+    "http://www.swpc.noaa.gov/wingkp/wingkp_list.txt"
+  end
+
   private
 
   def forecast_data
-    @data ||= http_get("http://www.swpc.noaa.gov/wingkp/wingkp_list.txt")
+    @data ||= http_get(KpIndexService.data_url)
   end
 
 end

@@ -11,6 +11,7 @@ Aurora::Application.routes.draw do
   match '/test/alert_users_of_solar_event' => 'test#alert_users_of_solar_event', :via => :post
   match '/test/alert_users_of_aurora' => 'test#alert_users_of_aurora', :via => :post
   match '/test/send_message' => 'test#send_message', :via => :post
+  match '/test/status' => 'test#status', :via => :get
 
   root :to => 'site#index'
 end
