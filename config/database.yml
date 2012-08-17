@@ -12,3 +12,8 @@ test:
   username: aurora
   min_messages: WARNING
 
+postgres:
+  adapter: postgresql
+  database: aurora_test
+  username: postgres
+
