@@ -9,7 +9,7 @@ development:
 test:
   adapter: postgresql
   database: aurora_test
-  username: aurora
+  username: <%= ENV['DB'] || 'aurora' %>
   min_messages: WARNING
 
 postgres:
