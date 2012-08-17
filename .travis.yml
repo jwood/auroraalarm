@@ -1,6 +1,9 @@
 language: ruby
 rvm:
   - 1.9.3
-env: DB=postgres
+env:
+  - DB=postgres
+script:
+  - RAILS_ENV=test bundle exec rake --trace db:migrate test
 before_script:
   - psql -c 'create database aurora_test;' -U postgres
