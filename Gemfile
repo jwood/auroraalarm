@@ -28,7 +28,7 @@ group :test do
   gem 'shoulda', '3.1.0'
   gem 'fakeweb', '1.3.0'
   gem 'mocha', '0.12.0'
-  gem 'simplecov', '0.6.4', :require => false
+  gem 'simplecov', '0.6.4'
   gem 'timecop', '0.4.4'
 end
 
