@@ -65,6 +65,11 @@ class ActiveSupport::TestCase
     end
   end
 
+  def assert_time_roughly(expected, actual, deviation = 5.seconds)
+    low, high = expected - deviation, expected + deviation
+    assert(actual >= low && actual <= high, "Expected time within #{deviation} seconds of #{expected} but was #{actual}")
+  end
+
   def solar_event(strength, issue_time)
     SpaceWeatherAlertReport::SpaceWeatherEvent.new("WATA050", new_serial_number, issue_time.to_s, 0, strength)
   end

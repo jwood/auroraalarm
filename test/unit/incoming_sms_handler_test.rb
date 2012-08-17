@@ -216,7 +216,7 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
       IncomingSmsHandler.new(user.mobile_phone, '1', 'AURORA').process
       user.reload
       assert_not_nil user.aurora_alert.confirmed_at
-      assert_equal 1.hour.from_now, user.aurora_alert.send_reminder_at
+      assert_time_roughly 1.hour.from_now, user.aurora_alert.send_reminder_at
     ensure
       Timecop.return
     end
@@ -231,7 +231,7 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
       IncomingSmsHandler.new(user.mobile_phone, '2)', 'AURORA').process
       user.reload
       assert_not_nil user.aurora_alert.confirmed_at
-      assert_equal 2.hours.from_now, user.aurora_alert.send_reminder_at
+      assert_time_roughly 2.hours.from_now, user.aurora_alert.send_reminder_at
     ensure
       Timecop.return
     end
