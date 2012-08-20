@@ -18,3 +18,9 @@
   Kp Index: <%= @latest_space_weather_event.kp_index %></br>
   Geomagnetic storm level: <%= @latest_space_weather_event.geomagnetic_storm_level %>
 </p>
+
+<h2>Moon Phase</h2>
+<p><%= @moon_phase.to_s.humanize %></p>
+
+<h2>Night time?</h2>
+<p><%= @nighttime %></p>
