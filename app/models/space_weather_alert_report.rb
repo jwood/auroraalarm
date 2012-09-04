@@ -52,7 +52,12 @@ class SpaceWeatherAlertReport
       serial_number = $1 if line =~ /^Serial Number: (.*)<br>/
       issue_time = "#{$1} #{$2} #{$3[0..1]}:#{$3[2..3]} #{$4}" if line =~ /^Issue Time: (\d\d\d\d) (.*) (\d\d\d\d) (.*)<br>/
       kp_index = $1 if line =~ /Geomagnetic K-index of (\d+).*<br>/
-      geomagnetic_storm_level = "G#{$1}" if line =~ /^NOAA Scale: Periods reaching the G(\d) .* Level Likely/
+
+      if line =~ /^NOAA Scale: Periods reaching the G(\d) .* Level Likely/
+        geomagnetic_storm_level = "G#{$1}"
+      elsif line =~ /Geomagnetic Storm Category G(\d) Predicted/
+        geomagnetic_storm_level = "G#{$1}"
+      end
     end
     SpaceWeatherEvent.new(message_code, serial_number, issue_time, kp_index, geomagnetic_storm_level)
   end
