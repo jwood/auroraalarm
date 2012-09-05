@@ -46,14 +46,13 @@ class SpaceWeatherAlertReport
   end
 
   def parse_section(section)
-    message_code = serial_number = issue_time = kp_index = nil
+    message_code = serial_number = issue_time = nil
     section.each do |line|
       message_code = $1 if line =~ /^Space Weather Message Code: (.*)<br>/
       serial_number = $1 if line =~ /^Serial Number: (.*)<br>/
       issue_time = "#{$1} #{$2} #{$3[0..1]}:#{$3[2..3]} #{$4}" if line =~ /^Issue Time: (\d\d\d\d) (.*) (\d\d\d\d) (.*)<br>/
-      kp_index = $1 if line =~ /Geomagnetic K-index of (\d+).*<br>/
     end
-    SpaceWeatherEvent.new(message_code, serial_number, issue_time, kp_index, nil)
+    SpaceWeatherEvent.new(message_code, serial_number, issue_time)
   end
 
 end
