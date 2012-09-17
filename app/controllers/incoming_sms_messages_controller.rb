@@ -4,9 +4,8 @@ class IncomingSmsMessagesController < ApplicationController
   def index
     mobile_phone = params[:mobile_phone]
     message = (params[:message] && params[:message].strip)
-    keyword = (params[:keyword] && params[:keyword].strip)
 
-    IncomingSmsHandler.new(mobile_phone, message, keyword).process
+    IncomingSmsHandler.new(mobile_phone, message).process
     render :nothing => true
   end
 

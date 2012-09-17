@@ -1,9 +1,8 @@
 class IncomingSmsHandler
 
-  def initialize(mobile_phone, message, keyword, sms_messaging_service=nil)
+  def initialize(mobile_phone, message, sms_messaging_service=nil)
     @mobile_phone = mobile_phone
     @message = message
-    @keyword = keyword
     @sms_messaging_service = sms_messaging_service || SmsMessagingService.new
   end
 
@@ -12,11 +11,11 @@ class IncomingSmsHandler
     user = User.find_by_mobile_phone(@mobile_phone)
 
     handlers = [
-      IncomingSmsHandlers::StopMessageHandler.new(@mobile_phone, @message, @keyword, user, @sms_messaging_service),
-      IncomingSmsHandlers::UnknownUserHandler.new(@mobile_phone, @message, @keyword, user, @sms_messaging_service),
-      IncomingSmsHandlers::AlertedUserHandler.new(@mobile_phone, @message, @keyword, user, @sms_messaging_service),
-      IncomingSmsHandlers::AlarmedUserHandler.new(@mobile_phone, @message, @keyword, user, @sms_messaging_service),
-      IncomingSmsHandlers::KnownUserHandler.new(@mobile_phone, @message, @keyword, user, @sms_messaging_service)
+      IncomingSmsHandlers::StopMessageHandler.new(@mobile_phone, @message, user, @sms_messaging_service),
+      IncomingSmsHandlers::UnknownUserHandler.new(@mobile_phone, @message, user, @sms_messaging_service),
+      IncomingSmsHandlers::AlertedUserHandler.new(@mobile_phone, @message, user, @sms_messaging_service),
+      IncomingSmsHandlers::AlarmedUserHandler.new(@mobile_phone, @message, user, @sms_messaging_service),
+      IncomingSmsHandlers::KnownUserHandler.new(@mobile_phone, @message, user, @sms_messaging_service)
     ]
 
     handled = false

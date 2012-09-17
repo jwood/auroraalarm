@@ -1,9 +1,8 @@
 class MessageHandler
 
-  def initialize(mobile_phone, message, keyword, user, sms_messaging_service)
+  def initialize(mobile_phone, message, user, sms_messaging_service)
     @mobile_phone = mobile_phone
     @message = message
-    @keyword = keyword
     @user = user
     @sms_messaging_service = sms_messaging_service
   end
