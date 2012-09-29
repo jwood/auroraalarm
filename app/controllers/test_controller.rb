@@ -46,7 +46,7 @@ class TestController < PrivateController
       flash.now[:notice] = "Mobile phone and message are required"
     else
       sms_messaging_service = StubbedSmsMessagingService.new
-      IncomingSmsHandler.new(@mobile_phone, @message, "AURORA", sms_messaging_service).process
+      IncomingSmsHandler.process(@mobile_phone, @message, sms_messaging_service)
       @sent_messages = sms_messaging_service.sent_messages
     end
 

@@ -1,12 +1,17 @@
 class IncomingSmsHandler
 
-  def initialize(mobile_phone, message, sms_messaging_service=nil)
+  def initialize(mobile_phone, message, sms_messaging_service)
     @mobile_phone = mobile_phone
     @message = message
-    @sms_messaging_service = sms_messaging_service || SmsMessagingService.new
+    @sms_messaging_service = sms_messaging_service
   end
 
-  def process
+  def self.process(mobile_phone, message, sms_messaging_service=SmsMessagingService.new)
+    handler = self.new(mobile_phone, message, sms_messaging_service)
+    handler.process_message
+  end
+
+  def process_message
     MessageHistory.create(:mobile_phone => @mobile_phone, :message => @message, :message_type => "MO")
     user = User.find_by_mobile_phone(@mobile_phone)
 
