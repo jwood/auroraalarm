@@ -19,6 +19,17 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
     end
   end
 
+  test "should alert users if a new event occurred yesterday, and no event occurred today" do
+    SmsMessagingService.any_instance.expects(:send_message).times(2).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.new("G2")) }
+    SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@yesterday).returns(solar_event("G2", DateTime.now.utc))
+    SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@today).returns(nil)
+    assert_difference 'SolarEvent.count', 1 do
+      assert_difference 'AlertPermission.count', 2 do
+        @monitor.alert_users_of_solar_event
+      end
+    end
+  end
+
   test "should alert users if a stronger solar event occurred yesterday, after the alert went out, but nothing occurred today" do
     SmsMessagingService.any_instance.expects(:send_message).times(2).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.new("G2")) }
     create_yesterdays_previously_recorded_event("G1")

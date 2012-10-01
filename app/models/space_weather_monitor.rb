@@ -61,6 +61,8 @@ class SpaceWeatherMonitor
       todays_event
     elsif !yesterday_old.blank? && yesterday > yesterday_old
       yesterdays_event
+    elsif yesterday_old.blank? && !yesterday.blank? && today.blank?
+      yesterdays_event
     else
       nil
     end
