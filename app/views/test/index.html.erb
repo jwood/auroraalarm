@@ -62,6 +62,10 @@
       <td><%= text_area_tag :message, @message, :rows => 3, :cols => 80 %></td>
     </tr>
   </table>
+  <div>
+    <%= check_box_tag :send_real_sms_messages, "1", @send_real_sms_messages %>
+    <%= label_tag :send_real_sms_messages %>
+  </div>
   <p><%= button_tag 'Submit' %></p>
 <% end %>
 

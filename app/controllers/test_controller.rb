@@ -41,13 +41,14 @@ class TestController < PrivateController
   def send_message
     @mobile_phone = params[:mobile_phone]
     @message = params[:message]
+    @send_real_sms_messages = (params[:send_real_sms_messages] == "1")
 
     if @mobile_phone.blank? || @message.blank?
       flash.now[:notice] = "Mobile phone and message are required"
     else
-      sms_messaging_service = StubbedSmsMessagingService.new
+      sms_messaging_service ||= @send_real_sms_messages ? SmsMessagingService.new(:force_send => true) : StubbedSmsMessagingService.new
       IncomingSmsHandler.process(@mobile_phone, @message, sms_messaging_service)
-      @sent_messages = sms_messaging_service.sent_messages
+      @sent_messages = sms_messaging_service.sent_messages unless @send_real_sms_messages
     end
 
     render :action => :index
