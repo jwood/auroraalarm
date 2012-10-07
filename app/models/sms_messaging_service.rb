@@ -1,9 +1,9 @@
 class SmsMessagingService
 
   def initialize(options={})
-    username = ENV['SIGNAL_DELIVER_SMS_USERNAME']
-    password = ENV['SIGNAL_DELIVER_SMS_PASSWORD']
-    @deliver_sms = SignalApi::DeliverSms.new(username, password)
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    auth_token = ENV['TWILIO_AUTH_TOKEN']
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
     @force_send = options[:force_send]
   end
 
@@ -11,7 +11,7 @@ class SmsMessagingService
     Rails.logger.info "Sending message to #{mobile_phone} : #{message}"
     if Rails.env.production? || @force_send
       MessageHistory.create(:mobile_phone => mobile_phone, :message => message, :message_type => "MT")
-      @deliver_sms.deliver(mobile_phone, message)
+      @client.account.sms.messages.create(:from => '+13123865114', :to => mobile_phone, :body => message)
     end
   end
 
