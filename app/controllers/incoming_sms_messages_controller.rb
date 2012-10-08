@@ -1,12 +1,21 @@
 class IncomingSmsMessagesController < ApplicationController
-  http_basic_authenticate_with :name => ENV['SIGNAL_RECEIVE_SMS_USERNAME'], :password => ENV['SIGNAL_RECEIVE_SMS_PASSWORD']
+
+  before_filter :validate_request
 
   def index
-    mobile_phone = params[:mobile_phone]
-    message = (params[:message] && params[:message].strip)
-
+    mobile_phone = SignalApi::Phone.sanitize(params['From'])
+    message = (params['Body'] && params['Body'].strip)
     IncomingSmsHandler.process(mobile_phone, message)
     render :nothing => true
+  end
+
+  private
+
+  def validate_request
+    validator = Twilio::Util::RequestValidator.new(ENV['TWILIO_AUTH_TOKEN'])
+    if !validator.validate(request.original_url, request.request_parameters, request.env['HTTP_X_TWILIO_SIGNATURE'])
+      render :nothing => true, :status => :unauthorized
+    end
   end
 
 end
