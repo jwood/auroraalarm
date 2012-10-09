@@ -17,7 +17,7 @@ module IncomingSmsHandlers
     private
 
     def opt_in_via_sms_missing_location?
-      @message.upcase == "AURORA"
+      ["AURORA", "START"].include?(@message.upcase)
     end
 
     def handle_opt_in_via_sms_missing_location
