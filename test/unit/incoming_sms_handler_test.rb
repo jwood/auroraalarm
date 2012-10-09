@@ -87,7 +87,7 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
 
   test "should unsubscribe confirmed user when they text STOP" do
     user = users(:dan)
-    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.stop)
+    SmsMessagingService.any_instance.expects(:send_message).never
 
     assert_user_deleted do
       IncomingSmsHandler.process(user.mobile_phone, 'stop')
@@ -96,7 +96,7 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
 
   test "should unsubscribe unconfirmed user when they text STOP" do
     user = users(:john)
-    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.stop)
+    SmsMessagingService.any_instance.expects(:send_message).never
 
     assert_user_deleted do
       IncomingSmsHandler.process(user.mobile_phone, 'stop')
@@ -104,7 +104,7 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
   end
 
   test "should send unknown user the stop message when they text STOP" do
-    SmsMessagingService.any_instance.expects(:send_message).with('3125551213', OutgoingSmsMessages.stop)
+    SmsMessagingService.any_instance.expects(:send_message).never
 
     assert_no_new_user do
       IncomingSmsHandler.process('3125551213', 'stop all')
