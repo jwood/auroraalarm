@@ -5,9 +5,9 @@ in their area.
 
 # How the app works
 ## Signup
-* User can sign up via the site or via SMS by texting 'AURORA' and their zip code to 839863 (AURORA 90210).
-* User can update their zip code at any time by texting 'AURORA' and their zip code to 839863.
-* User can cancel the service at any time by texting 'STOP' to 839863.
+* User can sign up via the site or via SMS by texting 'AURORA' and their zip code to 312-386-5114 (AURORA 90210).
+* User can update their zip code at any time by texting 'AURORA' and their zip code to 312-386-5114.
+* User can cancel the service at any time by texting 'STOP' to 312-386-5114.
 
 ## The space event notification
 * Once a day the app checks to see if any space weather watches have been issued due to solar activity.

@@ -148,7 +148,7 @@ class SiteControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_template :new_user
-    assert_equal "You have already signed up. To confirm your signup, or change your zipcode, text AURORA followed by your zipcode (AURORA 90210) to 839863.", assigns(:message)
+    assert_equal "You have already signed up. To confirm your signup, or change your zipcode, text AURORA followed by your zipcode (AURORA 90210) to 312-386-5114.", assigns(:message)
   end
 
   test "should let the user know if they have already signed with javascript disabled" do
@@ -160,7 +160,7 @@ class SiteControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_template :index
-    assert_equal "You have already signed up. To confirm your signup, or change your zipcode, text AURORA followed by your zipcode (AURORA 90210) to 839863.", assigns(:message)
+    assert_equal "You have already signed up. To confirm your signup, or change your zipcode, text AURORA followed by your zipcode (AURORA 90210) to 312-386-5114.", assigns(:message)
   end
 
 end

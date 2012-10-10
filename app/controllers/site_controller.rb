@@ -7,7 +7,7 @@ class SiteController < ApplicationController
   def new_user
     respond_to do |format|
       if user_exists?(params[:user][:mobile_phone])
-        @message = "You have already signed up. To confirm your signup, or change your zipcode, text AURORA followed by your zipcode (AURORA 90210) to 839863."
+        @message = "You have already signed up. To confirm your signup, or change your zipcode, text AURORA followed by your zipcode (AURORA 90210) to 312-386-5114."
         format.html { render :index }
         format.js
       else
