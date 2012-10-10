@@ -13,4 +13,16 @@ class AuroraConditionsMonitorTest < ActiveSupport::TestCase
     assert_equal :waxing_crescent, Moon.new.phase(Date.new(2012, 1, 28).to_time)
   end
 
+  test "should be able to tell if the moon is dark" do
+    assert Moon.new.dark?(Date.new(2012, 1, 1).to_time)   # first quarter
+    assert Moon.new.dark?(Date.new(2012, 1, 16).to_time)  # third quarter
+    assert Moon.new.dark?(Date.new(2012, 1, 20).to_time)  # waning crescent
+    assert Moon.new.dark?(Date.new(2012, 1, 28).to_time)  # waxing crescent
+    assert Moon.new.dark?(Date.new(2012, 1, 24).to_time)  # new
+
+    assert !Moon.new.dark?(Date.new(2012, 1, 4).to_time)  # waxing gibbous
+    assert !Moon.new.dark?(Date.new(2012, 1, 8).to_time)  # full
+    assert !Moon.new.dark?(Date.new(2012, 1, 12).to_time) # waning gibbous
+  end
+
 end

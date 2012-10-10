@@ -59,7 +59,7 @@ class AuroraConditionsMonitor
   end
 
   def dark_moon?
-    [:new, :waxing_crescent, :first_quarter, :third_quarter, :waning_crescent].include?(@moon.phase(Time.now.utc))
+    @moon.dark?(Time.now.utc)
   end
 
   def clear_skies?(user)

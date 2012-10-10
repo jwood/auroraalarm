@@ -1,4 +1,4 @@
-class StubbedMoon
+class StubbedMoon < Moon
 
   def initialize(phase)
     @phase = phase

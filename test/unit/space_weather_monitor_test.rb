@@ -3,7 +3,7 @@ require 'test_helper'
 class SpaceWeatherMonitorTest < ActiveSupport::TestCase
 
   def setup
-    @monitor = SpaceWeatherMonitor.new
+    @monitor = SpaceWeatherMonitor.new(:moon => StubbedMoon.new(:new))
     @yesterday = (DateTime.now.utc - 1.day).to_date
     @today = DateTime.now.utc.to_date
   end
@@ -131,6 +131,18 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@today).returns(nil)
     assert_difference 'AlertPermission.count', -2 do
       @monitor.alert_users_of_solar_event
+    end
+  end
+
+  test "should not send any alerts if the moon will not be dark over the next 3 days" do
+    monitor = SpaceWeatherMonitor.new(:moon => StubbedMoon.new(:full))
+    SmsMessagingService.any_instance.expects(:send_message).never
+    SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@yesterday).returns(nil)
+    SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@today).returns(solar_event("G2", DateTime.now.utc))
+    assert_difference 'SolarEvent.count', 1 do
+      assert_no_difference 'AlertPermission.count' do
+        monitor.alert_users_of_solar_event
+      end
     end
   end
 

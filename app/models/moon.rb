@@ -18,4 +18,8 @@ class Moon
     }
   end
 
+  def dark?(time)
+    [:new, :waxing_crescent, :first_quarter, :third_quarter, :waning_crescent].include?(phase(time))
+  end
+
 end

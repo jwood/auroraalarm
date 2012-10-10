@@ -3,6 +3,7 @@ class SpaceWeatherMonitor
 
   def initialize(params={})
     @today = params[:date] || DateTime.now.utc.to_date
+    @moon = params[:moon] || Moon.new
     @yesterday = @today - 1.day
     @sms_messaging_service = SmsMessagingService.new
   end
@@ -10,7 +11,7 @@ class SpaceWeatherMonitor
   def alert_users_of_solar_event
     clear_expired_alert_permissions
     solar_event = fetch_solar_event
-    if solar_event
+    if solar_event && moon_will_be_dark(solar_event)
       alert_users(solar_event)
     end
   end
@@ -76,6 +77,12 @@ class SpaceWeatherMonitor
         :issue_time => new_event.issue_time,
         :expected_storm_strength => new_event.geomagnetic_storm_level)
     end
+  end
+
+  def moon_will_be_dark(solar_event)
+    @moon.dark?(solar_event.issue_time + 1.day) ||
+      @moon.dark?(solar_event.issue_time + 2.days) ||
+      @moon.dark?(solar_event.issue_time + 3.days)
   end
 
   def alert_users(solar_event)
