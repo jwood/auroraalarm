@@ -40,6 +40,9 @@ Aurora::Application.configure do
   ENV['PRIVATE_CONTROLLER_USERNAME'] = "username"
   ENV['PRIVATE_CONTROLLER_PASSWORD'] = "password"
 
+  ENV['TWILIO_ACCOUNT_SID'] = "abc123"
+  ENV['TWILIO_AUTH_TOKEN'] = "abc123"
+
   SimpleCov.start do
     # Exclude the dynamic test controller and associated files
     add_filter "/app/controllers/test_controller.rb"
