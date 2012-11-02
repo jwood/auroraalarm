@@ -17,5 +17,6 @@
 # Ignore other files
 .DS_Store
 .rvmrc
+.rbenv-version
 *.swp
 coverage
