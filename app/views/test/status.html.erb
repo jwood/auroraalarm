@@ -9,15 +9,19 @@
 <p><%= @user.user_location.city %>, <%= @user.user_location.state %> - <%= @cloud_cover_percentage %>%</p>
 
 <h2>Latest Space Weather Event</h2>
-<p><%= link_to "Current Report", Services::SpaceWeatherAlertService.data_url(Date.today) %></p>
-<p>
-  Message code: <%= @latest_space_weather_event.message_code %></br>
-  Event type: <%= @latest_space_weather_event.event_type %></br>
-  Serial number: <%= @latest_space_weather_event.serial_number %></br>
-  Issue time: <%= @latest_space_weather_event.issue_time %></br>
-  Kp Index: <%= @latest_space_weather_event.kp_index %></br>
-  Geomagnetic storm level: <%= @latest_space_weather_event.geomagnetic_storm_level %>
-</p>
+<p><%= link_to "Current Report", SpaceWeatherAlertService.data_url(Date.today) %></p>
+<% if @latest_space_weather_event.nil? %>
+  <p>No recent events</p>
+<% else %>
+  <p>
+    Message code: <%= @latest_space_weather_event.message_code %></br>
+    Event type: <%= @latest_space_weather_event.event_type %></br>
+    Serial number: <%= @latest_space_weather_event.serial_number %></br>
+    Issue time: <%= @latest_space_weather_event.issue_time %></br>
+    Kp Index: <%= @latest_space_weather_event.kp_index %></br>
+    Geomagnetic storm level: <%= @latest_space_weather_event.geomagnetic_storm_level %>
+  </p>
+<% end %>
 
 <h2>Moon Phase</h2>
 <p><%= @moon_phase.to_s.humanize %></p>
