@@ -9,7 +9,7 @@
 <p><%= @user.user_location.city %>, <%= @user.user_location.state %> - <%= @cloud_cover_percentage %>%</p>
 
 <h2>Latest Space Weather Event</h2>
-<p><%= link_to "Current Report", SpaceWeatherAlertService.data_url(Date.today) %></p>
+<p><%= link_to "Current Report", Services::SpaceWeatherAlertService.data_url(Date.today) %></p>
 <% if @latest_space_weather_event.nil? %>
   <p>No recent events</p>
 <% else %>
