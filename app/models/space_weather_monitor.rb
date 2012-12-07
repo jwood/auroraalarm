@@ -86,7 +86,7 @@ class SpaceWeatherMonitor
   end
 
   def alert_users(solar_event)
-    message = OutgoingSmsMessages.storm_prompt(GeomagneticStorm.new(solar_event.geomagnetic_storm_level))
+    message = OutgoingSmsMessages.storm_prompt(GeomagneticStorm.build(solar_event.geomagnetic_storm_level))
     User.confirmed.find_each do |user|
       create_alert_permission(user)
       sms_messaging_service.send_message(user.mobile_phone, message)

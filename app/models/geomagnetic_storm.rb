@@ -1,17 +1,45 @@
 class GeomagneticStorm
-  attr_reader :scale
+  attr_reader :scale, :description, :kp_level
 
-  def initialize(scale)
+  def initialize(scale, description, kp_level)
     @scale = scale
+    @description = description
+    @kp_level = kp_level
   end
 
-  def description
-    case @scale
-    when "G1" then "minor"
-    when "G2" then "moderate"
-    when "G3" then "strong"
-    when "G4" then "severe"
-    when "G5" then "extreme"
+  def self.build(scale)
+    "GeomagneticStorm::#{scale}".constantize.new(scale)
+  rescue NameError
+    nil
+  end
+
+  class G1 < GeomagneticStorm
+    def initialize(scale)
+      super(scale, "minor", 5)
+    end
+  end
+
+  class G2 < GeomagneticStorm
+    def initialize(scale)
+      super(scale, "moderate", 6)
+    end
+  end
+
+  class G3 < GeomagneticStorm
+    def initialize(scale)
+      super(scale, "strong", 7)
+    end
+  end
+
+  class G4 < GeomagneticStorm
+    def initialize(scale)
+      super(scale, "severe", 8)
+    end
+  end
+
+  class G5 < GeomagneticStorm
+    def initialize(scale)
+      super(scale, "extreme", 9)
     end
   end
 

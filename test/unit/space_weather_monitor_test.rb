@@ -9,7 +9,7 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
   end
 
   test "should alert users if no solar event occurred yesterday, but one occurred today" do
-    SmsMessagingService.any_instance.expects(:send_message).times(2).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.new("G2")) }
+    SmsMessagingService.any_instance.expects(:send_message).times(2).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.build("G2")) }
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@yesterday).returns(nil)
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@today).returns(solar_event("G2", DateTime.now.utc))
     assert_difference 'SolarEvent.count', 1 do
@@ -20,7 +20,7 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
   end
 
   test "should alert users if a new event occurred yesterday, and no event occurred today" do
-    SmsMessagingService.any_instance.expects(:send_message).times(2).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.new("G2")) }
+    SmsMessagingService.any_instance.expects(:send_message).times(2).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.build("G2")) }
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@yesterday).returns(solar_event("G2", DateTime.now.utc))
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@today).returns(nil)
     assert_difference 'SolarEvent.count', 1 do
@@ -31,7 +31,7 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
   end
 
   test "should alert users if a stronger solar event occurred yesterday, after the alert went out, but nothing occurred today" do
-    SmsMessagingService.any_instance.expects(:send_message).times(2).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.new("G2")) }
+    SmsMessagingService.any_instance.expects(:send_message).times(2).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.build("G2")) }
     create_yesterdays_previously_recorded_event("G1")
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@yesterday).returns(solar_event("G2", DateTime.now.utc - 1.day))
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@today).returns()
@@ -44,7 +44,7 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
   end
 
   test "should alert users of the strongest event if events occurred yesterday and today" do
-    SmsMessagingService.any_instance.expects(:send_message).times(2).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.new("G4")) }
+    SmsMessagingService.any_instance.expects(:send_message).times(2).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.build("G4")) }
     create_yesterdays_previously_recorded_event("G3")
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@yesterday).returns(solar_event("G4", DateTime.now.utc - 1.day))
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@today).returns(solar_event("G2", DateTime.now.utc))
@@ -56,7 +56,7 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
   end
 
   test "should create two new solar events if 2 days of solar activity occur since the last time we checked" do
-    SmsMessagingService.any_instance.expects(:send_message).times(2).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.new("G3")) }
+    SmsMessagingService.any_instance.expects(:send_message).times(2).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.build("G3")) }
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@yesterday).returns(solar_event("G3", DateTime.now.utc - 1.day))
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@today).returns(solar_event("G2", DateTime.now.utc))
     assert_difference 'SolarEvent.count', 2 do
