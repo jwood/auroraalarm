@@ -1,7 +1,7 @@
 <h1>Current Status</h1>
 
 <h2>Kp Index</h2>
-<p><%= link_to 'Current Report', KpIndexService.data_url %></p>
+<p><%= link_to 'Current Report', Services::KpIndexService.data_url %></p>
 <p><%= @kp_forecast[0] %> - <%= @kp_forecast[1] %></p>
 
 <h2>Cloud Cover Percentage</h2>
@@ -9,7 +9,7 @@
 <p><%= @user.user_location.city %>, <%= @user.user_location.state %> - <%= @cloud_cover_percentage %>%</p>
 
 <h2>Latest Space Weather Event</h2>
-<p><%= link_to "Current Report", SpaceWeatherAlertService.data_url(Date.today) %></p>
+<p><%= link_to "Current Report", Services::SpaceWeatherAlertService.data_url(Date.today) %></p>
 <p>
   Message code: <%= @latest_space_weather_event.message_code %></br>
   Event type: <%= @latest_space_weather_event.event_type %></br>

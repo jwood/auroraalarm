@@ -46,7 +46,7 @@ class TestController < PrivateController
     if @mobile_phone.blank? || @message.blank?
       flash.now[:notice] = "Mobile phone and message are required"
     else
-      sms_messaging_service ||= @send_real_sms_messages ? SmsMessagingService.new(:force_send => true) : Stubs::StubbedSmsMessagingService.new
+      sms_messaging_service ||= @send_real_sms_messages ? Services::SmsMessagingService.new(:force_send => true) : Stubs::StubbedSmsMessagingService.new
       IncomingSmsHandler.process(@mobile_phone, @message, sms_messaging_service)
       @sent_messages = sms_messaging_service.sent_messages unless @send_real_sms_messages
     end
@@ -58,9 +58,9 @@ class TestController < PrivateController
     @user = User.first
     date = Date.today
 
-    @kp_forecast = KpIndexService.new.current_forecast.last
-    @cloud_cover_percentage = LocalWeatherService.new.cloud_cover_percentage(@user)
-    @latest_space_weather_event = SpaceWeatherAlertService.new(date.year, date.month).report.find_events.first
+    @kp_forecast = Services::KpIndexService.new.current_forecast.last
+    @cloud_cover_percentage = Services::LocalWeatherService.new.cloud_cover_percentage(@user)
+    @latest_space_weather_event = Services::SpaceWeatherAlertService.new(date.year, date.month).report.find_events.first
     @moon_phase = Moon.new.phase(Time.now)
     @nighttime = Nighttime.new.nighttime?(@user)
   end

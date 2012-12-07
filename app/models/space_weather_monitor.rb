@@ -5,7 +5,7 @@ class SpaceWeatherMonitor
     @today = params[:date] || DateTime.now.utc.to_date
     @moon = params[:moon] || Moon.new
     @yesterday = @today - 1.day
-    @sms_messaging_service = SmsMessagingService.new
+    @sms_messaging_service = Services::SmsMessagingService.new
   end
 
   def alert_users_of_solar_event
@@ -32,7 +32,7 @@ class SpaceWeatherMonitor
   end
 
   def strongest_solar_event(date)
-    service = SpaceWeatherAlertService.new(date.year, date.month)
+    service = Services::SpaceWeatherAlertService.new(date.year, date.month)
     service.strongest_geomagnetic_storm(date)
   end
 

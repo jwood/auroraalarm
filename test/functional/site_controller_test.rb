@@ -11,7 +11,7 @@ class SiteControllerTest < ActionController::TestCase
 
   test "should be able to create a new user" do
     expects_valid_location("60477")
-    SmsMessagingService.any_instance.expects(:send_message).with("3125551212", OutgoingSmsMessages.signup_prompt)
+    Services::SmsMessagingService.any_instance.expects(:send_message).with("3125551212", OutgoingSmsMessages.signup_prompt)
 
     assert_difference 'User.count', 1 do
       assert_difference 'UserLocation.count', 1 do
@@ -36,7 +36,7 @@ class SiteControllerTest < ActionController::TestCase
 
   test "should be able to create a new user with javascript disabled" do
     expects_valid_location("60477")
-    SmsMessagingService.any_instance.expects(:send_message).with("3125551212", OutgoingSmsMessages.signup_prompt)
+    Services::SmsMessagingService.any_instance.expects(:send_message).with("3125551212", OutgoingSmsMessages.signup_prompt)
 
     assert_difference 'User.count', 1 do
       assert_difference 'UserLocation.count', 1 do

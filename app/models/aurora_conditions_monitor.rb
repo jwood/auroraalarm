@@ -6,8 +6,8 @@ class AuroraConditionsMonitor
     @kp_forecaster = KpForecaster.new
     @nighttime = Nighttime.new
     @moon = Moon.new
-    @local_weather_service = LocalWeatherService.new
-    @sms_messaging_service = SmsMessagingService.new
+    @local_weather_service = Services::LocalWeatherService.new
+    @sms_messaging_service = Services::SmsMessagingService.new
   end
 
   def alert_users_of_aurora_if_conditions_optimal

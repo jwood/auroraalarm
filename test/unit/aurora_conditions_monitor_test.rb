@@ -106,12 +106,12 @@ class AuroraConditionsMonitorTest < ActiveSupport::TestCase
 
   def expect_alerts(*users)
     users.each do |user|
-      SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.aurora_alert)
+      Services::SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.aurora_alert)
     end
   end
 
   def no_alerts_expected
-    SmsMessagingService.any_instance.expects(:send_message).never
+    Services::SmsMessagingService.any_instance.expects(:send_message).never
   end
 
 end

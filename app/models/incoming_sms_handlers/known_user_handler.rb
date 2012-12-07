@@ -41,7 +41,7 @@ module IncomingSmsHandlers
 
     def update_location_for_confirmed_user
       @message.upcase =~ opt_in_message_regexp
-      service = GeolocationService.new
+      service = Services::GeolocationService.new
       location = service.geocode($1)
 
       if location.nil? || location.invalid?
