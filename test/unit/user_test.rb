@@ -33,7 +33,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should be able to easily fetch the confirmed users" do
-    assert_equal [users(:dan), users(:bob)], User.confirmed
+    assert_equal [users(:dan), users(:bob), users(:beth)], User.confirmed
   end
 
   test "should be able to find the unapproved alert permission for a user, if one exists" do

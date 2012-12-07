@@ -146,6 +146,17 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
     end
   end
 
+  test "should alert users if they should be able to see the aurora at their geomagnetic latitude" do
+    SmsMessagingService.any_instance.expects(:send_message).times(3).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.build("G5")) }
+    SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@yesterday).returns(solar_event("G5", DateTime.now.utc))
+    SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@today).returns(nil)
+    assert_difference 'SolarEvent.count', 1 do
+      assert_difference 'AlertPermission.count', 3 do
+        @monitor.alert_users_of_solar_event
+      end
+    end
+  end
+
   private
 
   def create_yesterdays_previously_recorded_event(strength)

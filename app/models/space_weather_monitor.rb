@@ -86,10 +86,15 @@ class SpaceWeatherMonitor
   end
 
   def alert_users(solar_event)
-    message = OutgoingSmsMessages.storm_prompt(GeomagneticStorm.build(solar_event.geomagnetic_storm_level))
+    geomagnetic_storm = GeomagneticStorm.build(solar_event.geomagnetic_storm_level)
+    kp_value = KpValue.new(geomagnetic_storm.kp_level)
+    message = OutgoingSmsMessages.storm_prompt(geomagnetic_storm)
+
     User.confirmed.find_each do |user|
-      create_alert_permission(user)
-      sms_messaging_service.send_message(user.mobile_phone, message)
+      if kp_value.aurora_viewable_at_geomagnetic_latitude?(user.user_location.magnetic_latitude)
+        create_alert_permission(user)
+        sms_messaging_service.send_message(user.mobile_phone, message)
+      end
     end
   end
 

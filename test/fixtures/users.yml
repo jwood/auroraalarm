@@ -12,3 +12,7 @@ bob:
   mobile_phone: 3125551203
   confirmed_at: <%= 2.days.ago %>
 
+beth:
+  mobile_phone: 3125551204
+  confirmed_at: <%= 3.days.ago %>
+
