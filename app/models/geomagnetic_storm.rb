@@ -10,6 +10,7 @@ class GeomagneticStorm
   def self.build(scale)
     "GeomagneticStorm::#{scale}".constantize.new(scale)
   rescue NameError
+    Rails.logger.error "No class named GeomagneticStorm::#{scale}"
     nil
   end
 

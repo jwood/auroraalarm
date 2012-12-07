@@ -24,4 +24,8 @@ class GeomagneticStormTest < ActiveSupport::TestCase
     assert_equal 9,          GeomagneticStorm.build("G5").kp_level
   end
 
+  test "should return nil if no class could be found for that geomagnetic storm scale" do
+    assert_nil GeomagneticStorm.build("G6")
+  end
+
 end
