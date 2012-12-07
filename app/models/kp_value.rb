@@ -24,7 +24,7 @@ class KpValue
       geomagnetic_latitude >= 52.2
     elsif @kp_value <= 8.9999
       geomagnetic_latitude >= 50.1
-    elsif @kp_value <= 9.9999
+    elsif @kp_value <= 10
       geomagnetic_latitude >= 48.1
     end
   end

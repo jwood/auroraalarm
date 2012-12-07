@@ -87,7 +87,7 @@ class SpaceWeatherMonitor
 
   def alert_users(solar_event)
     geomagnetic_storm = GeomagneticStorm.build(solar_event.geomagnetic_storm_level)
-    kp_value = KpValue.new(geomagnetic_storm.kp_level)
+    kp_value = KpValue.new(geomagnetic_storm.kp_level + 1)
     message = OutgoingSmsMessages.storm_prompt(geomagnetic_storm)
 
     User.confirmed.find_each do |user|

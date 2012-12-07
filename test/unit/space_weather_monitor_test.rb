@@ -44,12 +44,12 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
   end
 
   test "should alert users of the strongest event if events occurred yesterday and today" do
-    SmsMessagingService.any_instance.expects(:send_message).times(2).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.build("G4")) }
+    SmsMessagingService.any_instance.expects(:send_message).times(3).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.build("G4")) }
     create_yesterdays_previously_recorded_event("G3")
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@yesterday).returns(solar_event("G4", DateTime.now.utc - 1.day))
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@today).returns(solar_event("G2", DateTime.now.utc))
     assert_difference 'SolarEvent.count', 1 do
-      assert_difference 'AlertPermission.count', 2 do
+      assert_difference 'AlertPermission.count', 3 do
         @monitor.alert_users_of_solar_event
       end
     end
