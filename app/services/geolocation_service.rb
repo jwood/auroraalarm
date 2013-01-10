@@ -70,7 +70,7 @@ module Services
 
       # Set up interpolation
       del1 = (longitude - ilon1 * 5.0) / 5.0
-      
+
       c = conversion_array
       a1 = c[ind11] + del1 * (c[ind12] - c[ind11])
       a2 = c[ind21] + del1 * (c[ind22] - c[ind21])

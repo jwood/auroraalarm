@@ -17,7 +17,7 @@ class SpaceWeatherMonitor
   end
 
   private
-  
+
   def clear_expired_alert_permissions
     AlertPermission.expired.destroy_all
   end
