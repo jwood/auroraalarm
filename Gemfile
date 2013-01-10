@@ -32,5 +32,5 @@ group :test do
 end
 
 group :production do
-  gem 'newrelic_rpm', '3.4.0.1'
+  gem 'newrelic_rpm', '> 3.5.5'
 end
