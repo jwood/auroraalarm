@@ -89,29 +89,29 @@ class AuroraConditionsMonitorTest < ActiveSupport::TestCase
   private
 
   def set_kp(kp)
-    @monitor.kp_forecaster = StubbedKpForecaster.new(kp)
+    @monitor.kp_forecaster = Stubs::StubbedKpForecaster.new(kp)
   end
 
   def set_nighttime(nighttime)
-    @monitor.nighttime = StubbedNighttime.new(nighttime)
+    @monitor.nighttime = Stubs::StubbedNighttime.new(nighttime)
   end
 
   def set_moon(phase)
-    @monitor.moon = StubbedMoon.new(phase)
+    @monitor.moon = Stubs::StubbedMoon.new(phase)
   end
 
   def set_cloud_cover(percentage)
-    @monitor.local_weather_service = StubbedLocalWeatherService.new(percentage)
+    @monitor.local_weather_service = Stubs::StubbedLocalWeatherService.new(percentage)
   end
 
   def expect_alerts(*users)
     users.each do |user|
-      SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.aurora_alert)
+      Services::SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.aurora_alert)
     end
   end
 
   def no_alerts_expected
-    SmsMessagingService.any_instance.expects(:send_message).never
+    Services::SmsMessagingService.any_instance.expects(:send_message).never
   end
 
 end

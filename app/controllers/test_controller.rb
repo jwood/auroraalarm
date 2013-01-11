@@ -9,7 +9,7 @@ class TestController < PrivateController
     if @date.blank?
       flash.now[:notice] = "Date is required"
     else
-      sms_messaging_service = StubbedSmsMessagingService.new
+      sms_messaging_service = Stubs::StubbedSmsMessagingService.new
       monitor = SpaceWeatherMonitor.new(:date => Date.parse(@date))
       monitor.sms_messaging_service = sms_messaging_service
       monitor.alert_users_of_solar_event
@@ -25,12 +25,12 @@ class TestController < PrivateController
     @moon_phase = params[:moon_phase].to_sym
     @cloud_cover_percentage = params[:cloud_cover_percentage].blank? ? 0 : params[:cloud_cover_percentage].to_i
 
-    sms_messaging_service = StubbedSmsMessagingService.new
+    sms_messaging_service = Stubs::StubbedSmsMessagingService.new
     monitor = AuroraConditionsMonitor.new
-    monitor.kp_forecaster = StubbedKpForecaster.new(@kp)
-    monitor.nighttime = StubbedNighttime.new(@nighttime)
-    monitor.moon = StubbedMoon.new(@moon_phase)
-    monitor.local_weather_service = StubbedLocalWeatherService.new(@cloud_cover_percentage)
+    monitor.kp_forecaster = Stubs::StubbedKpForecaster.new(@kp)
+    monitor.nighttime = Stubs::StubbedNighttime.new(@nighttime)
+    monitor.moon = Stubs::StubbedMoon.new(@moon_phase)
+    monitor.local_weather_service = Stubs::StubbedLocalWeatherService.new(@cloud_cover_percentage)
     monitor.sms_messaging_service = sms_messaging_service
     monitor.alert_users_of_aurora_if_conditions_optimal
 
@@ -46,7 +46,7 @@ class TestController < PrivateController
     if @mobile_phone.blank? || @message.blank?
       flash.now[:notice] = "Mobile phone and message are required"
     else
-      sms_messaging_service ||= @send_real_sms_messages ? SmsMessagingService.new(:force_send => true) : StubbedSmsMessagingService.new
+      sms_messaging_service ||= @send_real_sms_messages ? Services::SmsMessagingService.new(:force_send => true) : Stubs::StubbedSmsMessagingService.new
       IncomingSmsHandler.process(@mobile_phone, @message, sms_messaging_service)
       @sent_messages = sms_messaging_service.sent_messages unless @send_real_sms_messages
     end
@@ -58,9 +58,9 @@ class TestController < PrivateController
     @user = User.first
     date = Date.today
 
-    @kp_forecast = KpIndexService.new.current_forecast.last
-    @cloud_cover_percentage = LocalWeatherService.new.cloud_cover_percentage(@user)
-    @latest_space_weather_event = SpaceWeatherAlertService.new(date.year, date.month).report.find_events.first
+    @kp_forecast = Services::KpIndexService.new.current_forecast.last
+    @cloud_cover_percentage = Services::LocalWeatherService.new.cloud_cover_percentage(@user)
+    @latest_space_weather_event = Services::SpaceWeatherAlertService.new(date.year, date.month).report.find_events.first
     @moon_phase = Moon.new.phase(Time.now)
     @nighttime = Nighttime.new.nighttime?(@user)
   end

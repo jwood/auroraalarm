@@ -1,8 +1,3 @@
-if Rails.env.test?
-  Proby.api_key = 'test'
-else
-  Proby.api_key = ENV['PROBY_API_KEY']
-end
-
+Proby.api_key = Rails.env.test? ? 'test' : ENV['PROBY_API_KEY']
 Proby.logger = Rails.logger
 

@@ -28,3 +28,13 @@ bob_location:
   longitude: -85.7584557
   magnetic_latitude: 49
 
+beth_location:
+  user: beth
+  city: Fairbanks
+  state: AK
+  postal_code: 99709
+  country: US
+  latitude: 64.8773986
+  longitude: -148.3542567
+  magnetic_latitude: 67
+

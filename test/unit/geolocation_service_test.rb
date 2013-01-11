@@ -3,7 +3,7 @@ require 'test_helper'
 class GeolocationServiceTest < ActiveSupport::TestCase
 
   def setup
-    @service = GeolocationService.new
+    @service = Services::GeolocationService.new
   end
 
   test "should be able to fetch the data for a location" do

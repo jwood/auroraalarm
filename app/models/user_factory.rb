@@ -47,7 +47,7 @@ class UserFactory
   def lookup_location_data(location_value)
     @location = nil
     if ZipcodeFormat.valid?(location_value)
-      service = GeolocationService.new
+      service = Services::GeolocationService.new
       @location = service.geocode(location_value)
 
       if @location.nil? || @location.invalid?

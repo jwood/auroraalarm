@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 gem 'jquery-rails', '2.0.2'
 
 gem 'pg', '0.14.0'
@@ -9,7 +9,7 @@ gem 'foreigner', '1.2.0'
 gem 'geokit', '1.6.5'
 gem 'dalli', '2.1.0'
 gem 'signal_api', :git => 'git://github.com/signal/signal-ruby.git'
-gem 'twilio-ruby', '3.8.0'
+gem 'twilio-ruby', '3.8.0', :require => 'twilio-ruby'
 gem 'proby', '2.2.0'
 gem 'exception_notification', '2.6.1', :require => 'exception_notifier'
 gem 'moonphase', :git => 'git://github.com/chaserx/moonphase.git'
@@ -33,5 +33,5 @@ group :test do
 end
 
 group :production do
-  gem 'newrelic_rpm', '3.4.0.1'
+  gem 'newrelic_rpm', '> 3.5.5'
 end

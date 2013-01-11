@@ -30,7 +30,8 @@ class SpaceWeatherAlertReport
 
     html_report.each_line do |line|
       if processing_section && line.blank?
-        @events << parse_section(section)
+        event = parse_section(section)
+        @events << event unless event.nil?
         section = []
         processing_section = false
       end
@@ -52,7 +53,7 @@ class SpaceWeatherAlertReport
       serial_number = $1 if line =~ /^Serial Number: (.*)<br>/
       issue_time = "#{$1} #{$2} #{$3[0..1]}:#{$3[2..3]} #{$4}" if line =~ /^Issue Time: (\d\d\d\d) (.*) (\d\d\d\d) (.*)<br>/
     end
-    SpaceWeatherEvent.new(message_code, serial_number, issue_time)
+    (message_code && serial_number && issue_time) ? SpaceWeatherEvent.new(message_code, serial_number, issue_time) : nil
   end
 
 end

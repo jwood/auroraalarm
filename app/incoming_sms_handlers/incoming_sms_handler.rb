@@ -6,7 +6,7 @@ class IncomingSmsHandler
     @sms_messaging_service = sms_messaging_service
   end
 
-  def self.process(mobile_phone, message, sms_messaging_service=SmsMessagingService.new)
+  def self.process(mobile_phone, message, sms_messaging_service=Services::SmsMessagingService.new)
     handler = self.new(mobile_phone, message, sms_messaging_service)
     handler.process_message
   end
@@ -16,11 +16,11 @@ class IncomingSmsHandler
     user = User.find_by_mobile_phone(@mobile_phone)
 
     handlers = [
-      IncomingSmsHandlers::StopMessageHandler.new(@mobile_phone, @message, user, @sms_messaging_service),
-      IncomingSmsHandlers::UnknownUserHandler.new(@mobile_phone, @message, user, @sms_messaging_service),
-      IncomingSmsHandlers::AlertedUserHandler.new(@mobile_phone, @message, user, @sms_messaging_service),
-      IncomingSmsHandlers::AlarmedUserHandler.new(@mobile_phone, @message, user, @sms_messaging_service),
-      IncomingSmsHandlers::KnownUserHandler.new(@mobile_phone, @message, user, @sms_messaging_service)
+      StopMessageHandler.new(@mobile_phone, @message, user, @sms_messaging_service),
+      UnknownUserHandler.new(@mobile_phone, @message, user, @sms_messaging_service),
+      AlertedUserHandler.new(@mobile_phone, @message, user, @sms_messaging_service),
+      AlarmedUserHandler.new(@mobile_phone, @message, user, @sms_messaging_service),
+      KnownUserHandler.new(@mobile_phone, @message, user, @sms_messaging_service)
     ]
 
     handled = handlers.any? { |handler| handler.handle }
