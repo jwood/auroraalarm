@@ -1,8 +1,6 @@
 class UserLocation < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
   include BelongsToUser
-
-  attr_accessible :user_id, :user, :city, :state, :postal_code, :country,
-                  :latitude, :longitude, :magnetic_latitude
 
   validates :user_id, :presence => true, :uniqueness => true
   validates :latitude, :presence => true, :numericality => true

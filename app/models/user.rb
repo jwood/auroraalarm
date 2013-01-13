@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessible :mobile_phone, :user_location, :user_location_value, :confirmed_at
+  include ActiveModel::ForbiddenAttributesProtection
+
   attr_accessor :user_location_value
 
   has_one :user_location, :dependent => :destroy

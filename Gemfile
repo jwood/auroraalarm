@@ -5,13 +5,14 @@ gem 'jquery-rails', '2.0.2'
 
 gem 'pg', '0.14.0'
 
+gem 'strong_parameters', '0.1.6'
 gem 'foreigner', '1.2.0'
 gem 'geokit', '1.6.5'
 gem 'dalli', '2.1.0'
 gem 'signal_api', :git => 'git://github.com/signal/signal-ruby.git'
 gem 'proby', '2.2.0'
 gem 'exception_notification', '2.6.1', :require => 'exception_notifier'
-gem 'moonphase', :git => 'git://github.com/chaserx/moonphase.git'
+gem 'moonphase', :git => 'git://github.com/jwood/moonphase.git'
 gem 'RubySunrise', '0.3', :require => 'solareventcalculator'
 gem 'nokogiri', '1.5.5'
 

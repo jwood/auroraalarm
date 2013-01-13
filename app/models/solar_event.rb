@@ -1,5 +1,5 @@
 class SolarEvent < ActiveRecord::Base
-  attr_accessible :message_code, :serial_number, :issue_time, :expected_storm_strength
+  include ActiveModel::ForbiddenAttributesProtection
 
   validates :message_code, :presence => true, :length => { :maximum => 15 }
   validates :serial_number, :presence => true, :uniqueness => true, :length => { :maximum => 15 }

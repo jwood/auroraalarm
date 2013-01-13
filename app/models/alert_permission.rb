@@ -1,7 +1,6 @@
 class AlertPermission < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
   include BelongsToUser
-
-  attr_accessible :user, :approved_at, :expires_at
 
   validates :user_id, :presence => true
   validate :ensure_only_one_unapproved_alert_permission_per_user
