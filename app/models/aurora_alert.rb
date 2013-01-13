@@ -10,8 +10,8 @@ class AuroraAlert < ActiveRecord::Base
   before_validation :set_first_sent_at
   before_validation :set_last_sent_at
 
-  scope :do_not_resend, lambda { where(['confirmed_at IS NOT NULL AND (send_reminder_at IS NULL OR send_reminder_at > ?)', Time.now.utc]) }
-  scope :old, lambda { where(['first_sent_at < ?', 12.hours.ago]) }
+  scope :do_not_resend, -> { where(['confirmed_at IS NOT NULL AND (send_reminder_at IS NULL OR send_reminder_at > ?)', Time.now.utc]) }
+  scope :old, -> { where(['first_sent_at < ?', 12.hours.ago]) }
 
   def self.purge_old_alerts
     AuroraAlert.old.destroy_all

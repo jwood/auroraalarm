@@ -16,9 +16,9 @@ class CronControllerTest < ActionController::TestCase
 
   test "should be able to alert users of solar events" do
     Moon.any_instance.expects(:dark?).returns(true)
-    Services::SmsMessagingService.any_instance.expects(:send_message).times(2).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.build("G3")) }
-    Services::SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@yesterday).returns(solar_event("G3", DateTime.now.utc - 1.day))
-    Services::SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@today).returns(solar_event("G2", DateTime.now.utc))
+    SmsMessagingService.any_instance.expects(:send_message).times(2).with() { |mobile_phone, message| message == OutgoingSmsMessages.storm_prompt(GeomagneticStorm.build("G3")) }
+    SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@yesterday).returns(solar_event("G3", DateTime.now.utc - 1.day))
+    SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@today).returns(solar_event("G2", DateTime.now.utc))
     assert_difference 'SolarEvent.count', 2 do
       post :alert_users_of_solar_event
     end

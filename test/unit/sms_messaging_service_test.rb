@@ -3,7 +3,7 @@ require 'test_helper'
 class SmsMessagingServiceTest < ActiveSupport::TestCase
 
   def setup
-    @service = Services::SmsMessagingService.new(:force_send => true)
+    @service = SmsMessagingService.new(:force_send => true)
   end
 
   test "should be able to send a SMS message" do

@@ -3,7 +3,7 @@ require 'test_helper'
 class LocalWeatherServiceTest < ActiveSupport::TestCase
 
   def setup
-    @service = Services::LocalWeatherService.new
+    @service = LocalWeatherService.new
   end
 
   test "should be able to get the cloud cover percentage for a user" do

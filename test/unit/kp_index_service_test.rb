@@ -3,7 +3,7 @@ require 'test_helper'
 class KpIndexServiceTest < ActiveSupport::TestCase
 
   def setup
-    @service = Services::KpIndexService.new
+    @service = KpIndexService.new
   end
 
   test "should be able to fetch the Kp forecast" do
