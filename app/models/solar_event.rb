@@ -1,15 +1,15 @@
 class SolarEvent < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
 
-  validates :message_code, :presence => true, :length => { :maximum => 15 }
-  validates :serial_number, :presence => true, :uniqueness => true, :length => { :maximum => 15 }
-  validates :issue_time, :presence => true
-  validates :expected_storm_strength, :presence => true, :length => { :maximum => 3 } 
+  validates :message_code, presence: true, length: { maximum: 15 }
+  validates :serial_number, presence: true, uniqueness: true, length: { maximum: 15 }
+  validates :issue_time, presence: true
+  validates :expected_storm_strength, presence: true, length: { maximum: 3 } 
 
   validate :ensure_only_one_solar_event_per_day
 
   def self.occurred_on(date)
-    where(:issue_time => [date.beginning_of_day..date.end_of_day]).first
+    where(issue_time: [date.beginning_of_day..date.end_of_day]).first
   end
 
   private

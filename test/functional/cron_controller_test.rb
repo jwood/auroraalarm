@@ -26,14 +26,14 @@ class CronControllerTest < ActionController::TestCase
   end
 
   test "should be able to alert users of an aurora" do
-    FakeWeb.register_uri(:get, "http://www.swpc.noaa.gov/wingkp/wingkp_list.txt", :body => "")
+    FakeWeb.register_uri(:get, "http://www.swpc.noaa.gov/wingkp/wingkp_list.txt", body: "")
     AuroraConditionsMonitor.any_instance.expects(:alert_users_of_aurora_if_conditions_optimal)
     post :alert_users_of_aurora
     assert_response :success
   end
 
   test "should be able to perform any necessary cleanup" do
-    AuroraAlert.create!(:user => users(:john), :first_sent_at => 12.hours.ago)
+    AuroraAlert.create!(user: users(:john), first_sent_at: 12.hours.ago)
     assert_difference 'MessageHistory.count', -2 do
       assert_difference 'AuroraAlert.count', -1 do
         post :cleanup

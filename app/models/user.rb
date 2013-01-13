@@ -3,13 +3,13 @@ class User < ActiveRecord::Base
 
   attr_accessor :user_location_value
 
-  has_one :user_location, :dependent => :destroy
-  has_one :aurora_alert, :dependent => :destroy
-  has_many :alert_permissions, :dependent => :destroy
+  has_one :user_location, dependent: :destroy
+  has_one :aurora_alert, dependent: :destroy
+  has_many :alert_permissions, dependent: :destroy
 
   before_validation :sanitize_mobile_phone
 
-  validates :mobile_phone, :presence => true, :uniqueness => true, :length => { :maximum => 15 }
+  validates :mobile_phone, presence: true, uniqueness: true, length: { maximum: 15 }
   validate :validate_mobile_phone_format
 
   scope :confirmed, -> { where('confirmed_at IS NOT NULL') }

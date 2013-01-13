@@ -72,10 +72,10 @@ class SpaceWeatherMonitor
   def persist_solar_event(new_event)
     if new_event
       SolarEvent.create(
-        :message_code => new_event.message_code,
-        :serial_number => new_event.serial_number,
-        :issue_time => new_event.issue_time,
-        :expected_storm_strength => new_event.geomagnetic_storm_level)
+        message_code: new_event.message_code,
+        serial_number: new_event.serial_number,
+        issue_time: new_event.issue_time,
+        expected_storm_strength: new_event.geomagnetic_storm_level)
     end
   end
 
@@ -101,7 +101,7 @@ class SpaceWeatherMonitor
   def create_alert_permission(user)
     AlertPermission.transaction do
       user.unapproved_alert_permission.destroy if user.unapproved_alert_permission
-      AlertPermission.create!(:user => user)
+      AlertPermission.create!(user: user)
     end
   end
 

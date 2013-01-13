@@ -35,13 +35,13 @@ class GeolocationService
   def lookup_location(location)
     geo = Geokit::Geocoders::MultiGeocoder.geocode(location)
     if geo.success
-      Location.new(:city => geo.city,
-                   :state => geo.state,
-                   :zip => geo.zip,
-                   :country_code => geo.country_code,
-                   :latitude => geo.lat,
-                   :longitude => geo.lng,
-                   :magnetic_latitude => calculate_magnetic_latitude(geo.lat, geo.lng))
+      Location.new(city: geo.city,
+                   state: geo.state,
+                   zip: geo.zip,
+                   country_code: geo.country_code,
+                   latitude: geo.lat,
+                   longitude: geo.lng,
+                   magnetic_latitude: calculate_magnetic_latitude(geo.lat, geo.lng))
     else
       nil
     end

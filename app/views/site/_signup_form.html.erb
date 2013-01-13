@@ -10,7 +10,7 @@
     </div>
   <% end %>
 
-  <%= form_for @user, :url => new_user_path, :remote => true do |f| %>
+  <%= form_for @user, url: new_user_path, remote: true do |f| %>
     <table>
       <tr>
         <td><%= f.label :mobile_phone %></td>
@@ -21,7 +21,7 @@
         <td><%= f.text_field :user_location_value %></td>
       </tr>
       <tr>
-        <td><%= f.button "Sign Up", :id => 'signup_button' %></td>
+        <td><%= f.button "Sign Up", id: 'signup_button' %></td>
       </tr>
     </table>
   <% end %>

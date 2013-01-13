@@ -1,8 +1,8 @@
 class CreateUsers < ActiveRecord::Migration
   def up
     create_table :users do |t|
-      t.string :mobile_phone, :limit => 15, :null => false
-      t.belongs_to :zipcode, :null => false
+      t.string :mobile_phone, limit: 15, null: false
+      t.belongs_to :zipcode, null: false
       t.datetime :confirmed_at
 
       t.timestamps

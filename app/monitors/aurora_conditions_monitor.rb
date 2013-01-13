@@ -49,12 +49,12 @@ class AuroraConditionsMonitor
   def alert_user(user)
     aurora_alert = user.aurora_alert
     if aurora_alert.blank?
-      AuroraAlert.create(:user => user)
+      AuroraAlert.create(user: user)
     else
-      aurora_alert.update_attributes(:last_sent_at => Time.now.utc,
-                                     :times_sent => aurora_alert.times_sent + 1,
-                                     :confirmed_at => nil,
-                                     :send_reminder_at => nil)
+      aurora_alert.update_attributes(last_sent_at: Time.now.utc,
+                                     times_sent: aurora_alert.times_sent + 1,
+                                     confirmed_at: nil,
+                                     send_reminder_at: nil)
     end
 
     @sms_messaging_service.send_message(user.mobile_phone, OutgoingSmsMessages.aurora_alert)

@@ -7,10 +7,10 @@ class DropZipcodes < ActiveRecord::Migration
 
   def down
     create_table :zipcodes do |t|
-      t.string :code, :limit => 25, :null => false
-      t.float :latitude, :null => false
-      t.float :longitude, :null => false
-      t.integer :magnetic_latitude, :null => false
+      t.string :code, limit: 25, null: false
+      t.float :latitude, null: false
+      t.float :longitude, null: false
+      t.integer :magnetic_latitude, null: false
 
       t.timestamps
     end

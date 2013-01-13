@@ -8,19 +8,19 @@ class UserFactory
     ensure_user_does_not_exist(mobile_phone)
     location = lookup_location_data(location_value)
 
-    user = User.new(:mobile_phone => mobile_phone, :user_location_value => location_value)
+    user = User.new(mobile_phone: mobile_phone, user_location_value: location_value)
     if @errors.blank?
       begin
         User.transaction do
           user.save!
-          user_location = UserLocation.create!(:user_id => user.id,
-                                               :city => location.city,
-                                               :state => location.state,
-                                               :postal_code => location.zip,
-                                               :country => location.country_code,
-                                               :latitude => location.latitude,
-                                               :longitude => location.longitude,
-                                               :magnetic_latitude => location.magnetic_latitude)
+          user_location = UserLocation.create!(user_id: user.id,
+                                               city: location.city,
+                                               state: location.state,
+                                               postal_code: location.zip,
+                                               country: location.country_code,
+                                               latitude: location.latitude,
+                                               longitude: location.longitude,
+                                               magnetic_latitude: location.magnetic_latitude)
         end
       rescue Exception => e
         @errors << "An unexpected error occurred while trying to create a new user"
@@ -39,7 +39,7 @@ class UserFactory
   end
 
   def ensure_user_does_not_exist(mobile_phone)
-    if User.exists?(:mobile_phone => mobile_phone)
+    if User.exists?(mobile_phone: mobile_phone)
       @errors << "A user with the specified mobile phone already exists"
     end
   end

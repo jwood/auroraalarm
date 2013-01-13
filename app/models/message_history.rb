@@ -3,9 +3,9 @@ class MessageHistory < ActiveRecord::Base
 
   self.table_name = "message_history"
 
-  validates :mobile_phone, :presence => true
-  validates :message, :presence => true
-  validates :message_type, :presence => true, :length => { :maximum => 3 }
+  validates :mobile_phone, presence: true
+  validates :message, presence: true
+  validates :message_type, presence: true, length: { maximum: 3 }
 
   validate :ensure_message_type_valid
 

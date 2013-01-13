@@ -1,8 +1,8 @@
 class CreateKpForecasts < ActiveRecord::Migration
   def up
     create_table :kp_forecasts do |t|
-      t.datetime :forecast_time, :null => false
-      t.float :expected_kp, :null => false
+      t.datetime :forecast_time, null: false
+      t.float :expected_kp, null: false
 
       t.timestamps
     end
