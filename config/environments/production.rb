@@ -66,7 +66,7 @@ Aurora::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.middleware.use ExceptionNotifier,
-    :email_prefix => "[AuroraAlarm Exception] ",
-    :sender_address => %{"AuroraAlarm" <noreply@auroraalarm.net>},
-    :exception_recipients => %w{john@johnpwood.net}
+    email_prefix: "[AuroraAlarm Exception] ",
+    sender_address: %{"AuroraAlarm" <noreply@auroraalarm.net>},
+    exception_recipients: %w{john@johnpwood.net}
 end

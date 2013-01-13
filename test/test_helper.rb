@@ -29,7 +29,7 @@ class ActiveSupport::TestCase
   end
 
   def expects_valid_location(location_value)
-    loc = GeoKit::GeoLoc.new(:success => true, :lat => 41.5699614, :lng => -87.7861711, :city => "Tinley Park", :state => "IL", :country_code => "US", :zip => "60477")
+    loc = GeoKit::GeoLoc.new(success: true, lat: 41.5699614, lng: -87.7861711, city: "Tinley Park", state: "IL", country_code: "US", zip: "60477")
     loc.success = true
     Geokit::Geocoders::MultiGeocoder.expects(:geocode).with(location_value).returns(loc)
   end
@@ -39,7 +39,7 @@ class ActiveSupport::TestCase
   end
 
   def expects_international_location(location_value)
-    loc = GeoKit::GeoLoc.new(:success => true, :lat => 19.436516, :lng => -99.1739857, :city => "Ciudad De Mexico", :state => "D.F.", :country_code => "MX", :zip => "11300")
+    loc = GeoKit::GeoLoc.new(success: true, lat: 19.436516, lng: -99.1739857, city: "Ciudad De Mexico", state: "D.F.", country_code: "MX", zip: "11300")
     loc.success = true
     Geokit::Geocoders::MultiGeocoder.expects(:geocode).with(location_value).returns(loc)
   end

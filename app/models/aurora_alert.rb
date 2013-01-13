@@ -1,11 +1,10 @@
 class AuroraAlert < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
   include BelongsToUser
 
-  attr_accessible :user, :first_sent_at, :last_sent_at, :times_sent, :confirmed_at, :send_reminder_at
-
-  validates :user_id, :uniqueness => true, :presence => true
-  validates :first_sent_at, :presence => true, :uniqueness => true
-  validates :times_sent, :presence => true, :numericality => true
+  validates :user_id, uniqueness: true, presence: true
+  validates :first_sent_at, presence: true, uniqueness: true
+  validates :times_sent, presence: true, numericality: true
 
   before_validation :set_first_sent_at
   before_validation :set_last_sent_at

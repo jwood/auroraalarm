@@ -7,7 +7,7 @@ module Stubs
     end
 
     def send_message(mobile_phone, message)
-      @sent_messages << {:mobile_phone => mobile_phone, :message => message}
+      @sent_messages << { mobile_phone: mobile_phone, message: message }
     end
 
   end

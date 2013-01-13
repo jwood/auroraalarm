@@ -1,11 +1,11 @@
 class MessageHistory < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
+
   self.table_name = "message_history"
 
-  attr_accessible :mobile_phone, :message, :message_type
-
-  validates :mobile_phone, :presence => true
-  validates :message, :presence => true
-  validates :message_type, :presence => true, :length => { :maximum => 3 }
+  validates :mobile_phone, presence: true
+  validates :message, presence: true
+  validates :message_type, presence: true, length: { maximum: 3 }
 
   validate :ensure_message_type_valid
 

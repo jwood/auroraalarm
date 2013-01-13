@@ -49,13 +49,13 @@ class KnownUserHandler < MessageHandler
       @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.international_location)
     else
       confirm_user_if_necessary
-      @user.user_location.update_attributes(:city => location.city,
-                                            :state => location.state,
-                                            :postal_code => location.zip,
-                                            :country => location.country_code,
-                                            :latitude => location.latitude,
-                                            :longitude => location.longitude,
-                                            :magnetic_latitude => location.magnetic_latitude)
+      @user.user_location.update_attributes(city: location.city,
+                                            state: location.state,
+                                            postal_code: location.zip,
+                                            country: location.country_code,
+                                            latitude: location.latitude,
+                                            longitude: location.longitude,
+                                            magnetic_latitude: location.magnetic_latitude)
       @sms_messaging_service.send_message(@mobile_phone, OutgoingSmsMessages.location_update(location.zip))
     end
   end
@@ -66,7 +66,7 @@ class KnownUserHandler < MessageHandler
 
   def confirm_user_if_necessary
     if !@user.confirmed?
-      @user.update_attributes(:confirmed_at => Time.now)
+      @user.update_attributes(confirmed_at: Time.now)
     end
   end
 

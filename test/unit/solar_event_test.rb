@@ -7,14 +7,14 @@ class SolarEventTest < ActiveSupport::TestCase
   end
 
   test "should not be able to create solar event if there is already one recorded for the given day" do
-    assert SolarEvent.new(attributes(:issue_time => Time.utc(2012, 7, 5, 12, 23))).invalid?
+    assert SolarEvent.new(attributes(issue_time: Time.utc(2012, 7, 5, 12, 23))).invalid?
   end
 
   test "should not be able to create a solar event with missing required information" do
-    assert SolarEvent.new(attributes(:message_code => nil)).invalid?
-    assert SolarEvent.new(attributes(:serial_number => nil)).invalid?
-    assert SolarEvent.new(attributes(:issue_time => nil)).invalid?
-    assert SolarEvent.new(attributes(:expected_storm_strength => nil)).invalid?
+    assert SolarEvent.new(attributes(message_code: nil)).invalid?
+    assert SolarEvent.new(attributes(serial_number: nil)).invalid?
+    assert SolarEvent.new(attributes(issue_time: nil)).invalid?
+    assert SolarEvent.new(attributes(expected_storm_strength: nil)).invalid?
   end
 
   test "should be able to find the strongest solar event that occurred on a specific date" do
@@ -25,10 +25,10 @@ class SolarEventTest < ActiveSupport::TestCase
 
   def attributes(overrides={})
     {
-      :message_code => "WATA50",
-      :serial_number => "123",
-      :issue_time => Time.utc(2012, 6, 10, 12, 30),
-      :expected_storm_strength => "G2"
+      message_code: "WATA50",
+      serial_number: "123",
+      issue_time: Time.utc(2012, 6, 10, 12, 30),
+      expected_storm_strength: "G2"
     }.merge(overrides)
   end
 

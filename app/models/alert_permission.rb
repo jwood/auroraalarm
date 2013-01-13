@@ -1,12 +1,11 @@
 class AlertPermission < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
   include BelongsToUser
 
-  attr_accessible :user, :approved_at, :expires_at
-
-  validates :user_id, :presence => true
+  validates :user_id, presence: true
   validate :ensure_only_one_unapproved_alert_permission_per_user
 
-  scope :unapproved, -> { where(:approved_at => nil) }
+  scope :unapproved, -> { where(approved_at: nil) }
   scope :expired, -> { where(['expires_at < ?', Time.now]) }
   scope :active, -> { where(['approved_at IS NOT NULL AND expires_at > ?', Time.now]) }
 

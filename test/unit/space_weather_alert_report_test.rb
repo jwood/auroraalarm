@@ -41,7 +41,7 @@ class SpaceWeatherAlertReportTest < ActiveSupport::TestCase
   end
 
   test "should be able to find all events for a given date" do
-    events = @report.find_events(:date => Date.new(2012, 6, 17))
+    events = @report.find_events(date: Date.new(2012, 6, 17))
     assert_equal 11, events.size
 
     event = events[0]
@@ -67,7 +67,7 @@ class SpaceWeatherAlertReportTest < ActiveSupport::TestCase
   end
 
   test "should be able to find all events for a given event type" do
-    events = @report.find_events(:event_type => :watch)
+    events = @report.find_events(event_type: :watch)
     assert_equal 4, events.size
 
     event = events[0]
@@ -88,7 +88,7 @@ class SpaceWeatherAlertReportTest < ActiveSupport::TestCase
   end
 
   test "should be able to find all events of a given type on a given day" do
-    events = @report.find_events(:date => Date.new(2012, 6, 14), :event_type => :watch)
+    events = @report.find_events(date: Date.new(2012, 6, 14), event_type: :watch)
     assert_equal 1, events.size
 
     event = events[0]

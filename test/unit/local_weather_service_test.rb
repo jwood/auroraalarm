@@ -8,23 +8,23 @@ class LocalWeatherServiceTest < ActiveSupport::TestCase
 
   test "should be able to get the cloud cover percentage for a user" do
     body = File.read(File.expand_path('../../data/local_weather.xml', __FILE__))
-    FakeWeb.register_uri(:get, "http://graphical.weather.gov/xml/sample_products/browser_interface/ndfdXMLclient.php?lat=44.9061358&lon=-93.2885455&product=time-series&Unit=e&sky=sky", :body => body)
+    FakeWeb.register_uri(:get, "http://graphical.weather.gov/xml/sample_products/browser_interface/ndfdXMLclient.php?lat=44.9061358&lon=-93.2885455&product=time-series&Unit=e&sky=sky", body: body)
     assert_equal 11, @service.cloud_cover_percentage(users(:john))
   end
 
   test "should return nil if no data was returned from the web service" do
-    FakeWeb.register_uri(:get, "http://graphical.weather.gov/xml/sample_products/browser_interface/ndfdXMLclient.php?lat=44.9061358&lon=-93.2885455&product=time-series&Unit=e&sky=sky", :body => "")
+    FakeWeb.register_uri(:get, "http://graphical.weather.gov/xml/sample_products/browser_interface/ndfdXMLclient.php?lat=44.9061358&lon=-93.2885455&product=time-series&Unit=e&sky=sky", body: "")
     assert_nil @service.cloud_cover_percentage(users(:john))
   end
 
   test "should return nil if the service times out" do
     Net::HTTP.any_instance.expects(:request).raises(Timeout::Error)
-    FakeWeb.register_uri(:get, "http://graphical.weather.gov/xml/sample_products/browser_interface/ndfdXMLclient.php?lat=44.9061358&lon=-93.2885455&product=time-series&Unit=e&sky=sky", :body => "")
+    FakeWeb.register_uri(:get, "http://graphical.weather.gov/xml/sample_products/browser_interface/ndfdXMLclient.php?lat=44.9061358&lon=-93.2885455&product=time-series&Unit=e&sky=sky", body: "")
     assert_nil @service.cloud_cover_percentage(users(:john))
   end
 
   test "should return nil if an error was returned from the service" do
-    FakeWeb.register_uri(:get, "http://graphical.weather.gov/xml/sample_products/browser_interface/ndfdXMLclient.php?lat=44.9061358&lon=-93.2885455&product=time-series&Unit=e&sky=sky", :body => <<-BODY)
+    FakeWeb.register_uri(:get, "http://graphical.weather.gov/xml/sample_products/browser_interface/ndfdXMLclient.php?lat=44.9061358&lon=-93.2885455&product=time-series&Unit=e&sky=sky", body: <<-BODY)
 <error>
 <h2>ERROR</h2>
 <pre>

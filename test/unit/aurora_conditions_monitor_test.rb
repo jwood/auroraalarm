@@ -3,11 +3,11 @@ require 'test_helper'
 class AuroraConditionsMonitorTest < ActiveSupport::TestCase
 
   def setup
-    FakeWeb.register_uri(:get, "http://www.swpc.noaa.gov/wingkp/wingkp_list.txt", :body => "")
+    FakeWeb.register_uri(:get, "http://www.swpc.noaa.gov/wingkp/wingkp_list.txt", body: "")
     @monitor = AuroraConditionsMonitor.new
 
-    @bob_permission = AlertPermission.create!(:user => users(:bob), :approved_at => Time.now, :expires_at => 10.minutes.from_now)
-    @dan_permission = AlertPermission.create!(:user => users(:dan), :approved_at => Time.now, :expires_at => 10.minutes.from_now)
+    @bob_permission = AlertPermission.create!(user: users(:bob), approved_at: Time.now, expires_at: 10.minutes.from_now)
+    @dan_permission = AlertPermission.create!(user: users(:dan), approved_at: Time.now, expires_at: 10.minutes.from_now)
   end
 
   test "should send alerts if conditions are optimal" do
@@ -44,7 +44,7 @@ class AuroraConditionsMonitorTest < ActiveSupport::TestCase
   end
 
   test "should resend the alert if the user never confirmed the initial one" do
-    aurora_alert = AuroraAlert.create!(:user => users(:dan), :confirmed_at => Time.now, :send_reminder_at => 1.minute.ago)
+    aurora_alert = AuroraAlert.create!(user: users(:dan), confirmed_at: Time.now, send_reminder_at: 1.minute.ago)
     set_kp(6.33); set_nighttime(true); set_moon(:new); set_cloud_cover(10)
     expect_alerts(users(:dan))
     assert_no_difference 'AuroraAlert.count' do

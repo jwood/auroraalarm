@@ -31,7 +31,7 @@
   <table>
     <tr>
       <td><%= label_tag :kp %></td>
-      <td><%= number_field_tag :kp, @kp, :step => 0.1 %></td>
+      <td><%= number_field_tag :kp, @kp, step: 0.1 %></td>
     </tr>
     <tr>
       <td><%= label_tag :nighttime %></td>
@@ -59,7 +59,7 @@
     </tr>
     <tr>
       <td><%= label_tag :message %></td>
-      <td><%= text_area_tag :message, @message, :rows => 3, :cols => 80 %></td>
+      <td><%= text_area_tag :message, @message, rows: 3, cols: 80 %></td>
     </tr>
   </table>
   <div>

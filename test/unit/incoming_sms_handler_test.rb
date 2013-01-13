@@ -167,7 +167,7 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
 
   test "should be able to approve an unapproved alert permission" do
     user = users(:bob)
-    alert_permission = AlertPermission.create!(:user => user)
+    alert_permission = AlertPermission.create!(user: user)
 
     SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.approved_alert_permission)
     IncomingSmsHandler.process(user.mobile_phone, 'Y')
@@ -177,7 +177,7 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
 
   test "should be able to decline an unapproved alert permission" do
     user = users(:bob)
-    alert_permission = AlertPermission.create!(:user => user)
+    alert_permission = AlertPermission.create!(user: user)
 
     SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.declined_alert_permission)
     IncomingSmsHandler.process(user.mobile_phone, 'N')
@@ -199,7 +199,7 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
 
   test "should be able to handle the acknowledgement of an aurora alert" do
     user = users(:bob)
-    AuroraAlert.create!(:user => user)
+    AuroraAlert.create!(user: user)
     SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.acknowledge_alert)
     IncomingSmsHandler.process(user.mobile_phone, '0')
     user.reload
@@ -211,7 +211,7 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
     begin
       Timecop.freeze(Time.now)
       user = users(:bob)
-      AuroraAlert.create!(:user => user)
+      AuroraAlert.create!(user: user)
       SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.remind_at("1 hour"))
       IncomingSmsHandler.process(user.mobile_phone, '1')
       user.reload
@@ -226,7 +226,7 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
     begin
       Timecop.freeze(Time.now)
       user = users(:bob)
-      AuroraAlert.create!(:user => user)
+      AuroraAlert.create!(user: user)
       SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.remind_at("2 hours"))
       IncomingSmsHandler.process(user.mobile_phone, '2)')
       user.reload
@@ -239,7 +239,7 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
 
   test "should be able handle users asking that no more auora alarms be sent that night" do
     user = users(:bob)
-    AuroraAlert.create!(:user => user)
+    AuroraAlert.create!(user: user)
     SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.no_more_messages_tonight)
     IncomingSmsHandler.process(user.mobile_phone, '3')
     user.reload

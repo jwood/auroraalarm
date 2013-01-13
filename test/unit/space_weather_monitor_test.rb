@@ -3,7 +3,7 @@ require 'test_helper'
 class SpaceWeatherMonitorTest < ActiveSupport::TestCase
 
   def setup
-    @monitor = SpaceWeatherMonitor.new(:moon => Stubs::StubbedMoon.new(:new))
+    @monitor = SpaceWeatherMonitor.new(moon: Stubs::StubbedMoon.new(:new))
     @yesterday = (DateTime.now.utc - 1.day).to_date
     @today = DateTime.now.utc.to_date
   end
@@ -102,7 +102,7 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
   end
 
   test "should replace unapproved alert permissions with new ones if old ones exist" do
-    alert_permission = AlertPermission.create!(:user => users(:dan))
+    alert_permission = AlertPermission.create!(user: users(:dan))
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@yesterday).returns(nil)
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@today).returns(solar_event("G3", DateTime.now.utc))
     assert_difference 'AlertPermission.count', 1 do
@@ -113,7 +113,7 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
   end
 
   test "should create a new unapproved alert permissions if an existing approved one already exists" do
-    alert_permission = AlertPermission.create!(:user => users(:dan), :approved_at => Time.now)
+    alert_permission = AlertPermission.create!(user: users(:dan), approved_at: Time.now)
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@yesterday).returns(nil)
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@today).returns(solar_event("G3", DateTime.now.utc))
     assert_difference 'AlertPermission.count', 2 do
@@ -123,9 +123,9 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
   end
 
   test "should destroy all expired alert permissions before running the process to create new ones" do
-    AlertPermission.create!(:user => users(:dan), :approved_at => Time.now, :expires_at => 1.minute.ago)
-    AlertPermission.create!(:user => users(:john), :approved_at => Time.now, :expires_at => 1.minute.ago)
-    AlertPermission.create!(:user => users(:bob), :approved_at => Time.now, :expires_at => 10.minutes.from_now)
+    AlertPermission.create!(user: users(:dan), approved_at: Time.now, expires_at: 1.minute.ago)
+    AlertPermission.create!(user: users(:john), approved_at: Time.now, expires_at: 1.minute.ago)
+    AlertPermission.create!(user: users(:bob), approved_at: Time.now, expires_at: 10.minutes.from_now)
 
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@yesterday).returns(nil)
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@today).returns(nil)
@@ -135,7 +135,7 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
   end
 
   test "should not send any alerts if the moon will not be dark over the next 3 days" do
-    monitor = SpaceWeatherMonitor.new(:moon => Stubs::StubbedMoon.new(:full))
+    monitor = SpaceWeatherMonitor.new(moon: Stubs::StubbedMoon.new(:full))
     SmsMessagingService.any_instance.expects(:send_message).never
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@yesterday).returns(nil)
     SpaceWeatherAlertService.any_instance.expects(:strongest_geomagnetic_storm).with(@today).returns(solar_event("G2", DateTime.now.utc))
@@ -161,10 +161,10 @@ class SpaceWeatherMonitorTest < ActiveSupport::TestCase
 
   def create_yesterdays_previously_recorded_event(strength)
     SolarEvent.create!(
-      :message_code => "WATA050",
-      :serial_number => new_serial_number,
-      :issue_time => DateTime.now.utc - 1.day,
-      :expected_storm_strength => strength)
+      message_code: "WATA050",
+      serial_number: new_serial_number,
+      issue_time: DateTime.now.utc - 1.day,
+      expected_storm_strength: strength)
   end
 
 end

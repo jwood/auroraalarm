@@ -3,11 +3,11 @@ require 'test_helper'
 class SmsMessagingServiceTest < ActiveSupport::TestCase
 
   def setup
-    @service = SmsMessagingService.new(:force_send => true)
+    @service = SmsMessagingService.new(force_send: true)
   end
 
   test "should be able to send a SMS message" do
-    Twilio::REST::Messages.any_instance.expects(:create).with(:from => '+13123865114', :to => '3125551212', :body => 'Some message')
+    Twilio::REST::Messages.any_instance.expects(:create).with(from: '+13123865114', to: '3125551212', body: 'Some message')
     assert_difference 'MessageHistory.count', 1 do
       @service.send_message("3125551212", "Some message")
     end
