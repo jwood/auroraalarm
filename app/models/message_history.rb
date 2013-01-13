@@ -9,7 +9,7 @@ class MessageHistory < ActiveRecord::Base
 
   validate :ensure_message_type_valid
 
-  scope :old, lambda { where(['created_at < ?', 2.weeks.ago]) }
+  scope :old, -> { where(['created_at < ?', 2.weeks.ago]) }
 
   def self.purge_old_messages
     MessageHistory.old.destroy_all

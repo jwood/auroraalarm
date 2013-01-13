@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :mobile_phone, :presence => true, :uniqueness => true, :length => { :maximum => 15 }
   validate :validate_mobile_phone_format
 
-  scope :confirmed, where('confirmed_at IS NOT NULL')
+  scope :confirmed, -> { where('confirmed_at IS NOT NULL') }
 
   def confirmed?
     !self.confirmed_at.nil?
