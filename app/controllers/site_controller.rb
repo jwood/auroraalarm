@@ -40,7 +40,7 @@ class SiteController < ApplicationController
   end
 
   def send_sms_signup_prompt
-    service = Services::SmsMessagingService.new
+    service = SmsMessagingService.new
     service.send_message(@user.mobile_phone, OutgoingSmsMessages.signup_prompt)
   end
 

@@ -19,7 +19,7 @@ class IncomingSmsMessagesControllerTest < ActionController::TestCase
 
   test "should strip spaces from the incoming message" do
     user = users(:john)
-    Services::SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.signup_confirmation)
+    SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.signup_confirmation)
 
     assert_no_new_user do
       post :index, :mobile_phone => user.mobile_phone, :message => ' y '
