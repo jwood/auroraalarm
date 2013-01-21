@@ -9,6 +9,10 @@ class AlertPermission < ActiveRecord::Base
   scope :expired, -> { where(['expires_at < ?', Time.now]) }
   scope :active, -> { where(['approved_at IS NOT NULL AND expires_at > ?', Time.now]) }
 
+  def approve!
+    update_attributes!(approved_at: Time.now, expires_at: 70.hours.from_now)
+  end
+
   private
 
   def ensure_only_one_unapproved_alert_permission_per_user

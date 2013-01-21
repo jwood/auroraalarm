@@ -72,4 +72,14 @@ class AlertPermissionTest < ActiveSupport::TestCase
     assert_equal [users(:john).id, users(:dan).id], AlertPermission.active.distinct_user_ids
   end
 
+  test "should be able to approve an unapproved alert" do
+    alert = AlertPermission.create!(user: users(:john))
+    assert AlertPermission.unapproved.include?(alert)
+
+    alert.approve!
+    assert_not_nil alert.approved_at
+    assert_not_nil alert.expires_at
+    assert !AlertPermission.unapproved.include?(alert)
+  end
+
 end
