@@ -16,6 +16,10 @@ class SpaceWeatherMonitor
     end
   end
 
+  def self.alert_users_of_solar_event
+    self.new.alert_users_of_solar_event
+  end
+
   private
 
   def clear_expired_alert_permissions

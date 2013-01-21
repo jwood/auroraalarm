@@ -21,6 +21,10 @@ class AuroraConditionsMonitor
     end
   end
 
+  def self.alert_users_of_aurora_if_conditions_optimal
+    self.new.alert_users_of_aurora_if_conditions_optimal
+  end
+
   private
 
   def conditions_optimal_for_user(user)
