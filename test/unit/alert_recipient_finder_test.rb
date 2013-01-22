@@ -3,8 +3,8 @@ require 'test_helper'
 class AlertRecipientFinderTest < ActiveSupport::TestCase
 
   def setup
-    users(:john).update_attributes(confirmed_at: Time.now)
-    users(:joe).update_attributes(confirmed_at: Time.now)
+    users(:john).confirm!
+    users(:joe).confirm!
   end
 
   test "should be able to find all confirmed users with an active alert permission" do

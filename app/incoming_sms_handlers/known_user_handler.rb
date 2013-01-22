@@ -66,7 +66,7 @@ class KnownUserHandler < MessageHandler
 
   def confirm_user_if_necessary
     if !@user.confirmed?
-      @user.update_attributes(confirmed_at: Time.now)
+      @user.confirm!
     end
   end
 

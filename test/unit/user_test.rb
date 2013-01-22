@@ -51,4 +51,11 @@ class UserTest < ActiveSupport::TestCase
     assert_equal alert_permission, user.reload.unapproved_alert_permission
   end
 
+  test "should be able to confirm a user" do
+    user = User.create!(mobile_phone: "3125551212")
+    assert !user.confirmed?
+    user.confirm!
+    assert user.confirmed?
+  end
+
 end

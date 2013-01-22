@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
     !self.confirmed_at.nil?
   end
 
+  def confirm!
+    self.update_attributes!(confirmed_at: Time.now)
+  end
+
   def unapproved_alert_permission
     alert_permissions.unapproved.first
   end
