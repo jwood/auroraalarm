@@ -3,6 +3,10 @@ require 'net/http'
 class KpIndexService
   include HttpGetter
 
+  def self.current_forecast
+    self.new.current_forecast
+  end
+
   def current_forecast
     forecast = []
     data = forecast_data || ""
