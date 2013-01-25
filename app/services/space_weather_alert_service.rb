@@ -9,16 +9,14 @@ class SpaceWeatherAlertService
   end
 
   def strongest_geomagnetic_storm(date)
-    fetch_report
-    if @report
-      events = @report.find_events(date: date, event_type: :watch)
+    if report
+      events = report.find_events(date: date, event_type: :watch)
       events.sort { |a,b| [a.geomagnetic_storm_level, a.issue_time] <=> [b.geomagnetic_storm_level, b.issue_time] }.reverse.first
     end
   end
 
   def report
-    fetch_report
-    @report
+    @report ||= fetch_report
   end
 
   def self.data_url(date)
@@ -28,13 +26,8 @@ class SpaceWeatherAlertService
   private
 
   def fetch_report
-    if @report.nil?
-      data = http_get(SpaceWeatherAlertService.data_url(Date.new(@year, @month)))
-      if data
-        @report = SpaceWeatherAlertReport.new(data)
-      end
-    end
-    @report
+    data = http_get(SpaceWeatherAlertService.data_url(Date.new(@year, @month)))
+    data ? SpaceWeatherAlertReport.new(data) : nil
   end
 
   def self.report_name(date)
