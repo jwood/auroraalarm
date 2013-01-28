@@ -208,8 +208,7 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
   end
 
   test "should be able handle users asking to be reminded of the aurora in 1 hour" do
-    begin
-      Timecop.freeze(Time.now)
+    Timecop.freeze(Time.now) do
       user = users(:bob)
       AuroraAlert.create!(user: user)
       SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.remind_at("1 hour"))
@@ -217,14 +216,11 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
       user.reload
       assert_not_nil user.aurora_alert.confirmed_at
       assert_time_roughly 1.hour.from_now, user.aurora_alert.send_reminder_at
-    ensure
-      Timecop.return
     end
   end
 
   test "should be able handle users asking to be reminded of the aurora in 2 hours" do
-    begin
-      Timecop.freeze(Time.now)
+    Timecop.freeze(Time.now) do
       user = users(:bob)
       AuroraAlert.create!(user: user)
       SmsMessagingService.any_instance.expects(:send_message).with(user.mobile_phone, OutgoingSmsMessages.remind_at("2 hours"))
@@ -232,8 +228,6 @@ class IncomingSmsHandlerTest < ActiveSupport::TestCase
       user.reload
       assert_not_nil user.aurora_alert.confirmed_at
       assert_time_roughly 2.hours.from_now, user.aurora_alert.send_reminder_at
-    ensure
-      Timecop.return
     end
   end
 
