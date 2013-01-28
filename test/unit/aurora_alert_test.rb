@@ -60,4 +60,23 @@ class AuroraAlertTest < ActiveSupport::TestCase
     end
   end
 
+  test "should be able to mark an existing alert as resent" do
+    Timecop.freeze(Time.now) do
+      aurora_alert = AuroraAlert.create!(user: users(:john),
+                                         last_sent_at: 3.days.ago,
+                                         confirmed_at: 3.days.ago,
+                                         send_reminder_at: 1.week.from_now)
+      assert_equal 1, aurora_alert.times_sent
+      assert_equal 3.days.ago, aurora_alert.last_sent_at
+      assert_equal 3.days.ago, aurora_alert.confirmed_at
+      assert_equal 1.week.from_now, aurora_alert.send_reminder_at
+
+      aurora_alert.mark_as_resent
+      assert_equal 2, aurora_alert.times_sent
+      assert_equal Time.now.utc, aurora_alert.last_sent_at
+      assert_nil aurora_alert.confirmed_at
+      assert_nil aurora_alert.send_reminder_at
+    end
+  end
+
 end

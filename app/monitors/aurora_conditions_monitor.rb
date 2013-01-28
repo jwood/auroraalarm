@@ -55,10 +55,7 @@ class AuroraConditionsMonitor
     if aurora_alert.blank?
       AuroraAlert.create(user: user)
     else
-      aurora_alert.update_attributes(last_sent_at: Time.now.utc,
-                                     times_sent: aurora_alert.times_sent + 1,
-                                     confirmed_at: nil,
-                                     send_reminder_at: nil)
+      aurora_alert.mark_as_resent
     end
 
     @sms_messaging_service.send_message(user.mobile_phone, OutgoingSmsMessages.aurora_alert)

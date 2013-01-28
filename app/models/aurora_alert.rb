@@ -16,6 +16,13 @@ class AuroraAlert < ActiveRecord::Base
     AuroraAlert.old.destroy_all
   end
 
+  def mark_as_resent
+    self.update_attributes(last_sent_at: Time.now.utc,
+                           times_sent: self.times_sent + 1,
+                           confirmed_at: nil,
+                           send_reminder_at: nil)
+  end
+
   private
 
   def set_first_sent_at
