@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
 
   attr_accessor :user_location_value
 

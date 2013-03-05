@@ -1,5 +1,4 @@
 class KpForecast < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
 
   validates :forecast_time, uniqueness: true, presence: true
   validates :expected_kp, presence: true, numericality: true

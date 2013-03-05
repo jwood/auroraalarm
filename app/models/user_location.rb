@@ -1,5 +1,4 @@
 class UserLocation < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
   include BelongsToUser
 
   validates :user_id, presence: true, uniqueness: true

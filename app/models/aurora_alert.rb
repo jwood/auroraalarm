@@ -1,5 +1,4 @@
 class AuroraAlert < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
   include BelongsToUser
 
   validates :user_id, uniqueness: true, presence: true

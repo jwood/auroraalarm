@@ -1,5 +1,4 @@
 class MessageHistory < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
 
   self.table_name = "message_history"
 
