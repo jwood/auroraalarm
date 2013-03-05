@@ -3,7 +3,7 @@ require 'test_helper'
 class SpaceWeatherAlertReportTest < ActiveSupport::TestCase
 
   def setup
-    report_text = File.read(File.expand_path('../../data/space_weather_alerts.html', __FILE__))
+    report_text = File.read(File.expand_path('../../../data/space_weather_alerts.html', __FILE__))
     @report = SpaceWeatherAlertReport.new(report_text)
   end
 
@@ -105,7 +105,7 @@ class SpaceWeatherAlertReportTest < ActiveSupport::TestCase
   end
 
   test "should not freak out if the report data does not contain any events" do
-    report_text = File.read(File.expand_path('../../data/space_weather_alerts_no_events.html', __FILE__))
+    report_text = File.read(File.expand_path('../../../data/space_weather_alerts_no_events.html', __FILE__))
     report = SpaceWeatherAlertReport.new(report_text)
   end
 

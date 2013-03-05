@@ -7,7 +7,7 @@ class KpIndexServiceTest < ActiveSupport::TestCase
   end
 
   test "should be able to fetch the Kp forecast" do
-    body = File.read(File.expand_path('../../data/wingkp_list.txt', __FILE__))
+    body = File.read(File.expand_path('../../../data/wingkp_list.txt', __FILE__))
     FakeWeb.register_uri(:get, "http://www.swpc.noaa.gov/wingkp/wingkp_list.txt", body: body)
     assert_equal [Time.utc(2012, 7, 10, 21, 54), 2.33], @service.current_forecast.first
     assert_equal [Time.utc(2012, 7, 17, 21, 50), 3.67], @service.current_forecast.last

@@ -3,7 +3,7 @@ require 'test_helper'
 class SpaceWeatherAlertServiceTest < ActiveSupport::TestCase
 
   def setup
-    body = File.read(File.expand_path('../../data/space_weather_alerts.html', __FILE__))
+    body = File.read(File.expand_path('../../../data/space_weather_alerts.html', __FILE__))
     FakeWeb.register_uri(:get, "http://www.swpc.noaa.gov/alerts/archive/alerts_Jun2012.html", body: body)
   end
 
