@@ -2,7 +2,7 @@
   <div id="description">
     AuroraAlarm is a <strong>FREE</strong> service that will notify you via SMS when conditions are optimal for
     viewing the <%= link_to 'Aurora Borealis', 'http://en.wikipedia.org/wiki/Aurora_(astronomy)' %>
-    in your area. <span id="us_only"><a href="#us_only_explanation">Sorry, but this service is currently available to US residents only.</a></span>
+    in your area. <span id="us_only"><a href="#">Sorry, but this service is currently available to US residents only.</a></span>
   </div>
 
   <div id="signup">
@@ -97,8 +97,8 @@
       </div>
     </li>
     <li>
-      <%= link_to "Why is this service only available to US residents?", "#" %>
-      <div>
+      <%= link_to "Why is this service only available to US residents?", "#", id: 'us_only_explanation' %>
+      <div id="us_only_explanation_div">
         <p>
           I'm good friends with the folks at <a href="http://www.signalhq.com">Signal</a>, a digital marketing company
           that specializes in SMS, email, and social marketing tools.  Signal is graciously allowing me to use their
