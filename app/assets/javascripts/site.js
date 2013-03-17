@@ -15,8 +15,13 @@ $(function() {
     $("#loading").hide();
   });
 
-  $('nav, #us_only, #faq_links').localScroll({
+  $('nav, #us_only').localScroll({
     duration: 400,
     hash: true
+  });
+
+  $('#faq_links a').click(function() {
+    $(this).parent().find('div').toggle("fast");
+    return false;
   });
 });
