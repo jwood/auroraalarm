@@ -16,6 +16,7 @@
 
 # Ignore other files
 .DS_Store
+.ruby-version
 .rvmrc
 .rbenv-version
 *.swp

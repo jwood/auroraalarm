@@ -15,8 +15,20 @@ $(function() {
     $("#loading").hide();
   });
 
-  $('nav, #us_only, #faq_links').localScroll({
+  $('nav, #us_only').localScroll({
     duration: 400,
     hash: true
+  });
+
+  $('#faq_links a').click(function() {
+    $(this).parent().find('div').toggle("fast");
+    return false;
+  });
+
+  $('#us_only a').click(function() {
+    $('#us_only_explanation_div').show();
+    $('html, body').animate({
+      scrollTop: $("#us_only_explanation").offset().top
+    });
   });
 });
