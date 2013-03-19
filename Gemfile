@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.13'
 gem 'jquery-rails', '2.0.2'
 
 gem 'pg', '0.14.0'
@@ -27,7 +27,7 @@ end
 
 group :test do
   gem 'fakeweb', '1.3.0'
-  gem 'mocha', '0.12.0', require: false
+  gem 'mocha', '0.13.3', require: false
   gem 'simplecov', '0.6.4'
   gem 'timecop', '0.4.4'
 end
