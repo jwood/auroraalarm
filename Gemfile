@@ -26,10 +26,11 @@ group :assets do
 end
 
 group :test do
-  gem 'fakeweb', '1.3.0'
-  gem 'mocha', '0.13.3', require: false
-  gem 'simplecov', '0.6.4'
-  gem 'timecop', '0.4.4'
+  gem 'fakeweb'
+  gem 'mocha', require: false
+  gem 'simplecov'
+  gem 'timecop'
+  gem 'coveralls', require: false
 end
 
 group :production do
