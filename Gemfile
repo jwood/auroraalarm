@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
-gem 'jquery-rails'
+gem 'jquery-rails', '2.0.3'
 
 gem 'unicorn'
 gem 'foreman'
