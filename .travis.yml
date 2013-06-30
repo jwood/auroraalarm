@@ -3,6 +3,7 @@ rvm:
   - 1.9.3
 env:
   - DB=postgres
+  - RAILS_SECRET_TOKEN=somesupersecrettoken
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
 before_script:
