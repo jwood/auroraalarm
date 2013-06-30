@@ -22,6 +22,10 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 
+group :development do
+  gem 'thin'
+end
+
 group :test do
   gem 'fakeweb'
   gem 'mocha', require: false
