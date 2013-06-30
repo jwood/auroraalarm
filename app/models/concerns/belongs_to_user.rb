@@ -3,7 +3,7 @@ module BelongsToUser
 
   included do
     belongs_to :user
-    scope :for_user, lambda { |user| where(user_id: user) }
+    scope :for_user, ->(user) { where(user_id: user) }
   end
 
   module ClassMethods
