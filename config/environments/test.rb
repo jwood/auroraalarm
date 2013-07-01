@@ -38,6 +38,7 @@ Aurora::Application.configure do
 
   ENV['PRIVATE_CONTROLLER_USERNAME'] = "username"
   ENV['PRIVATE_CONTROLLER_PASSWORD'] = "password"
+  ENV['RAILS_SECRET_TOKEN'] = "supersecrettoken"
 
   SimpleCov.start do
     # Exclude the dynamic test controller and associated files
