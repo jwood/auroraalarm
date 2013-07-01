@@ -67,8 +67,11 @@ Aurora::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.middleware.use ExceptionNotifier,
-    email_prefix: "[AuroraAlarm Exception] ",
-    sender_address: %{"AuroraAlarm" <noreply@auroraalarm.net>},
-    exception_recipients: %w{john@johnpwood.net}
+  config.middleware.use ExceptionNotification::Rack,
+    email: {
+      email_prefix: "[AuroraAlarm Exception] ",
+      sender_address: %{"AuroraAlarm" <noreply@auroraalarm.net>},
+      exception_recipients: %w{john@johnpwood.net}
+    }
 end
+
