@@ -5,8 +5,8 @@ GIT
     moonphase (0.0.1)
 
 GIT
-  remote: git://github.com/jwood/signal-ruby.git
-  revision: 262781b8b093c435a8216f8c11d2e9e0c8801c17
+  remote: git://github.com/signal/signal-ruby.git
+  revision: a2f2bd75ce6c7dc531f49eaeb9095bda953421ac
   specs:
     signal_api (0.0.1)
       builder (~> 3.0)
