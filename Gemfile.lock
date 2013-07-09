@@ -64,7 +64,7 @@ GEM
     dotenv (0.8.0)
     erubis (2.7.0)
     eventmachine (1.0.0)
-    exception_notification (4.0.0.rc1)
+    exception_notification (4.0.0)
       actionmailer (>= 3.0.4)
       activesupport (>= 3.0.4)
     execjs (1.4.0)
@@ -178,7 +178,7 @@ DEPENDENCIES
   coffee-rails
   coveralls
   dalli
-  exception_notification (= 4.0.0.rc1)
+  exception_notification
   fakeweb
   foreigner
   foreman
