@@ -7,7 +7,7 @@ class GeolocationServiceTest < ActiveSupport::TestCase
   end
 
   test "should be able to fetch the data for a location" do
-    geo = GeoKit::GeoLoc.new(city: "Tinley Park", state: "IL", zip: "60477", country_code: "US", lat: 46.9092987, lng: -68.0069732)
+    geo = Geokit::GeoLoc.new(city: "Tinley Park", state: "IL", zip: "60477", country_code: "US", lat: 46.9092987, lng: -68.0069732)
     geo.success = true
     Geokit::Geocoders::MultiGeocoder.expects(:geocode).with("60477").returns(geo)
 
@@ -54,7 +54,7 @@ class GeolocationServiceTest < ActiveSupport::TestCase
   private
 
   def successful_geoloc(attributes)
-    geo = GeoKit::GeoLoc.new(attributes)
+    geo = Geokit::GeoLoc.new(attributes)
     geo.success = true
     geo
   end

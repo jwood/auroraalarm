@@ -79,7 +79,7 @@ class UserFactoryTest < ActiveSupport::TestCase
   end
 
   test "should raise an error if we were unable to lookup the location" do
-    Geokit::Geocoders::MultiGeocoder.expects(:geocode).with('00000').returns(GeoKit::GeoLoc.new)
+    Geokit::Geocoders::MultiGeocoder.expects(:geocode).with('00000').returns(Geokit::GeoLoc.new)
 
     assert_no_new_user do
       user = @factory.create_user('3125551212', '00000')
