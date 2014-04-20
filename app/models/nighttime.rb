@@ -27,7 +27,7 @@ class Nighttime
     events << [SolarEventCalculator.new(today,     latitude, longitude).compute_utc_astronomical_sunset,  :sunset]
     events << [SolarEventCalculator.new(today + 1, latitude, longitude).compute_utc_astronomical_sunrise, :sunrise]
     events << [SolarEventCalculator.new(today + 1, latitude, longitude).compute_utc_astronomical_sunset,  :sunset]
-    events.compact.sort
+    events.reject{ |x| x[0].nil? }.sort
   end
 
 end

@@ -34,4 +34,10 @@ class NighttimeTest < ActiveSupport::TestCase
     end
   end
 
+  test "should not freak out if the astronomical sunrise or sunset time could not be determined" do
+    Timecop.freeze(Time.utc(2014, 4, 20, 17, 35)) do
+      assert !@nighttime.nighttime?(users(:beth))
+    end
+  end
+
 end
