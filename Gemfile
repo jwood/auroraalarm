@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails'
+gem 'rails', '4.0.5'
 gem 'jquery-rails', '2.0.3'
 
 gem 'unicorn'
@@ -19,7 +19,7 @@ gem 'moonphase', git: 'git://github.com/jwood/moonphase.git'
 gem 'RubySunrise', require: 'solareventcalculator'
 gem 'nokogiri'
 
-gem 'sass-rails'
+gem 'sass-rails', "~> 4.0.2"
 gem 'coffee-rails'
 gem 'uglifier'
 
