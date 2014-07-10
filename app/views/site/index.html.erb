@@ -60,7 +60,7 @@
   <h2>FAQ</h2>
   <ul id="faq_links">
     <li>
-      <%= link_to "What are the costs associated with the service?", "#" %>
+      <%= link_to "What are the costs associated with the service?", "#", class: 'faq_link' %>
       <div>
         <p>
            This service is free to use.  However, it uses SMS (text messaging) to notify you of
@@ -70,7 +70,7 @@
       </div>
     </li>
     <li>
-    <%= link_to "Will this service wake me up in the middle of the night?", "#" %>
+      <%= link_to "Will this service wake me up in the middle of the night?", "#", class: 'faq_link' %>
       <div>
         <p>
           Yes, and that's the point!  The best time for viewing Auroras are in the hours past midnight.
@@ -86,7 +86,7 @@
       </div>
     </li>
     <li>
-      <%= link_to "If you wake me up, does that mean I'll see the Aurora for sure?", "#" %>
+      <%= link_to "If you wake me up, does that mean I'll see the Aurora for sure?", "#", class: 'faq_link' %>
       <div>
         <p>
           Sadly, no.  Ambient light (city lights, etc) prevents many from seeing the Aurora.  And,
@@ -97,10 +97,10 @@
       </div>
     </li>
     <li>
-      <%= link_to "Why is this service only available to US residents?", "#", id: 'us_only_explanation' %>
+      <%= link_to "Why is this service only available to US residents?", "#", id: 'us_only_explanation', class: 'faq_link' %>
       <div id="us_only_explanation_div">
         <p>
-          I'm good friends with the folks at <a href="http://www.signalhq.com">Signal</a>, a digital marketing company
+          I'm good friends with the folks at <a href="http://www.signalengage.com">Signal</a>, a digital marketing company
           that specializes in SMS, email, and social marketing tools.  Signal is graciously allowing me to use their
           SMS service for free to power AuroraAlarm.  Unfortunately, the SMS aggregator they use only delivers messages
           in the US.
@@ -112,19 +112,19 @@
       </div>
     </li>
     <li>
-      <%= link_to "How do I cancel this service?", "#" %>
+      <%= link_to "How do I cancel this service?", "#", class: 'faq_link' %>
       <div>
         <p>You can cancel the service at any time by texting <strong>STOP</strong> to 839863.</p>
       </div>
     </li>
     <li>
-      <%= link_to "How do I update my zipcode?", "#" %>
+      <%= link_to "How do I update my zipcode?", "#", class: 'faq_link' %>
       <div>
         <p>You can update your zipcode at any time by texting <strong>AURORA</strong> followed by your zipcode to 839863. (ex. AURORA 90210)</p>
       </div>
     </li>
     <li>
-      <%= link_to "What do you do with my mobile phone number and location information?", "#" %>
+      <%= link_to "What do you do with my mobile phone number and location information?", "#", class: 'faq_link' %>
       <div>
         <p>
           We use your location information to determine if conditions are right for viewing the Aurora in your area, and we use your mobile
@@ -139,7 +139,7 @@
       </div>
     </li>
     <li>
-      <%= link_to "Who do I contact if I have any questions, comments, or concerns?", "#" %>
+      <%= link_to "Who do I contact if I have any questions, comments, or concerns?", "#", class: 'faq_link' %>
       <div>
         <p>You can reach me, John Wood, at <%= mail_to 'john@johnpwood.net', 'john@johnpwood.net' %>.</p>
       </div>

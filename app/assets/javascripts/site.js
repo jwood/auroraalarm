@@ -20,7 +20,7 @@ $(function() {
     hash: true
   });
 
-  $('#faq_links a').click(function() {
+  $('#faq_links a.faq_link').click(function() {
     $(this).parent().find('div').toggle("fast");
     return false;
   });
