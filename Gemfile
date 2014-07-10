@@ -9,6 +9,7 @@ gem 'foreman'
 
 gem 'pg'
 
+gem 'delayed_job_active_record'
 gem 'foreigner'
 gem 'geokit'
 gem 'dalli'
