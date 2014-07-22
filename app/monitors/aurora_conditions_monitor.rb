@@ -11,13 +11,11 @@ class AuroraConditionsMonitor
   end
 
   def alert_users_of_aurora_if_conditions_optimal
-    Proby.monitor(ENV['PROBY_ALERT_USERS_OF_AURORA']) do
-      current_kp_forecast = kp_forecaster.current_kp_forecast
-      if current_kp_forecast && current_kp_forecast.storm_level?
-        alert_recipient_finder.users.each do |user|
-          if conditions_optimal_for_user(user)
-            alert_user(user)
-          end
+    current_kp_forecast = kp_forecaster.current_kp_forecast
+    if current_kp_forecast && current_kp_forecast.storm_level?
+      alert_recipient_finder.users.each do |user|
+        if conditions_optimal_for_user(user)
+          alert_user(user)
         end
       end
     end

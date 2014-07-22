@@ -9,12 +9,10 @@ class SpaceWeatherMonitor
   end
 
   def alert_users_of_solar_event
-    Proby.monitor(ENV['PROBY_ALERT_USERS_OF_SOLAR_EVENT']) do
-      clear_expired_alert_permissions
-      solar_event = fetch_solar_event
-      if solar_event && moon_will_be_dark(solar_event)
-        alert_users(solar_event)
-      end
+    clear_expired_alert_permissions
+    solar_event = fetch_solar_event
+    if solar_event && moon_will_be_dark(solar_event)
+      alert_users(solar_event)
     end
   end
 
