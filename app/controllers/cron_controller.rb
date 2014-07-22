@@ -11,8 +11,11 @@ class CronController < PrivateController
   end
 
   def cleanup
-    CleanupService.delay.execute
-    render nothing: true
+    Proby.monitor(ENV['PROBY_CLEANUP']) do
+      MessageHistory.purge_old_messages
+      AuroraAlert.purge_old_alerts
+      render nothing: true
+    end
   end
 
 end
