@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', '4.0.8'
+gem 'rails', '~> 4.0.0'
 gem 'jquery-rails', '2.0.3'
 
 gem 'unicorn'
