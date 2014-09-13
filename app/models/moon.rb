@@ -19,7 +19,11 @@ class Moon
   end
 
   def dark?(time)
-    [:new, :waxing_crescent, :first_quarter, :third_quarter, :waning_crescent].include?(phase(time))
+    if Aurora::Application.config.consider_moonlight
+      [:new, :waxing_crescent, :first_quarter, :third_quarter, :waning_crescent].include?(phase(time))
+    else
+      true
+    end
   end
 
 end

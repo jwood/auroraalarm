@@ -53,5 +53,7 @@ module Aurora
     config.assets.initialize_on_precompile = false
 
     config.i18n.enforce_available_locales = true
+
+    config.consider_moonlight = false
   end
 end

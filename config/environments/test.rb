@@ -45,4 +45,6 @@ Aurora::Application.configure do
     add_filter "/app/controllers/test_controller.rb"
     add_filter "/app/models/stubbed_sms_messaging_service.rb"
   end
+
+  config.consider_moonlight = true
 end
