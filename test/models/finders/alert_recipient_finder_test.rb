@@ -24,7 +24,7 @@ class AlertRecipientFinderTest < ActiveSupport::TestCase
     aurora_alert = AuroraAlert.create!(user: users(:bob), confirmed_at: Time.now)
     aurora_alert = AuroraAlert.create!(user: users(:dan), confirmed_at: Time.now)
 
-    assert_equal [users(:john), users(:joe)], AlertRecipientFinder.new.users
+    assert_equal [users(:john), users(:joe)].sort, AlertRecipientFinder.new.users.sort
   end
 
   test "should find confirmed users with an active alert permission and an unconfirmed alert or an alert that needs a reminder sent" do
@@ -37,7 +37,7 @@ class AlertRecipientFinderTest < ActiveSupport::TestCase
     aurora_alert = AuroraAlert.create!(user: users(:bob), confirmed_at: Time.now, send_reminder_at: 1.minute.ago)
     aurora_alert = AuroraAlert.create!(user: users(:dan), confirmed_at: Time.now, send_reminder_at: 1.minute.from_now)
 
-    assert_equal [users(:john), users(:bob)], AlertRecipientFinder.new.users
+    assert_equal [users(:john), users(:bob)].sort, AlertRecipientFinder.new.users.sort
   end
 
 end
