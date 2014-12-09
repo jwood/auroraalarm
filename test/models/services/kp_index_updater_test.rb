@@ -5,7 +5,7 @@ class KpIndexUpdaterTest < ActiveSupport::TestCase
   def setup
     Timecop.freeze(Time.utc(2012, 7, 17, 21, 51))
     body = File.read(File.expand_path('../../../data/reduced_wingkp_list.txt', __FILE__))
-    FakeWeb.register_uri(:get, "http://www.swpc.noaa.gov/wingkp/wingkp_list.txt", body: body)
+    FakeWeb.register_uri(:get, "http://services.swpc.noaa.gov/text/wing-kp.txt", body: body)
     @service = KpIndexUpdater.new
   end
 

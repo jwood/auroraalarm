@@ -79,7 +79,15 @@ class ActiveSupport::TestCase
   end
 
   def solar_event(strength, issue_time)
-    SpaceWeatherEvent.new("WATA050", new_serial_number, issue_time.to_s, 0, strength)
+    SpaceWeatherEvent.new(create_event_data("WATA050", new_serial_number, issue_time.to_s), 0, strength)
+  end
+
+  def create_event_data(code, serial_number, issue_time="2014-12-09 19:23:50.023")
+    {
+      "product_id" => "K04W",
+      "issue_datetime" => issue_time,
+      "message" => "Space Weather Message Code: #{code}\r\nSerial Number: #{serial_number}\r\nIssue Time: #{issue_time}"
+    }
   end
 
   def new_serial_number

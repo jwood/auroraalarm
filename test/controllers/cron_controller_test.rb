@@ -26,7 +26,7 @@ class CronControllerTest < ActionController::TestCase
   end
 
   test "should be able to alert users of an aurora" do
-    FakeWeb.register_uri(:get, "http://www.swpc.noaa.gov/wingkp/wingkp_list.txt", body: "")
+    FakeWeb.register_uri(:get, "http://services.swpc.noaa.gov/text/wing-kp.txt", body: "")
     AuroraConditionsMonitor.any_instance.expects(:alert_users_of_aurora_if_conditions_optimal)
     post :alert_users_of_aurora
     assert_response :success

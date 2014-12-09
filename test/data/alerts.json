@@ -1,0 +1,347 @@
+[
+   {
+      "product_id":"K04A",
+      "issue_datetime":"2014-12-09 19:58:38.757",
+      "message":"Space Weather Message Code: ALTK04\r\nSerial Number: 1746\r\nIssue Time: 2014 Dec 09 1958 UTC\r\n\r\nALERT: Geomagnetic K-index of 4\r\nThreshold Reached: 2014 Dec 09 1957 UTC\r\nSynoptic Period: 1800-2100 UTC\r\n \r\nActive Warning: Yes\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-12-09 19:23:50.023",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2401\r\nIssue Time: 2014 Dec 09 1923 UTC\r\n\r\nWARNING: Geomagnetic K-index of 4 expected\r\nValid From: 2014 Dec 09 1922 UTC\r\nValid To: 2014 Dec 10 0700 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-12-09 06:55:20.083",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2400\r\nIssue Time: 2014 Dec 09 0655 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2399\r\nValid From: 2014 Dec 06 1020 UTC\r\nNow Valid Until: 2014 Dec 09 1900 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K05W",
+      "issue_datetime":"2014-12-08 17:53:11.767",
+      "message":"Space Weather Message Code: WARK05\r\nSerial Number: 938\r\nIssue Time: 2014 Dec 08 1753 UTC\r\n\r\nWARNING: Geomagnetic K-index of 5 expected\r\nValid From: 2014 Dec 08 1751 UTC\r\nValid To: 2014 Dec 08 2300 UTC\r\nWarning Condition: Onset\r\nNOAA Scale: G1 - Minor\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-12-08 17:53:11.760",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2399\r\nIssue Time: 2014 Dec 08 1753 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2398\r\nValid From: 2014 Dec 06 1020 UTC\r\nNow Valid Until: 2014 Dec 09 0700 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"A20F",
+      "issue_datetime":"2014-12-07 21:10:56.177",
+      "message":"Space Weather Message Code: WATA20\r\nSerial Number: 591\r\nIssue Time: 2014 Dec 07 2110 UTC\r\n\r\nWATCH: Geomagnetic Storm Category G1 Predicted\r\n\r\nHighest Storm Level Predicted by Day:\r\nDec 08:  G1 (Minor)   Dec 09:  None (Below G1)   Dec 10:  None (Below G1)\r\n\r\nTHIS SUPERSEDES ANY\/ALL PRIOR WATCHES IN EFFECT\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K05W",
+      "issue_datetime":"2014-12-07 21:10:56.163",
+      "message":"Space Weather Message Code: WARK05\r\nSerial Number: 937\r\nIssue Time: 2014 Dec 07 2110 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 5 expected\r\nExtension to Serial Number: 936\r\nValid From: 2014 Dec 07 1344 UTC\r\nNow Valid Until: 2014 Dec 08 0400 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K05A",
+      "issue_datetime":"2014-12-07 14:08:02.483",
+      "message":"Space Weather Message Code: ALTK05\r\nSerial Number: 760\r\nIssue Time: 2014 Dec 07 1408 UTC\r\n\r\nALERT: Geomagnetic K-index of 5\r\nThreshold Reached: 2014 Dec 07 1406 UTC\r\nSynoptic Period: 1200-1500 UTC\r\n \r\nActive Warning: Yes\r\nNOAA Scale: G1 - Minor\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K05A",
+      "issue_datetime":"2014-12-07 14:07:28.043",
+      "message":"Space Weather Message Code: ALTK05\r\nSerial Number: 759\r\nIssue Time: 2014 Dec 07 1407 UTC\r\n\r\nCANCEL ALERT: Geomagnetic K-index of 5\r\nCancel Serial Number: 758\r\nOriginal Issue Time: 2014 Dec 07 1406 UTC\r\n\r\nComment: Incorrect start time\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K05A",
+      "issue_datetime":"2014-12-07 14:06:24.927",
+      "message":"Space Weather Message Code: ALTK05\r\nSerial Number: 758\r\nIssue Time: 2014 Dec 07 1406 UTC\r\n\r\nALERT: Geomagnetic K-index of 5\r\nThreshold Reached: 2014 Dec 07 0206 UTC\r\nSynoptic Period: 1200-1500 UTC\r\n \r\nActive Warning: Yes\r\nNOAA Scale: G1 - Minor\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K05W",
+      "issue_datetime":"2014-12-07 13:43:47.107",
+      "message":"Space Weather Message Code: WARK05\r\nSerial Number: 936\r\nIssue Time: 2014 Dec 07 1343 UTC\r\n\r\nWARNING: Geomagnetic K-index of 5 expected\r\nValid From: 2014 Dec 07 1344 UTC\r\nValid To: 2014 Dec 07 2200 UTC\r\nWarning Condition: Onset\r\nNOAA Scale: G1 - Minor\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-12-07 11:48:34.100",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2398\r\nIssue Time: 2014 Dec 07 1148 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2397\r\nValid From: 2014 Dec 06 1020 UTC\r\nNow Valid Until: 2014 Dec 08 1900 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K05A",
+      "issue_datetime":"2014-12-07 01:25:05.350",
+      "message":"Space Weather Message Code: ALTK05\r\nSerial Number: 757\r\nIssue Time: 2014 Dec 07 0125 UTC\r\n\r\nALERT: Geomagnetic K-index of 5\r\nThreshold Reached: 2014 Dec 07 0124 UTC\r\nSynoptic Period: 0000-0300 UTC\r\n \r\nActive Warning: Yes\r\nNOAA Scale: G1 - Minor\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K05W",
+      "issue_datetime":"2014-12-07 01:04:22.813",
+      "message":"Space Weather Message Code: WARK05\r\nSerial Number: 935\r\nIssue Time: 2014 Dec 07 0104 UTC\r\n\r\nWARNING: Geomagnetic K-index of 5 expected\r\nValid From: 2014 Dec 07 0102 UTC\r\nValid To: 2014 Dec 07 1000 UTC\r\nWarning Condition: Onset\r\nNOAA Scale: G1 - Minor\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K04A",
+      "issue_datetime":"2014-12-06 20:07:39.753",
+      "message":"Space Weather Message Code: ALTK04\r\nSerial Number: 1745\r\nIssue Time: 2014 Dec 06 2007 UTC\r\n\r\nALERT: Geomagnetic K-index of 4\r\nThreshold Reached: 2014 Dec 06 2007 UTC\r\nSynoptic Period: 1800-2100 UTC\r\n \r\nActive Warning: Yes\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-12-06 18:19:15.610",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2397\r\nIssue Time: 2014 Dec 06 1819 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2396\r\nValid From: 2014 Dec 06 1020 UTC\r\nNow Valid Until: 2014 Dec 07 1300 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-12-06 10:20:59.743",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2396\r\nIssue Time: 2014 Dec 06 1020 UTC\r\n\r\nWARNING: Geomagnetic K-index of 4 expected\r\nValid From: 2014 Dec 06 1020 UTC\r\nValid To: 2014 Dec 06 1900 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04A",
+      "issue_datetime":"2014-12-04 23:20:57.230",
+      "message":"Space Weather Message Code: ALTK04\r\nSerial Number: 1744\r\nIssue Time: 2014 Dec 04 2320 UTC\r\n\r\nALERT: Geomagnetic K-index of 4\r\nThreshold Reached: 2014 Dec 04 2319 UTC\r\nSynoptic Period: 2100-2400 UTC\r\n \r\nActive Warning: Yes\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-12-04 21:06:53.600",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2395\r\nIssue Time: 2014 Dec 04 2106 UTC\r\n\r\nWARNING: Geomagnetic K-index of 4 expected\r\nValid From: 2014 Dec 04 2130 UTC\r\nValid To: 2014 Dec 05 1300 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"XM5S",
+      "issue_datetime":"2014-12-04 19:02:35.940",
+      "message":"Space Weather Message Code: SUMXM5\r\nSerial Number: 130\r\nIssue Time: 2014 Dec 04 1902 UTC\r\n\r\nSUMMARY: X-ray Event exceeded M5\r\nBegin Time: 2014 Dec 04 1805 UTC\r\nMaximum Time: 2014 Dec 04 1825 UTC\r\nEnd Time: 2014 Dec 04 1856 UTC\r\nX-ray Class: M6.1\r\nLocation: S20W31\r\nNOAA Scale: R2 - Moderate\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact centered primarily on sub-solar point on the sunlit side of Earth.\r\nRadio - Limited blackout of HF (high frequency) radio communication for tens of minutes."
+   },
+   {
+      "product_id":"XM5A",
+      "issue_datetime":"2014-12-04 18:25:00.623",
+      "message":"Space Weather Message Code: ALTXMF\r\nSerial Number: 244\r\nIssue Time: 2014 Dec 04 1825 UTC\r\n\r\nALERT: X-Ray Flux exceeded M5\r\nThreshold Reached: 2014 Dec 04 1821 UTC\r\nNOAA Scale: R2 - Moderate\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact centered on sub-solar point on the sunlit side of Earth. Extent of blackout of HF (high frequency) radio communication dependent upon current X-ray Flux intensity. For real-time information on affected area and expected duration please see http:\/\/www.swpc.noaa.gov\/drap."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-12-04 16:24:56.720",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2394\r\nIssue Time: 2014 Dec 04 1624 UTC\r\n\r\nWARNING: Geomagnetic K-index of 4 expected\r\nValid From: 2014 Dec 04 1625 UTC\r\nValid To: 2014 Dec 04 1900 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04A",
+      "issue_datetime":"2014-12-01 21:58:15.300",
+      "message":"Space Weather Message Code: ALTK04\r\nSerial Number: 1743\r\nIssue Time: 2014 Dec 01 2158 UTC\r\n\r\nALERT: Geomagnetic K-index of 4\r\nThreshold Reached: 2014 Dec 01 2156 UTC\r\nSynoptic Period: 2100-2400 UTC\r\n \r\nActive Warning: Yes\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-12-01 21:57:36.480",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2393\r\nIssue Time: 2014 Dec 01 2157 UTC\r\n\r\nWARNING: Geomagnetic K-index of 4 expected\r\nValid From: 2014 Dec 01 2155 UTC\r\nValid To: 2014 Dec 02 0700 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-23 08:42:36.960",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2392\r\nIssue Time: 2014 Nov 23 0842 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2391\r\nValid From: 2014 Nov 22 2224 UTC\r\nNow Valid Until: 2014 Nov 23 1600 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04A",
+      "issue_datetime":"2014-11-22 22:56:12.400",
+      "message":"Space Weather Message Code: ALTK04\r\nSerial Number: 1742\r\nIssue Time: 2014 Nov 22 2256 UTC\r\n\r\nALERT: Geomagnetic K-index of 4\r\nThreshold Reached: 2014 Nov 22 2255 UTC\r\nSynoptic Period: 2100-2400 UTC\r\n \r\nActive Warning: Yes\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-22 22:25:57.317",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2391\r\nIssue Time: 2014 Nov 22 2225 UTC\r\n\r\nWARNING: Geomagnetic K-index of 4 expected\r\nValid From: 2014 Nov 22 2224 UTC\r\nValid To: 2014 Nov 23 0900 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-21 15:29:51.757",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2390\r\nIssue Time: 2014 Nov 21 1529 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2389\r\nValid From: 2014 Nov 21 0043 UTC\r\nNow Valid Until: 2014 Nov 22 0700 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-21 06:27:39.003",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2389\r\nIssue Time: 2014 Nov 21 0627 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2388\r\nValid From: 2014 Nov 21 0043 UTC\r\nNow Valid Until: 2014 Nov 21 1600 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04A",
+      "issue_datetime":"2014-11-21 01:37:14.783",
+      "message":"Space Weather Message Code: ALTK04\r\nSerial Number: 1741\r\nIssue Time: 2014 Nov 21 0137 UTC\r\n\r\nALERT: Geomagnetic K-index of 4\r\nThreshold Reached: 2014 Nov 21 0128 UTC\r\nSynoptic Period: 0000-0300 UTC\r\n \r\nActive Warning: Yes\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-21 00:43:53.207",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2388\r\nIssue Time: 2014 Nov 21 0043 UTC\r\n\r\nWARNING: Geomagnetic K-index of 4 expected\r\nValid From: 2014 Nov 21 0043 UTC\r\nValid To: 2014 Nov 21 0700 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04A",
+      "issue_datetime":"2014-11-20 03:05:41.053",
+      "message":"Space Weather Message Code: ALTK04\r\nSerial Number: 1740\r\nIssue Time: 2014 Nov 20 0305 UTC\r\n\r\nALERT: Geomagnetic K-index of 4\r\nThreshold Reached: 2014 Nov 20 0259 UTC\r\nSynoptic Period: 0000-0300 UTC\r\n \r\nActive Warning: Yes\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-20 02:14:44.717",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2387\r\nIssue Time: 2014 Nov 20 0214 UTC\r\n\r\nWARNING: Geomagnetic K-index of 4 expected\r\nValid From: 2014 Nov 20 0215 UTC\r\nValid To: 2014 Nov 20 0700 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04A",
+      "issue_datetime":"2014-11-19 03:06:04.990",
+      "message":"Space Weather Message Code: ALTK04\r\nSerial Number: 1739\r\nIssue Time: 2014 Nov 19 0306 UTC\r\n\r\nALERT: Geomagnetic K-index of 4\r\nThreshold Reached: 2014 Nov 19 0259 UTC\r\nSynoptic Period: 0000-0300 UTC\r\n \r\nActive Warning: Yes\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-19 01:19:36.100",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2386\r\nIssue Time: 2014 Nov 19 0119 UTC\r\n\r\nWARNING: Geomagnetic K-index of 4 expected\r\nValid From: 2014 Nov 19 0120 UTC\r\nValid To: 2014 Nov 19 0700 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-17 13:56:34.540",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2385\r\nIssue Time: 2014 Nov 17 1356 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2384\r\nValid From: 2014 Nov 14 1906 UTC\r\nNow Valid Until: 2014 Nov 17 2200 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"A20F",
+      "issue_datetime":"2014-11-16 18:59:29.647",
+      "message":"Space Weather Message Code: WATA20\r\nSerial Number: 590\r\nIssue Time: 2014 Nov 16 1859 UTC\r\n\r\nWATCH: Geomagnetic Storm Category G1 Predicted\r\n\r\nHighest Storm Level Predicted by Day:\r\nNov 16:  G1 (Minor)   Nov 17:  G1 (Minor)   Nov 18:  None (Below G1)\r\n\r\nTHIS SUPERSEDES ANY\/ALL PRIOR WATCHES IN EFFECT\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K05W",
+      "issue_datetime":"2014-11-16 18:58:52.147",
+      "message":"Space Weather Message Code: WARK05\r\nSerial Number: 934\r\nIssue Time: 2014 Nov 16 1858 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 5 expected\r\nExtension to Serial Number: 933\r\nValid From: 2014 Nov 15 2325 UTC\r\nNow Valid Until: 2014 Nov 17 0800 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"XM5S",
+      "issue_datetime":"2014-11-16 18:21:32.987",
+      "message":"Space Weather Message Code: SUMXM5\r\nSerial Number: 129\r\nIssue Time: 2014 Nov 16 1821 UTC\r\n\r\nSUMMARY: X-ray Event exceeded M5\r\nBegin Time: 2014 Nov 16 1735 UTC\r\nMaximum Time: 2014 Nov 16 1748 UTC\r\nEnd Time: 2014 Nov 16 1757 UTC\r\nX-ray Class: M5.7\r\nLocation: S12E46\r\nNOAA Scale: R2 - Moderate\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact centered primarily on sub-solar point on the sunlit side of Earth.\r\nRadio - Limited blackout of HF (high frequency) radio communication for tens of minutes."
+   },
+   {
+      "product_id":"XM5A",
+      "issue_datetime":"2014-11-16 17:48:43.663",
+      "message":"Space Weather Message Code: ALTXMF\r\nSerial Number: 243\r\nIssue Time: 2014 Nov 16 1748 UTC\r\n\r\nALERT: X-Ray Flux exceeded M5\r\nThreshold Reached: 2014 Nov 16 1747 UTC\r\nNOAA Scale: R2 - Moderate\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact centered on sub-solar point on the sunlit side of Earth. Extent of blackout of HF (high frequency) radio communication dependent upon current X-ray Flux intensity. For real-time information on affected area and expected duration please see http:\/\/www.swpc.noaa.gov\/drap."
+   },
+   {
+      "product_id":"K05W",
+      "issue_datetime":"2014-11-15 23:26:07.267",
+      "message":"Space Weather Message Code: WARK05\r\nSerial Number: 933\r\nIssue Time: 2014 Nov 15 2326 UTC\r\n\r\nWARNING: Geomagnetic K-index of 5 expected\r\nValid From: 2014 Nov 15 2325 UTC\r\nValid To: 2014 Nov 16 1900 UTC\r\nWarning Condition: Onset\r\nNOAA Scale: G1 - Minor\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K04A",
+      "issue_datetime":"2014-11-15 23:21:15.390",
+      "message":"Space Weather Message Code: ALTK04\r\nSerial Number: 1738\r\nIssue Time: 2014 Nov 15 2321 UTC\r\n\r\nALERT: Geomagnetic K-index of 4\r\nThreshold Reached: 2014 Nov 15 2307 UTC\r\nSynoptic Period: 2100-2400 UTC\r\n \r\nActive Warning: Yes\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-15 22:41:59.840",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2384\r\nIssue Time: 2014 Nov 15 2241 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2383\r\nValid From: 2014 Nov 14 1906 UTC\r\nNow Valid Until: 2014 Nov 17 1400 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"A20F",
+      "issue_datetime":"2014-11-15 14:48:12.913",
+      "message":"Space Weather Message Code: WATA20\r\nSerial Number: 589\r\nIssue Time: 2014 Nov 15 1448 UTC\r\n\r\nWATCH: Geomagnetic Storm Category G1 Predicted\r\n\r\nHighest Storm Level Predicted by Day:\r\nNov 15:  None (Below G1)   Nov 16:  G1 (Minor)   Nov 17:  None (Below G1)\r\n\r\nTHIS SUPERSEDES ANY\/ALL PRIOR WATCHES IN EFFECT\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-15 13:55:45.780",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2383\r\nIssue Time: 2014 Nov 15 1355 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2382\r\nValid From: 2014 Nov 14 1906 UTC\r\nNow Valid Until: 2014 Nov 15 2300 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04A",
+      "issue_datetime":"2014-11-15 11:13:48.153",
+      "message":"Space Weather Message Code: ALTK04\r\nSerial Number: 1737\r\nIssue Time: 2014 Nov 15 1113 UTC\r\n\r\nALERT: Geomagnetic K-index of 4\r\nThreshold Reached: 2014 Nov 15 1113 UTC\r\nSynoptic Period: 0900-1200 UTC\r\n \r\nActive Warning: Yes\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-15 06:50:47.740",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2382\r\nIssue Time: 2014 Nov 15 0650 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2381\r\nValid From: 2014 Nov 14 1906 UTC\r\nNow Valid Until: 2014 Nov 15 1400 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-14 19:08:13.597",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2381\r\nIssue Time: 2014 Nov 14 1908 UTC\r\n\r\nWARNING: Geomagnetic K-index of 4 expected\r\nValid From: 2014 Nov 14 1906 UTC\r\nValid To: 2014 Nov 15 0700 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-14 13:55:07.577",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2380\r\nIssue Time: 2014 Nov 14 1355 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2379\r\nValid From: 2014 Nov 14 0215 UTC\r\nNow Valid Until: 2014 Nov 14 0100 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-14 07:55:24.340",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2379\r\nIssue Time: 2014 Nov 14 0755 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2378\r\nValid From: 2014 Nov 14 0215 UTC\r\nNow Valid Until: 2014 Nov 14 1400 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-14 02:07:34.783",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2378\r\nIssue Time: 2014 Nov 14 0207 UTC\r\n\r\nWARNING: Geomagnetic K-index of 4 expected\r\nValid From: 2014 Nov 14 0215 UTC\r\nValid To: 2014 Nov 14 0800 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-13 07:07:34.783",
+      "message":"Space Weather Message Code: WATA20\r\nSerial Number: 2378\r\nIssue Time: 2014 Nov 14 0207 UTC\r\n\r\nWARNING: Geomagnetic K-index of 4 expected\r\nValid From: 2014 Nov 14 0215 UTC\r\nValid To: 2014 Nov 14 0800 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-13 02:07:34.783",
+      "message":"Space Weather Message Code: WATA30\r\nSerial Number: 2378\r\nIssue Time: 2014 Nov 14 0207 UTC\r\n\r\nWARNING: Geomagnetic K-index of 4 expected\r\nValid From: 2014 Nov 14 0215 UTC\r\nValid To: 2014 Nov 14 0800 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-12 09:51:34.810",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2377\r\nIssue Time: 2014 Nov 12 0951 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2376\r\nValid From: 2014 Nov 11 2240 UTC\r\nNow Valid Until: 2014 Nov 12 1600 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K05W",
+      "issue_datetime":"2014-11-12 09:51:34.803",
+      "message":"Space Weather Message Code: WARK05\r\nSerial Number: 932\r\nIssue Time: 2014 Nov 12 0951 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 5 expected\r\nExtension to Serial Number: 931\r\nValid From: 2014 Nov 11 2315 UTC\r\nNow Valid Until: 2014 Nov 12 1600 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-12 03:57:15.553",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2376\r\nIssue Time: 2014 Nov 12 0357 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2374\r\nValid From: 2014 Nov 11 2240 UTC\r\nNow Valid Until: 2014 Nov 12 1400 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K05W",
+      "issue_datetime":"2014-11-12 03:56:02.290",
+      "message":"Space Weather Message Code: WARK05\r\nSerial Number: 931\r\nIssue Time: 2014 Nov 12 0356 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 5 expected\r\nExtension to Serial Number: 930\r\nValid From: 2014 Nov 11 2315 UTC\r\nNow Valid Until: 2014 Nov 12 1000 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K05A",
+      "issue_datetime":"2014-11-12 00:04:33.973",
+      "message":"Space Weather Message Code: ALTK05\r\nSerial Number: 756\r\nIssue Time: 2014 Nov 12 0004 UTC\r\n\r\nALERT: Geomagnetic K-index of 5\r\nThreshold Reached: 2014 Nov 11 2359 UTC\r\nSynoptic Period: 2100-2400 UTC\r\n \r\nActive Warning: Yes\r\nNOAA Scale: G1 - Minor\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"A20F",
+      "issue_datetime":"2014-11-11 23:31:45.383",
+      "message":"Space Weather Message Code: WATA20\r\nSerial Number: 588\r\nIssue Time: 2014 Nov 11 2331 UTC\r\n\r\nWATCH: Geomagnetic Storm Category G1 Predicted\r\n\r\nHighest Storm Level Predicted by Day:\r\nNov 12:  G1 (Minor)   Nov 13:  None (Below G1)   Nov 14:  None (Below G1)\r\n\r\nTHIS SUPERSEDES ANY\/ALL PRIOR WATCHES IN EFFECT\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K05W",
+      "issue_datetime":"2014-11-11 23:18:01.750",
+      "message":"Space Weather Message Code: WARK05\r\nSerial Number: 930\r\nIssue Time: 2014 Nov 11 2318 UTC\r\n\r\nWARNING: Geomagnetic K-index of 5 expected\r\nValid From: 2014 Nov 11 2315 UTC\r\nValid To: 2014 Nov 12 0400 UTC\r\nWarning Condition: Onset\r\nNOAA Scale: G1 - Minor\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K04A",
+      "issue_datetime":"2014-11-11 22:46:16.597",
+      "message":"Space Weather Message Code: ALTK04\r\nSerial Number: 1736\r\nIssue Time: 2014 Nov 11 2246 UTC\r\n\r\nALERT: Geomagnetic K-index of 4\r\nThreshold Reached: 2014 Nov 11 2242 UTC\r\nSynoptic Period: 2100-2400 UTC\r\n \r\nActive Warning: Yes\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-11 22:41:25.277",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2374\r\nIssue Time: 2014 Nov 11 2241 UTC\r\n\r\nWARNING: Geomagnetic K-index of 4 expected\r\nValid From: 2014 Nov 11 2240 UTC\r\nValid To: 2014 Nov 12 0400 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-10 19:54:58.823",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2373\r\nIssue Time: 2014 Nov 10 1954 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2372\r\nValid From: 2014 Nov 09 2305 UTC\r\nNow Valid Until: 2014 Nov 11 0700 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K05W",
+      "issue_datetime":"2014-11-10 16:40:28.017",
+      "message":"Space Weather Message Code: WARK05\r\nSerial Number: 929\r\nIssue Time: 2014 Nov 10 1640 UTC\r\n\r\nCANCEL WARNING: Geomagnetic K-index of 5 expected\r\nCancel Serial Number: 928\r\nOriginal Issue Time: 2014 Nov 10 0248 UTC\r\n\r\nComment: Conditions no longer exist.\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-10 13:04:21.893",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2372\r\nIssue Time: 2014 Nov 10 1304 UTC\r\n\r\nEXTENDED WARNING: Geomagnetic K-index of 4 expected\r\nExtension to Serial Number: 2371\r\nValid From: 2014 Nov 09 2305 UTC\r\nNow Valid Until: 2014 Nov 10 2000 UTC\r\nWarning Condition: Persistence\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K05A",
+      "issue_datetime":"2014-11-10 11:38:56.603",
+      "message":"Space Weather Message Code: ALTK05\r\nSerial Number: 755\r\nIssue Time: 2014 Nov 10 1138 UTC\r\n\r\nALERT: Geomagnetic K-index of 5\r\nThreshold Reached: 2014 Nov 10 1138 UTC\r\nSynoptic Period: 0900-1200 UTC\r\n \r\nActive Warning: Yes\r\nNOAA Scale: G1 - Minor\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K05W",
+      "issue_datetime":"2014-11-10 02:48:49.017",
+      "message":"Space Weather Message Code: WARK05\r\nSerial Number: 928\r\nIssue Time: 2014 Nov 10 0248 UTC\r\n\r\nWARNING: Geomagnetic K-index of 5 expected\r\nValid From: 2014 Nov 10 0247 UTC\r\nValid To: 2014 Nov 10 1900 UTC\r\nWarning Condition: Onset\r\nNOAA Scale: G1 - Minor\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 60 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nSpacecraft - Minor impact on satellite operations possible.\r\nAurora - Aurora may be visible at high latitudes, i.e., northern tier of the U.S. such as northern Michigan and Maine."
+   },
+   {
+      "product_id":"K04A",
+      "issue_datetime":"2014-11-10 01:53:36.113",
+      "message":"Space Weather Message Code: ALTK04\r\nSerial Number: 1735\r\nIssue Time: 2014 Nov 10 0153 UTC\r\n\r\nALERT: Geomagnetic K-index of 4\r\nThreshold Reached: 2014 Nov 10 0145 UTC\r\nSynoptic Period: 0000-0300 UTC\r\n \r\nActive Warning: Yes\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   },
+   {
+      "product_id":"K04W",
+      "issue_datetime":"2014-11-09 23:05:27.867",
+      "message":"Space Weather Message Code: WARK04\r\nSerial Number: 2371\r\nIssue Time: 2014 Nov 09 2305 UTC\r\n\r\nWARNING: Geomagnetic K-index of 4 expected\r\nValid From: 2014 Nov 09 2305 UTC\r\nValid To: 2014 Nov 10 1400 UTC\r\nWarning Condition: Onset\r\n\r\nNOAA Space Weather Scale descriptions can be found at\r\nwww.swpc.noaa.gov\/NOAAscales\r\n\r\nPotential Impacts: Area of impact primarily poleward of 65 degrees Geomagnetic Latitude.\r\nInduced Currents - Weak power grid fluctuations can occur.\r\nAurora - Aurora may be visible at high latitudes such as Canada and Alaska."
+   }
+]

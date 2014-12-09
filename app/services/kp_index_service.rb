@@ -22,7 +22,7 @@ class KpIndexService
   end
 
   def self.data_url
-    "http://www.swpc.noaa.gov/wingkp/wingkp_list.txt"
+    "http://services.swpc.noaa.gov/text/wing-kp.txt"
   end
 
   private

@@ -3,7 +3,7 @@ require 'test_helper'
 class AuroraConditionsMonitorTest < ActiveSupport::TestCase
 
   def setup
-    FakeWeb.register_uri(:get, "http://www.swpc.noaa.gov/wingkp/wingkp_list.txt", body: "")
+    FakeWeb.register_uri(:get, "http://services.swpc.noaa.gov/text/wing-kp.txt", body: "")
     @monitor = AuroraConditionsMonitor.new
 
     @bob_permission = AlertPermission.create!(user: users(:bob), approved_at: Time.now, expires_at: 10.minutes.from_now)

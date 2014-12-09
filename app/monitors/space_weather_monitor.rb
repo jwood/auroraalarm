@@ -36,7 +36,7 @@ class SpaceWeatherMonitor
   end
 
   def strongest_solar_event(date)
-    service = SpaceWeatherAlertService.new(date.year, date.month)
+    service = SpaceWeatherAlertService.new
     service.strongest_geomagnetic_storm(date)
   end
 

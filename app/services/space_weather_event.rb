@@ -1,16 +1,27 @@
 class SpaceWeatherEvent
-  attr_reader :event_type, :message_code, :serial_number, :issue_time, :kp_index, :geomagnetic_storm_level
+  attr_reader :product_id, :message, :event_type, :message_code, :serial_number, :issue_time, :kp_index, :geomagnetic_storm_level
 
-  def initialize(message_code, serial_number, issue_time, kp_index=nil, geomagnetic_storm_level=nil)
-    @message_code = message_code
+  def initialize(alert, kp_index=nil, geomagnetic_storm_level=nil)
+    @product_id = alert["product_id"]
+    @issue_time = Time.parse(alert["issue_datetime"] + " UTC")
+    @message = alert["message"]
+
+    @message_code = determine_message_code(message)
+    @serial_number = determine_serial_number(message)
     @event_type = determine_event_type(message_code)
-    @serial_number = serial_number
-    @issue_time = Time.parse(issue_time)
     @kp_index = kp_index.nil? ? determine_kp_index(message_code) : kp_index.to_i
     @geomagnetic_storm_level = geomagnetic_storm_level || determine_geomagnetic_storm_level(message_code) || ""
   end
 
   private
+
+  def determine_message_code(message)
+    $1 if message =~ /Space Weather Message Code: ([^\s]*)/
+  end
+
+  def determine_serial_number(message)
+    $1 if message =~ /^Serial Number: ([^\s]*)/
+  end
 
   def determine_event_type(message_code)
     event_type_code = message_code[0..2]
