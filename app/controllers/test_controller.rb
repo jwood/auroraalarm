@@ -60,7 +60,7 @@ class TestController < PrivateController
 
     @kp_forecast = KpIndexService.new.current_forecast.last
     @cloud_cover_percentage = LocalWeatherService.new.cloud_cover_percentage(@user)
-    @latest_space_weather_event = SpaceWeatherAlertService.new(date.year, date.month).report.find_events.first
+    @latest_space_weather_event = SpaceWeatherAlertService.new.events.first
     @moon_phase = Moon.new.phase(Time.now)
     @nighttime = Nighttime.new.nighttime?(@user)
   end
