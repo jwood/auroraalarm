@@ -4,6 +4,10 @@ class SiteController < ApplicationController
     @user = User.new
   end
 
+  def shutting_down
+    render layout: false
+  end
+
   def new_user
     respond_to do |format|
       if user_exists?(params[:user][:mobile_phone])

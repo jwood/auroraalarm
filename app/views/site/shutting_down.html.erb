@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+  <title>AuroraAlarm</title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= stylesheet_link_tag    "mobile", media: "only screen and (max-device-width: 800px) and (min-device-width: 320px)" %>
+  <!--[if IE]><%= stylesheet_link_tag  "ie" %><![endif]-->
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+  <script type="text/javascript">
+    document.createElement("article");
+    document.createElement("section");
+    document.createElement("footer");
+    document.createElement("header");
+    document.createElement("hgroup");
+    document.createElement("nav");
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', '<%= ENV['GA_TRACKING_ID'] %>']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+<body>
+
+<header>
+  <h1 id="title"><%= link_to 'AuroraAlarm', root_path %></h1>
+</header>
+
+<div id="main_content">
+  <section id="details">
+    <a name="about"></a>
+    <h2>Shutting Down</h2>
+    <p>It saddens me to announce that AuroraAlarm will be shutting down effective immediately.</p>
+    <p>
+      Unfortunately, the SMS service that AuroaAlarm has been using for free has shut down.
+      I would like to thank Signal for letting me use their service for free all of these years. Without them,
+      AuroraAlarm would have never existed in the first place.
+    </p>
+    <p>
+      I have debated switching over to a paid SMS service, but that would require that I charge all of you to use
+      AuroraAlarm. I am not comfortable with that, because there are much better alternatives these days. Smartphones are
+      everywhere now, and there are several great apps for doing what AuroraAlarm does. And, they work even better
+      since you don't have to remember to tell a smartphone app when you are in a new zip code.
+    </p>
+    <p>
+      I'd like to thank all of the AuroraAlarm users. It has been fun running this project. I really hope it helped
+      some of you see the beautiful Northern Lights.
+    </p>
+    <p>
+      For those interested, the AuroraAlarm application source code is, and always has been, available on GitHub
+      at <a href="https://github.com/jwood/auroraalarm">https://github.com/jwood/auroraalarm</a>.
+    </p>
+    <p>
+      If you have any questions, comments, or suggestions, please feel free to email me at
+      <a href="mailto:john@johnpwood.net">john@johnpwood.net</a>.
+    </p>
+
+    <p><strong>Best of luck on your continued quest to view the Aurora!</strong></p>
+
+    <p>- John</p>
+  </section>
+</div>
+
+<footer>
+  <p id="background_photo_credit">Background photo courtesy of <%= link_to 'Tor Even Mathisen', 'http://www.flickr.com/photos/tittentem/6767922427/' %></p>
+</footer>
+
+</body>
+</html>
+

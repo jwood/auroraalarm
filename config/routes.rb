@@ -13,5 +13,5 @@ Aurora::Application.routes.draw do
   post '/test/send_message' => 'test#send_message'
   get '/test/status' => 'test#status'
 
-  root to: 'site#index'
+  root to: 'site#shutting_down'
 end
