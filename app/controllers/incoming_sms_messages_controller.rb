@@ -5,7 +5,7 @@ class IncomingSmsMessagesController < ApplicationController
     mobile_phone = params[:mobile_phone]
     message = (params[:message] && params[:message].strip)
 
-    IncomingSmsHandler.process(mobile_phone, message)
+    IncomingSmsHandler.process(mobile_phone, message) unless Rails.env.production?
     render nothing: true
   end
 
